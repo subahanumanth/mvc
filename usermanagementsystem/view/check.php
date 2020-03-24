@@ -1,62 +1,20 @@
 <html>
-<style>
-#logout {
-  margin-left : 1200px;
-}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<?php require("css/check.css"); ?>
+<div class="nav">
+<h1 class="welcome">Welcome <?php echo $list['first_name']; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span><a href="login"><i class="fa fa-sign-out"></i></a></span>
+</h1>
+</div>
 
-#submit {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 20%;
-  margin-left: 423px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 20%;
-  margin-left: 423px;
-}
-
-#customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-#customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
-}
-</style>
-
-<h1>Welcome <?php echo $_SESSION['name']; ?></h1>
-<div class="topnav">
-
-  <a href="login.php" id="logout">log out</a>
-
-</div><br>
-<table border='1'  style='border-collapse: collapse;  width:100%;' id='customers'>
-<tr><td><?php echo $list['first_name'] ?></td><td><?php echo $list['last_name'] ?></td><td><?php echo $list['date_of_birth'] ?></td><td><?php echo $list['details_of_graduation'] ?></td><td><?php echo $list['blood_group'] ?></td><td><?php echo $list['gender'] ?></td><td><?php echo $listEmail ?></td><td><?php echo $listMobile ?></td><td><?php echo $listAreaOfIntrest ?></td>
-</table>
+<div class="center">
+<span class="name"><b>Name &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['first_name']." ".$list['last_name']; ?></b></span><br><br>
+<span class="dob"><b>Date Of Birth &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['date_of_birth']; ?></b></span><br><br>
+<span class="dog"><b>Details Of Graduation &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['details_of_graduation'] ?></b></span><br><br>
+<span class="bg"><b>Blood Group &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['blood_group'] ?></b></span><br><br>
+<span class="gender"><b>Gender &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['gender'] ?></b></span><br><br>
+<span class="email"><b>Email &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listEmail ?></b></span><br><br>
+<span class="mobile"><b>Mobile Number &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listMobile ?></b></span><br><br>
+<span class="aoi"><b>Area Of Intrest &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listAreaOfIntrest ?></b></span><br><br>
+<span class="submit"><a href="new">Update</a></span>
+</div>
 </html>

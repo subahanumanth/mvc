@@ -24,4 +24,4 @@ if($rights == 1) {
 } else {
     echo "user not exist";
 }
-?>,
+?>
