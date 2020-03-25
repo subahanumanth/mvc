@@ -7,7 +7,4 @@ class db {
     return mysqli_close($conn);
   }
 }
-
-
-
  ?>

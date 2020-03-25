@@ -1,8 +1,8 @@
 <?php
 class adminList {
-  public static function showAllDetail () {
+  public function showAllDetail ($id) {
       $conn = db::connection();
-      $row = mysqli_query($conn,"select *from detail");
+      $row = mysqli_query($conn,"select *from detail where id != $id");
       $i=-1;
       if(mysqli_num_rows($row) > 0) {
         while($rows = mysqli_fetch_assoc($row)) {
@@ -21,10 +21,10 @@ class adminList {
       db::close($conn);
       return $list;
     }
-    public static function distinct() {
+    public function distinct($id) {
       $list = [];
       $conn = db::connection();
-      $row = mysqli_query($conn," select distinct(user_id) from email");
+      $row = mysqli_query($conn," select distinct(user_id) from email where user_id != $id");
       if(mysqli_num_rows($row) > 0) {
         while($rows = mysqli_fetch_assoc($row)) {
           array_push($list, $rows['user_id']);
@@ -33,7 +33,7 @@ class adminList {
       db::close($conn);
       return $list;
     }
-    public static function showAllEmail($values) {
+    public function showAllEmail($values) {
       $list = [];
       $conn = db::connection();
       for($i=0;$i<count($values);$i++) {
@@ -47,7 +47,7 @@ class adminList {
       db::close($conn);
       return $list;
     }
-    public static function showAllMobile($values) {
+    public function showAllMobile($values) {
       $list = [];
       $conn = db::connection();
       for($i=0;$i<count($values);$i++) {
@@ -61,7 +61,7 @@ class adminList {
       db::close($conn);
       return $list;
     }
-    public static function showAllAreaOfIntrest($values) {
+    public function showAllAreaOfIntrest($values) {
       $list = [];
       $conn = db::connection();
       for($i=0;$i<count($values);$i++) {
@@ -75,5 +75,19 @@ class adminList {
       db::close($conn);
       return $list;
     }
+    public function showName($id) {
+      $conn = db::connection();
+      $row = mysqli_query($conn, "select first_name,last_name from detail where id=$id");
+      if(mysqli_num_rows($row) > 0) {
+          while($rows = mysqli_fetch_assoc($row)) {
+              $listName[] = $rows['first_name'];
+              $listName[] = $rows['last_name'];
+          }
+       }
+       db::close($conn);
+       return implode(' ',$listName);
+     }
 }
+
+$adminList = new adminList();
 ?>

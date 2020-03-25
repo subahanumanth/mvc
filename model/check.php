@@ -83,4 +83,6 @@ public static function selectAreaOfIntrest ($id) {
    }
  }
 }
+
+$check = new check();
  ?>

@@ -9,15 +9,20 @@ class index {
     require("./view/sample.css");
     require("./view/sample.php");
   }
-
   public function check () {
     require("check.php");
   }
   public function adminList () {
     require("adminList.php");
   }
-  public function error () {
-    require("./view/error.php");
+  public function bloodGroupTable () {
+    require("bloodGroupTable.php");
+  }
+  public function areaOfIntrestTable () {
+    require("areaOfIntrestTable.php");
+  }
+  public function detailsOfGraduationTable () {
+    require("detailsOfGraduationTable.php");
   }
 }
 

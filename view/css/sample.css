@@ -2,6 +2,7 @@
 :root{
   --lgrey:#DCDDDF;
 }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -207,6 +208,7 @@ form:after {
     position: relative;
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
     width: 120px;
+    margin-left:30px;
 }
 #content form input[type="submit"]:hover {
     background: rgb(254,193,81);
@@ -260,6 +262,20 @@ form:after {
 .button a:hover {
     background-position: 0 -135px;
     color: #00aeef;
+}
+
+#content .error {
+  border : 1px solid red;
+  border-radius: 3px;
+  margin-left: 37px;
+  width:80%;
+  height:6%;
+  background-color: #ffcccc;
+}
+
+#content .h {
+  color:	#800000;
+  margin-top :10px;
 }
 
 Resources
