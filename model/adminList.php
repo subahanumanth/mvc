@@ -24,56 +24,74 @@ class adminList {
     public function distinct($id) {
       $list = [];
       $conn = db::connection();
-      $row = mysqli_query($conn," select distinct(user_id) from email where user_id != $id");
+      $row = mysqli_query($conn," select id from detail");
       if(mysqli_num_rows($row) > 0) {
         while($rows = mysqli_fetch_assoc($row)) {
-          array_push($list, $rows['user_id']);
+          array_push($list, $rows['id']);
         }
       }
       db::close($conn);
       return $list;
     }
-    public function showAllEmail($values) {
+    public function showAllEmail($id) {
       $list = [];
       $conn = db::connection();
-      for($i=0;$i<count($values);$i++) {
-          $row = mysqli_query($conn," select email_id from email where user_id=$values[$i]");
-          if(mysqli_num_rows($row) > 0) {
-              while($rows = mysqli_fetch_assoc($row)) {
-                  $list[$values[$i]][] = $rows['email_id'];
-              }
-           }
+      $row = mysqli_query($conn,"select email_id from email where user_id=$id");
+      if(mysqli_num_rows($row) > 0) {
+          while($rows = mysqli_fetch_assoc($row)) {
+              $list[] = $rows['email_id'];
+          }
       }
       db::close($conn);
-      return $list;
+      return implode(',',$list);
     }
-    public function showAllMobile($values) {
+    public function showAllMobile($id) {
       $list = [];
       $conn = db::connection();
-      for($i=0;$i<count($values);$i++) {
-          $row = mysqli_query($conn," select mobile_no from mobile where user_id=$values[$i]");
-          if(mysqli_num_rows($row) > 0) {
-              while($rows = mysqli_fetch_assoc($row)) {
-                  $list[$values[$i]][] = $rows['mobile_no'];
-              }
-           }
-      }
+      $row = mysqli_query($conn," select mobile_no from mobile where user_id=$id");
+      if(mysqli_num_rows($row) > 0) {
+          while($rows = mysqli_fetch_assoc($row)) {
+             $list[] = $rows['mobile_no'];
+          }
+       }
       db::close($conn);
-      return $list;
+      return implode(',',$list);
     }
-    public function showAllAreaOfIntrest($values) {
+    public function showAllAreaOfInterest($id) {
       $list = [];
       $conn = db::connection();
-      for($i=0;$i<count($values);$i++) {
-          $row = mysqli_query($conn,"select area_of_intrest from  area_of_intrest1 where user_id=$values[$i]");
-          if(mysqli_num_rows($row) > 0) {
-              while($rows = mysqli_fetch_assoc($row)) {
-                  $list[$values[$i]][] = $rows['area_of_intrest'];
-              }
-           }
+      $row = mysqli_query($conn,"select area_of_intrest from area_of_intrest where user_id=$id");
+      if(mysqli_num_rows($row) > 0) {
+          while($rows = mysqli_fetch_assoc($row)) {
+              $list[] = $rows['area_of_intrest'];
+          }
       }
       db::close($conn);
-      return $list;
+      return implode(',',$list);
+    }
+    public function showAllBloodGroup($id) {
+      $list = [];
+      $conn = db::connection();
+      $row = mysqli_query($conn,"select blood_group from blood_group where user_id=$id");
+      if(mysqli_num_rows($row) > 0) {
+          while($rows = mysqli_fetch_assoc($row)) {
+              $list[] = $rows['blood_group'];
+          }
+      }
+      db::close($conn);
+      return implode(',',$list);
+    }
+    public function showAllDetailsOfGraduation($id) {
+      $list = [];
+      $conn = db::connection();
+      $row = mysqli_query($conn,"select details_of_graduation from details_of_graduation where user_id=$id");
+      if(mysqli_num_rows($row) > 0) {
+          while($rows = mysqli_fetch_assoc($row)) {
+              $list[] = $rows['details_of_graduation'];
+          }
+      }
+      db::close($conn);
+      return implode(',',$list);
     }
     public function showName($id) {
       $conn = db::connection();

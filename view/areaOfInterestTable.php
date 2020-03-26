@@ -1,24 +1,24 @@
 <html>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?php
-include("css/bloodGroupTable.css");
+include("css/areaOfInterestTable.css");
  ?>
-<h1 style="text-align:center;">Blood Group Table</h1>
+<h1 style="text-align:center;">Area Of Interest Table</h1>
 <table border='1'  style='border-collapse: collapse; margin-left:540px; width:20%;' id='customers'>
-  <tr><td class="m">Blood Group</td> <td class="m">Action</td></tr>
+  <tr><td>Area Of Interest</td> <td>Delete</td><td>Update</td></tr>
   <?php
   for($i=0;$i<count($list);$i++) {
     ?>
-  <tr><td id="data"><?php echo $list[$i]['bloodGroup']; ?></td>
-<td><a href="../../bloodGroupTable/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-trash edit"></i></a>
-    <a href="../../bloodGroupTable/0/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
-  </td>
+  <tr><td id="data"><?php echo $list[$i]['areaOfInterest']; ?></td>
+<td><a href="../../areaOfInterestTable/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-trash edit"></i></a>
+<td><a href="../../areaOfInterestTable/0/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
+</td>
   </tr>
   <?php
 }
 ?>
 </table><br>
-<a href="../../bloodGroupTable/add" id="a">Add Blood Group</a>
+<a href="../../areaOfInterestTable/add" id="a">Add Area Of Interest</a>
 </html>
 
 <?php

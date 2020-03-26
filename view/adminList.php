@@ -9,23 +9,39 @@
 
   <div class="topnav">
     <a class="active" href="../bloodGroupTable">Manage Blood Group</a>
-    <a href="../areaOfIntrestTable">Manage Area Of Interest</a>
+    <a href="../areaOfInterestTable">Manage Area Of Interest</a>
     <a href="../detailsOfGraduationTable">Manage Details Of Graduation</a>
     <a href=""><span class="welcome">Welcome <?php echo $_SESSION['name']; ?></span></a>
     <a href="../login"><i class="fa fa-sign-out"></i></a>  </div><br>
 
 <h2 align="center">Details</h2>
 <table border='1'  style='border-collapse: collapse;  width:100%;' id='customers'>
-  <tr><td>First Name</td><td>Last Name</td><td>Date Of Birth</td><td>Details Of Graduation</td><td>Blood Group</td><td>Gender</td><td>Email</td><td>Mobile Number</td><td>Area Of Interest</td><td>Update</td><td>Delete</td></tr>
+  <tr>
+  <td class="m">First Name</td>
+  <td class="m">Last Name</td>
+  <td class="m">Date Of Birth</td>
+  <td class="m">Details Of Graduation</td>
+  <td class="m">Blood Group</td>
+  <td class="m">Gender</td>
+  <td class="m">Email</td>
+  <td class="m">Mobile Number</td>
+  <td class="m">Area Of Interest</td>
+  <td class="m">Action</td></tr>
   <?php
   for($i=0;$i<count($list);$i++) {
     ?>
-<tr><td><?php echo $list[$i]['firstName'] ?></td><td><?php echo $list[$i]['lastName'] ?></td><td><?php echo date("d-M-Y",strtotime($list[$i]['dateOfBirth']));
- ?></td><td><?php echo $list[$i]['detailsOfGraduation'] ?></td><td><?php echo $list[$i]['bloodGroup'] ?></td><td>
-   <?php echo $list[$i]['gender'] ?></td><td><?php echo $email[$i] ?></td>
-   <td><?php echo $mobile[$i] ?></td><td><?php echo $areaOfIntrest[$i] ?></td>
-   <td><input type="submit" value="Update" id="sample"></td>
-   <td><input type="submit" value="Delete" id="sample"></td></tr>
+   <tr>
+   <td class="m"><?php echo $list[$i]['firstName'] ?></td>
+   <td class="m"><?php echo $list[$i]['lastName'] ?></td>
+   <td class="m"><?php echo date("d-M-Y",strtotime($list[$i]['dateOfBirth']));?></td>
+   <td class="m"><?php echo $list[$i]['detailsOfGraduation'] ?></td>
+   <td class="m"><?php echo $list[$i]['bloodGroup'] ?></td>
+   <td class="m"><?php echo $list[$i]['gender'] ?></td>
+   <td class="m"><?php echo $list[$i]['email'] ?></td>
+   <td class="m"><?php echo $list[$i]['mobile'] ?></td>
+   <td class="m"><?php echo $list[$i]['areaOfInterest'] ?></td>
+   <td>&nbsp;<i class="fa fa-edit"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash"></i></td>
+</tr>
 <?php
 }
  ?>

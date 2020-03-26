@@ -90,4 +90,10 @@ body {
     background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
 }
+.edit{
+  margin-left:16px;
+}
+.m{
+  text-align: center;
+}
 </style>

@@ -19,6 +19,9 @@ body {
   text-decoration: none;
   font-size: 17px;
 }
+.detail{
+  padding-left: 263px;
+}
 .name{
     padding: 220px;
 }
@@ -54,6 +57,7 @@ body{
   height :60px;
 }
 .center {
+  margin-bottom: 20px;
   margin-left: 350px;
 width: 70%;
 padding: 30px;

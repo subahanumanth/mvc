@@ -23,7 +23,25 @@ class bloodGroup {
   }
   public function delete($id) {
     $conn = db::connection();
-    $query= "delete blood_group from blood_group where id=$id";
+    $query= "update blood_group set is_deleted = 0 where id=$id";
+    mysqli_query($conn, $query);
+    db::close($conn);
+  }
+  public function find($id) {
+    $conn = db::connection();
+    $query= "select blood_group from blood_group where id=$id";
+    $row = mysqli_query($conn, $query);
+    if(mysqli_num_rows($row) > 0) {
+      while($rows = mysqli_fetch_assoc($row)) {
+          $list = $rows['blood_group'];
+      }
+    }
+    db::close($conn);
+    return $list;
+  }
+  public function update($id, $value) {
+    $conn = db::connection();
+    $query= "update blood_group set blood_group = '$value' where id=$id";
     mysqli_query($conn, $query);
     db::close($conn);
   }

@@ -18,8 +18,8 @@ class index {
   public function bloodGroupTable () {
     require("bloodGroupTable.php");
   }
-  public function areaOfIntrestTable () {
-    require("areaOfIntrestTable.php");
+  public function areaOfInterestTable () {
+    require("areaOfInterestTable.php");
   }
   public function detailsOfGraduationTable () {
     require("detailsOfGraduationTable.php");

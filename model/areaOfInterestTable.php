@@ -1,21 +1,21 @@
 <?php
-class detailsOfGraduation {
+class areaOfInterest {
   public function insert($bg) {
     $conn = db::connection();
-    $insert = "insert into details_of_graduation (details_of_graduation) values('$bg')";
+    $insert = "insert into area_of_intrest (area_of_intrest) values('$bg')";
     mysqli_query($conn, $insert);
     db::close($conn);
   }
-  public function selectDetailsOfGraduation() {
+  public function selectAreaOfInterest() {
     $conn = db::connection();
     $i=-1;
-    $query = "select *from details_of_graduation";
+    $query = "select *from area_of_intrest";
     $row = mysqli_query($conn, $query);
     if(mysqli_num_rows($row) > 0) {
       while($rows = mysqli_fetch_assoc($row)) {
         $i++;
         $list[$i]['id'] = $rows['id'];
-        $list[$i]['detailsOfGraduation'] = $rows['details_of_graduation'];
+        $list[$i]['areaOfInterest'] = $rows['area_of_intrest'];
       }
     }
     db::close($conn);
@@ -23,17 +23,17 @@ class detailsOfGraduation {
   }
   public function delete($id) {
     $conn = db::connection();
-    $query= "update details_of_graduation set is_deleted = 0 where id=$id";
+    $query= "update area_of_intrest set is_deleted = 0 where id=$id";
     mysqli_query($conn, $query);
     db::close($conn);
   }
   public function find($id) {
     $conn = db::connection();
-    $query= "select details_of_graduation from details_of_graduation where id=$id";
+    $query= "select area_of_intrest from area_of_intrest where id=$id";
     $row = mysqli_query($conn, $query);
     if(mysqli_num_rows($row) > 0) {
       while($rows = mysqli_fetch_assoc($row)) {
-          $list = $rows['details_of_graduation'];
+          $list = $rows['area_of_intrest'];
       }
     }
     db::close($conn);
@@ -41,10 +41,10 @@ class detailsOfGraduation {
   }
   public function update($id, $value) {
     $conn = db::connection();
-    $query= "update details_of_graduation set details_of_graduation = '$value' where id=$id";
+    $query= "update area_of_intrest set area_of_intrest = '$value' where id=$id";
     mysqli_query($conn, $query);
     db::close($conn);
   }
 }
-$detailsOfGraduation = new detailsOfGraduation();
+$areaOfInterest = new areaOfInterest();
  ?>

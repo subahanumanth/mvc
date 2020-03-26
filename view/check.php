@@ -11,6 +11,7 @@ require("./controller/session.php");
 </div><br>
 
 <div class="center">
+<h3 class="detail">Details</h3>
 <span class="name"><b>Name &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['first_name']." ".$list['last_name']; ?></b></span><br><br>
 <span class="dob"><b>Date Of Birth &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo date("d-M-Y",strtotime($list['date_of_birth'])); ?></b></span><br><br>
 <span class="dog"><b>Details Of Graduation &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['details_of_graduation'] ?></b></span><br><br>

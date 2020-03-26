@@ -131,4 +131,14 @@ button {
   text-decoration: none;
   color: #85592e;
 }
+#a {
+  padding-left:600px;
+  text-decoration:none;
+}
+.edit{
+   margin-left:30px;
+}
+.m{
+  text-align: center;
+}
 </style>
