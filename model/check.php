@@ -1,6 +1,6 @@
 <?php
 class check {
-  public static function select ($id) {
+  public function select ($id) {
       $conn = db::connection();
       $row = mysqli_query($conn, "select *from detail where id=$id");
       if(mysqli_num_rows($row) > 0) {
@@ -19,7 +19,7 @@ class check {
       db::close($conn);
       return $list;
   }
- public static function selectEmail ($id) {
+ public function selectEmail ($id) {
   $list = [];
   $conn = db::connection();
   $row = mysqli_query($conn,"select email_id from email where user_id=$id");
@@ -32,7 +32,7 @@ class check {
   db::close($conn);
   return $list;
 }
-public static function selectMobile ($id) {
+public function selectMobile ($id) {
   $list = [];
   $conn = db::connection();
   $row = mysqli_query($conn,"select mobile_no from mobile where user_id=$id");
@@ -45,7 +45,7 @@ public static function selectMobile ($id) {
   db::close($conn);
   return $list;
 }
-public static function selectAreaOfIntrest ($id) {
+public function selectAreaOfIntrest ($id) {
   $list = [];
   $conn = db::connection();
   $row = mysqli_query($conn,"select area_of_intrest from area_of_intrest1 where user_id=$id");
@@ -58,7 +58,7 @@ public static function selectAreaOfIntrest ($id) {
   db::close($conn);
   return $list;
 }
- public static function selectNamePassword ($name,$password) {
+ public function selectNamePassword ($name,$password) {
    $list = [];
    $conn = db::connection();
    $row = mysqli_query($conn,"select * from detail where first_name='$name' and password='$password'");
@@ -76,11 +76,7 @@ public static function selectAreaOfIntrest ($id) {
      }
    }
    db::close($conn);
-   if(isset($list['first_name']) and isset($list['blood_group'])) {
-     return $list;
-   } else {
-     return 0;
-   }
+   return $list;
  }
 }
 

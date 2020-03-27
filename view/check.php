@@ -3,11 +3,10 @@
 <?php
 $name = $list['first_name']." ".$list['last_name'];
 require("css/check.css");
-require("./controller/session.php");
 ?>
   <div class="topnav">
     <a href=""><span class="welcome">Welcome <?php echo $_SESSION['name']; ?></span></a>
-     <a href="login"><i class="fa fa-sign-out"></i></a>
+     <a href="logOut"><i class="fa fa-sign-out"></i></a>
 </div><br>
 
 <div class="center">

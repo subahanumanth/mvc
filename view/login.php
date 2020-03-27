@@ -14,10 +14,10 @@
             <div id="error">
            </div><br>
             <div>
-                <input type="text" placeholder="Username" required="" id="username" name="name" />
+                <input type="text" placeholder="Username" id="username" name="name" />
             </div>
             <div class="pace">
-                <input type="password" placeholder="Password" required="" id="password" name="password"/>
+                <input type="password" placeholder="Password" id="password" name="password"/>
             </div>
             <div>
                 <input type="submit" name="submit" value="submit"/>

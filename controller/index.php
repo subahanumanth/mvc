@@ -24,6 +24,9 @@ class index {
   public function detailsOfGraduationTable () {
     require("detailsOfGraduationTable.php");
   }
+  public function logOut () {
+    require("logOut.php");
+  }
 }
 
 ?>

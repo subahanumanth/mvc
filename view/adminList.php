@@ -12,7 +12,7 @@
     <a href="../areaOfInterestTable">Manage Area Of Interest</a>
     <a href="../detailsOfGraduationTable">Manage Details Of Graduation</a>
     <a href=""><span class="welcome">Welcome <?php echo $_SESSION['name']; ?></span></a>
-    <a href="../login"><i class="fa fa-sign-out"></i></a>  </div><br>
+    <a href="../logOut"><i class="fa fa-sign-out"></i></a>  </div><br>
 
 <h2 align="center">Details</h2>
 <table border='1'  style='border-collapse: collapse;  width:100%;' id='customers'>
