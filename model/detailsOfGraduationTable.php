@@ -1,5 +1,12 @@
 <?php
 class detailsOfGraduation {
+  public static $instance;
+  public static function getInstance () {
+    return detailsOfGraduation::$instance = new detailsOfGraduation();
+  }
+  private function __construct () {
+
+  }
   public function insert($bg) {
     $conn = db::connection();
     $insert = "insert into details_of_graduation (details_of_graduation) values('$bg')";
@@ -46,5 +53,5 @@ class detailsOfGraduation {
     db::close($conn);
   }
 }
-$detailsOfGraduation = new detailsOfGraduation();
+$detailsOfGraduation = detailsOfGraduation::getInstance();
  ?>

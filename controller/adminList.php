@@ -8,5 +8,5 @@
         $list[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id']);
         $list[$i]['detailsOfGraduation'] = $adminList->showAllDetailsOfGraduation($list[$i]['id']);
     }
-    include("./view/adminList.php");
+    include("./view/adminList.html");
 ?>

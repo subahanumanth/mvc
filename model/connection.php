@@ -1,10 +1,21 @@
 <?php
 class db {
-  public static function connection () {
-    return mysqli_connect("localhost","root","Hanu@1234","Data");
+  public static $instance;
+  public static function getInstance () {
+    return db::$instance = new db();
   }
-  public static function close ($conn) {
+  private function __construct () {
+
+  }
+  public function connection () {
+    $conn =  mysqli_connect("localhost","root","Hanu@1234","Data");
+    return $conn;
+  }
+  public function close ($conn) {
     return mysqli_close($conn);
   }
 }
+
+$db = db::getInstance();
+
  ?>

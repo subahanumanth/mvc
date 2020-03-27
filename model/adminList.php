@@ -1,5 +1,12 @@
 <?php
 class adminList {
+  public static $instance;
+  public static function getInstance () {
+    return adminList::$instance = new adminList();
+  }
+  private function __construct () {
+
+  }
   public function showAllDetail ($id) {
       $conn = db::connection();
       $row = mysqli_query($conn,"select *from detail where id != $id");
@@ -107,5 +114,5 @@ class adminList {
      }
 }
 
-$adminList = new adminList();
+$adminList = adminList::getInstance();
 ?>

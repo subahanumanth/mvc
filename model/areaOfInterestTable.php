@@ -1,5 +1,12 @@
 <?php
 class areaOfInterest {
+  public static $instance;
+  public static function getInstance () {
+    return areaOfInterest::$instance = new areaOfInterest();
+  }
+  private function __construct () {
+
+  }
   public function insert($bg) {
     $conn = db::connection();
     $insert = "insert into area_of_intrest (area_of_intrest) values('$bg')";
@@ -46,5 +53,5 @@ class areaOfInterest {
     db::close($conn);
   }
 }
-$areaOfInterest = new areaOfInterest();
+$areaOfInterest = areaOfInterest::getInstance();
  ?>

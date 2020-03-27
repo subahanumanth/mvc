@@ -1,5 +1,12 @@
 <?php
 class check {
+  public static $instance;
+  public static function getInstance () {
+    return check::$instance = new check();
+  }
+  private function __construct () {
+
+  }
   public function select ($id) {
       $conn = db::connection();
       $row = mysqli_query($conn, "select *from detail where id=$id");
@@ -61,7 +68,7 @@ public function selectAreaOfIntrest ($id) {
  public function selectNamePassword ($name,$password) {
    $list = [];
    $conn = db::connection();
-   $row = mysqli_query($conn,"select * from detail where first_name='$name' and password='$password'");
+   $row = mysqli_query($conn,"select * from detail where first_name='$name'");
    if(mysqli_num_rows($row) > 0) {
      while($rows = mysqli_fetch_assoc($row)) {
        $list['id'] = $rows['id'];
@@ -72,13 +79,16 @@ public function selectAreaOfIntrest ($id) {
        $list['blood_group'] = $rows['blood_group'];
        $list['gender'] = $rows['gender'];
        $list['profile_picture'] = $rows['profile_picture'];
+       $list['password'] = $rows['password'];
        $list['rights'] = $rows['rights'];
+       if(password_verify($password, $list['password'])) {
+         return $list;
+       }
      }
    }
    db::close($conn);
-   return $list;
  }
 }
 
-$check = new check();
+$check = check::getInstance();
  ?>
