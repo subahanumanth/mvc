@@ -4,8 +4,8 @@ include("./model/bloodGroupTable.php");
 
 $url = $_GET['url'];
 $url = explode('/',$url);
-if (isset($url[1])) {
-    $bloodGroup->delete($url[1]);
+if (isset($url[1]) and !isset($url[2])) {
+  $bloodGroup->delete($url[1]);
 }
 if ($url[1] == "add" and isset($_POST['submit'])) {
     $bg = $_POST['bg'];
@@ -20,5 +20,10 @@ if (isset($_POST['submit']) and isset($url[2])) {
   header("Location:../bloodGroupTable");
 }
 $list = $bloodGroup->selectBloodGroup();
-include("./view/bloodGroupTable.php");
+session_start();
+if(isset($_SESSION['name'])) {
+    include("./view/bloodGroupTable.php");
+} else {
+  header("Location:login");
+}
 ?>

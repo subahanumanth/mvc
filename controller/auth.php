@@ -12,7 +12,7 @@ if(isset($_POST['submit'])) {
               $list = $check->select($id);
               $listEmail = $check->selectEmail($id);
               $listMobile = $check->selectMobile($id);
-              $listAreaOfIntrest = $check->selectAreaOfIntrest($id);
+              $listAreaOfIntrest = $check->selectAreaOfInterest($id);
               include("./view/check.php");
         } else if(empty($rights)) {
           header("Location:login/1");
@@ -28,9 +28,9 @@ if(isset($_POST['submit'])) {
             $list = $check->select($id);
             $listEmail = $check->selectEmail($id);
             $listMobile = $check->selectMobile($id);
-            $listAreaOfIntrest = $check->selectAreaOfIntrest($id);
+            $listAreaOfIntrest = $check->selectAreaOfInterest($id);
             include("./view/check.php");
-      } else {
+      } else if (empty($rights)) {
         header("Location:login/1");
       }
 }

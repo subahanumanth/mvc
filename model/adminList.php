@@ -28,18 +28,6 @@ class adminList {
       db::close($conn);
       return $list;
     }
-    public function distinct($id) {
-      $list = [];
-      $conn = db::connection();
-      $row = mysqli_query($conn," select id from detail");
-      if(mysqli_num_rows($row) > 0) {
-        while($rows = mysqli_fetch_assoc($row)) {
-          array_push($list, $rows['id']);
-        }
-      }
-      db::close($conn);
-      return $list;
-    }
     public function showAllEmail($id) {
       $list = [];
       $conn = db::connection();
@@ -55,62 +43,65 @@ class adminList {
     public function showAllMobile($id) {
       $list = [];
       $conn = db::connection();
-      $row = mysqli_query($conn," select mobile_no from mobile where user_id=$id");
+      $row = mysqli_query($conn,"select mobile from mobile where user_id=$id");
       if(mysqli_num_rows($row) > 0) {
           while($rows = mysqli_fetch_assoc($row)) {
-             $list[] = $rows['mobile_no'];
+             $list[] = $rows['mobile'];
           }
        }
       db::close($conn);
       return implode(',',$list);
     }
-    public function showAllAreaOfInterest($id) {
-      $list = [];
-      $conn = db::connection();
-      $row = mysqli_query($conn,"select area_of_intrest from area_of_intrest where user_id=$id");
-      if(mysqli_num_rows($row) > 0) {
-          while($rows = mysqli_fetch_assoc($row)) {
-              $list[] = $rows['area_of_intrest'];
-          }
-      }
-      db::close($conn);
-      return implode(',',$list);
-    }
-    public function showAllBloodGroup($id) {
-      $list = [];
-      $conn = db::connection();
-      $row = mysqli_query($conn,"select blood_group from blood_group where user_id=$id");
-      if(mysqli_num_rows($row) > 0) {
-          while($rows = mysqli_fetch_assoc($row)) {
-              $list[] = $rows['blood_group'];
-          }
-      }
-      db::close($conn);
-      return implode(',',$list);
-    }
-    public function showAllDetailsOfGraduation($id) {
-      $list = [];
-      $conn = db::connection();
-      $row = mysqli_query($conn,"select details_of_graduation from details_of_graduation where user_id=$id");
-      if(mysqli_num_rows($row) > 0) {
-          while($rows = mysqli_fetch_assoc($row)) {
-              $list[] = $rows['details_of_graduation'];
-          }
-      }
-      db::close($conn);
-      return implode(',',$list);
-    }
-    public function showName($id) {
-      $conn = db::connection();
-      $row = mysqli_query($conn, "select first_name,last_name from detail where id=$id");
-      if(mysqli_num_rows($row) > 0) {
-          while($rows = mysqli_fetch_assoc($row)) {
-              $listName[] = $rows['first_name'];
-              $listName[] = $rows['last_name'];
-          }
-       }
-       db::close($conn);
-       return implode(' ',$listName);
+
+     public function selectName($id) {
+       $conn = db::connection();
+       $query = "select *from detail where id=$id";
+       $row = mysqli_query($conn, $query);
+       if(mysqli_num_rows($row) > 0) {
+           while($rows = mysqli_fetch_assoc($row)) {
+               $firstName = $rows['first_name'];
+               $lastName = $rows['last_name'];
+           }
+        }
+        db::close($conn);
+        return $firstName." ".$lastName;
+     }
+     public function showAllBloodGroup($id) {
+       $conn = db::connection();
+       $query = "select b.blood_group from detail d join blood_group b on d.blood_group = b.id and d.id=$id";
+       $row = mysqli_query($conn, $query);
+       if(mysqli_num_rows($row) > 0) {
+           while($rows = mysqli_fetch_assoc($row)) {
+                $bloodGroup = $rows['blood_group'];
+           }
+        }
+        db::close($conn);
+        return $bloodGroup;
+     }
+     public function showAllDetailsOfGraduation($id) {
+       $conn = db::connection();
+       $query = "select de.details_of_graduation from detail d join details_of_graduation de on d.details_of_graduation=de.id and d.id=$id";
+       $row = mysqli_query($conn, $query);
+       if(mysqli_num_rows($row) > 0) {
+           while($rows = mysqli_fetch_assoc($row)) {
+                $dog = $rows['details_of_graduation'];
+           }
+        }
+        db::close($conn);
+        return $dog;
+     }
+     public function showAllAreaOfInterest($id) {
+       $conn = db::connection();
+       $query = "select ad.area_of_interest from detail d join area_of_interest a on a.user_id=d.id and a.user_id=$id join admin_area_of_interest ad on a.area_of_interest=ad.id";
+       $row = mysqli_query($conn, $query);
+       if(mysqli_num_rows($row) > 0) {
+           while($rows = mysqli_fetch_assoc($row)) {
+                $aoi[] = $rows['area_of_interest'];
+           }
+        }
+        db::close($conn);
+        $aoi = implode(",",$aoi);
+        return $aoi;
      }
 }
 

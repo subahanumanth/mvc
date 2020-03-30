@@ -253,11 +253,11 @@ h6 {
 }
 
 .btn--green {
-  background: #57b846;
+  background: #4B0082;
 }
 
 .btn--green:hover {
-  background: #4dae3c;
+  background: #a18cd1;
 }
 
 /* ==========================================================================
@@ -496,9 +496,10 @@ input {
 }
 
 .card-3 .card-heading {
-  background: url("/css/bg-heading-03.jpg") top right/cover no-repeat;
-  display: table-cell;
+background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSoQBbiP4SJ0JwQm40LsY5Q7Rj-MRKa82yVtSfl_Qo37MU5Iztm');
+ display: table-cell;
   width: 50%;
+
 }
 
 .card-3 .card-body {
@@ -513,9 +514,7 @@ input {
   }
   .card-3 .card-heading {
     display: block;
-    width: 100%;
-    padding-top: 400px;
-    background-position: center center;
+    width: 10%;
   }
   .card-3 .card-body {
     display: block;
@@ -523,5 +522,21 @@ input {
     padding: 37px 30px;
     padding-bottom: 45px;
   }
+}
+
+.error {
+  border : 1px solid red;
+  border-radius: 3px;
+  margin-left: 0px;
+  margin-bottom: 20px;
+  width:105%;
+  height:5%;
+  background-color: #ffcccc;
+}
+
+.h {
+  color:	#800000;
+  margin-top :2px;
+  margin-left:4px;
 }
 </style>

@@ -52,13 +52,13 @@ public function selectMobile ($id) {
   db::close($conn);
   return $list;
 }
-public function selectAreaOfIntrest ($id) {
+public function selectAreaOfInterest ($id) {
   $list = [];
   $conn = db::connection();
-  $row = mysqli_query($conn,"select area_of_intrest from area_of_intrest1 where user_id=$id");
+  $row = mysqli_query($conn,"select area_of_interest from area_of_interest where user_id=$id");
   if(mysqli_num_rows($row) > 0) {
     while($rows = mysqli_fetch_assoc($row)) {
-        array_push($list, $rows['area_of_intrest']);
+        array_push($list, $rows['area_of_interest']);
     }
   }
   $list= implode(",",$list);

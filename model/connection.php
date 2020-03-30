@@ -8,7 +8,7 @@ class db {
 
   }
   public function connection () {
-    $conn =  mysqli_connect("localhost","root","Hanu@1234","Data");
+    $conn =  mysqli_connect("localhost","hanu","1234","profile");
     return $conn;
   }
   public function close ($conn) {

@@ -13,10 +13,10 @@ class detailsOfGraduation {
     mysqli_query($conn, $insert);
     db::close($conn);
   }
-  public function selectDetailsOfGraduation() {
+  public function selectBloodGroup() {
     $conn = db::connection();
     $i=-1;
-    $query = "select *from details_of_graduation";
+    $query = "select * from details_of_graduation";
     $row = mysqli_query($conn, $query);
     if(mysqli_num_rows($row) > 0) {
       while($rows = mysqli_fetch_assoc($row)) {
@@ -48,8 +48,17 @@ class detailsOfGraduation {
   }
   public function update($id, $value) {
     $conn = db::connection();
+    $extract = "select * from details_of_graduation where id=$id";
+    $row = mysqli_query($conn, $extract);
+    if (mysqli_num_rows($row) > 0) {
+      while ($rows = mysqli_fetch_assoc($row)) {
+        $bg = $rows['details_of_graduation'];
+      }
+    }
     $query= "update details_of_graduation set details_of_graduation = '$value' where id=$id";
     mysqli_query($conn, $query);
+    $update = "update detail set details_of_graduation = '$value' where details_of_graduation = '$bg'";
+    mysqli_query($conn, $update);
     db::close($conn);
   }
 }
