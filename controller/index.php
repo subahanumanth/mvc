@@ -25,6 +25,9 @@ class index {
   public function logOut () {
     require("logOut.php");
   }
+  public function new () {
+    require("new.php");
+  }
 }
 
 ?>

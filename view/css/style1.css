@@ -539,4 +539,9 @@ background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS
   margin-top :2px;
   margin-left:4px;
 }
+#new {
+  text-decoration: none;
+  padding-left:73px;
+  color:white;
+}
 </style>

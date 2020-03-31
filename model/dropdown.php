@@ -1,0 +1,57 @@
+<?php
+class dropdown {
+  public static $instance;
+  public static function getInstance () {
+    return dropdown::$instance = new dropdown ();
+  }
+  private function __construct () {
+
+  }
+  public function bloodGroup () {
+    $i = -1;
+    $conn = db::connection ();
+    $query = "select *from blood_group";
+    $row = mysqli_query ($conn, $query);
+    if(mysqli_num_rows ($row) > 0) {
+      while ($rows = mysqli_fetch_assoc ($row)) {
+        $i++;
+        $list[$i]['id'] = $rows['id'];
+        $list[$i]['bloodGroup'] = $rows['blood_group'];
+      }
+    }
+    db::close($conn);
+    return $list;
+  }
+  public function detailsOfGraduation () {
+    $i = -1;
+    $conn = db::connection ();
+    $query = "select *from details_of_graduation";
+    $row = mysqli_query ($conn, $query);
+    if(mysqli_num_rows ($row) > 0) {
+      while ($rows = mysqli_fetch_assoc ($row)) {
+        $i++;
+        $list[$i]['id'] = $rows['id'];
+        $list[$i]['detailsOfGraduation'] = $rows['details_of_graduation'];
+      }
+    }
+    db::close($conn);
+    return $list;
+  }
+  public function areaOfInterest () {
+    $i = -1;
+    $conn = db::connection ();
+    $query = "select *from admin_area_of_interest";
+    $row = mysqli_query ($conn, $query);
+    if(mysqli_num_rows ($row) > 0) {
+      while ($rows = mysqli_fetch_assoc ($row)) {
+        $i++;
+        $list[$i]['id'] = $rows['id'];
+        $list[$i]['areaOfInterest'] = $rows['area_of_interest'];
+      }
+    }
+    db::close($conn);
+    return $list;
+  }
+}
+
+$dropdown = dropdown::getInstance ();

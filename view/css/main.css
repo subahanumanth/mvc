@@ -21,6 +21,7 @@
 
 body, html {
 	height: 100%;
+  width:100%;
 }
 
 /* ------------------------------------ */
@@ -120,6 +121,7 @@ iframe {
 
 .wrap-table100 {
   width: 1170px;
+  margin-right: 190px;
   table-layout: fixed;
 }
 
