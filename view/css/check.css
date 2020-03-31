@@ -108,6 +108,11 @@ font-size:20px;
 }
 #sample{
   padding-left:290px;
-  color:black;
+  color:white;
+  border-radius: 5px;
+  padding-left: 2px;
+  margin-left:265px;
+  text-decoration: none;
+  background-color: black;
 }
 </style>

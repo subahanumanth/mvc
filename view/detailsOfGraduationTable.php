@@ -1,4 +1,5 @@
 <html>
+<?php session_start(); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Details Of Graduation Table</title>
 <?php
@@ -9,7 +10,8 @@ require("css/util.css");
    <a class="active" href="../bloodGroupTable">Manage Blood Group</a>
    <a href="../areaOfInterestTable">Manage Area Of Interest</a>
    <a href="../detailsOfGraduationTable">Manage Details Of Graduation</a>
-   <a href=""><span class="welcome">Welcome <?php echo $name; ?></span></a>
+   <a href="check"><i class="fa fa-home"></i></a>
+   <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
    <a href="../logOut"><i class="fa fa-sign-out"></i></a>  </div>
 <div class="limiter">
 
@@ -40,7 +42,7 @@ require("css/util.css");
            ?>
           </tbody>
         </table><br>
-        <a href="../../detailsOfGraduationTable/add" id="a"><i class="fa fa-plus"></i></a>
+        <a href="../../detailsOfGraduationTable/add" id="a"><input type="submit" name="submit" value="Add" id="sample"></a>
         <?php
         if($url[1] == "add" or isset($url[2])) {
           ?>

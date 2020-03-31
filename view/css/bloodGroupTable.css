@@ -120,6 +120,7 @@ background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a
 
 .wrap-table100 {
   width: 317px;
+  margin-bottom:210px;
 }
 
 table {
@@ -328,7 +329,28 @@ tbody tr:hover {
   width:70px;
   height:20px;
   background-color: black;
-  padding-right:10px;
   color:white;
+  text-decoration: none;
+  margin-bottom:10px;
+}
+#sample1 {
+  text-decoration: none;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #301934;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.welcome {
+  padding-left: 250px;
+  font-size:20px;
 }
 </style>

@@ -5,6 +5,13 @@
 include("css/bloodGroupTable.css");
 require("css/util.css");
  ?>
+ <div class="topnav">
+   <a class="active" href="../bloodGroupTable">Manage Blood Group</a>
+   <a href="../areaOfInterestTable">Manage Area Of Interest</a>
+   <a href="../detailsOfGraduationTable">Manage Details Of Graduation</a>
+   <a href="check"><i class="fa fa-home"></i></a>
+   <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
+   <a href="../logOut"><i class="fa fa-sign-out"></i></a>  </div>
 <div class="limiter">
 
   <div class="container-table100">
@@ -34,7 +41,8 @@ require("css/util.css");
            ?>
           </tbody>
         </table><br>
-        <a href="../../bloodGroupTable/add" id="a"><i class="fa fa-plus"></i></a>
+        <a href="../../bloodGroupTable/add" id="sample1"><input type="submit" name="submit" value="Add" id="sample">
+</a>
         <?php
         if($url[1] == "add" or isset($url[2])) {
           ?>

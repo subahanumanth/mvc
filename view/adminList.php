@@ -15,7 +15,7 @@
   <a class="active" href="../bloodGroupTable">Manage Blood Group</a>
   <a href="../areaOfInterestTable">Manage Area Of Interest</a>
   <a href="../detailsOfGraduationTable">Manage Details Of Graduation</a>
-  <a href=""><span class="welcome">Welcome <?php echo $name; ?></span></a>
+  <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
   <a href="../logOut"><i class="fa fa-sign-out"></i></a>  </div>
 <div class="limiter">
   <div class="container-table100">

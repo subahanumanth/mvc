@@ -10,9 +10,11 @@ if(isset($_POST['submit'])) {
           include("adminList.php");
         } else if($rights == 0 and isset($id)) {
               $list = $check->select($id);
+              $listBloodGroup = $check->selectBloodGroup($id);
+              $listDetailsOfGraduation = $check->selectDetailsOfGraduation($id);
+              $listAreaOfInterest = $check->selectAreaOfInterest($id);
               $listEmail = $check->selectEmail($id);
               $listMobile = $check->selectMobile($id);
-              $listAreaOfIntrest = $check->selectAreaOfInterest($id);
               include("./view/check.php");
         } else if(empty($rights)) {
           header("Location:login/1");
@@ -26,9 +28,11 @@ if(isset($_POST['submit'])) {
         include("adminList.php");
       } elseif($rights == 0 and isset($id)) {
             $list = $check->select($id);
+            $listBloodGroup = $check->selectBloodGroup($id);
+            $listDetailsOfGraduation = $check->selectDetailsOfGraduation($id);
+            $listAreaOfInterest = $check->selectAreaOfInterest($id);
             $listEmail = $check->selectEmail($id);
             $listMobile = $check->selectMobile($id);
-            $listAreaOfIntrest = $check->selectAreaOfInterest($id);
             include("./view/check.php");
       } else if (empty($rights)) {
         header("Location:login/1");
