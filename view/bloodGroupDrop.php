@@ -1,6 +1,6 @@
 <html>
 <select name="bloodGroup">
-  <option value = "">select</option>
+  <option value = "" selected disabled>Blood Group</option>
   <?php
   for ($key = 0; $key < count($list); $key++) {
     ?>

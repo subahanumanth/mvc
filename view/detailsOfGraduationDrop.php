@@ -1,6 +1,6 @@
 <html>
 <select name="detailsOfGraduation">
-  <option value = "">select</option>
+  <option value = "" selected disabled>Details Of Graduation</option>
   <?php
   for ($key = 0; $key < count($list); $key++) {
     ?>
