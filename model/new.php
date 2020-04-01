@@ -21,10 +21,8 @@ class newUser {
      $query = "insert into detail (first_name,last_name,date_of_birth,details_of_graduation,blood_group,gender,profile_picture,password,rights)
       values('$fname','$lname','$dob',$dog,$bg,'$gender','$profile','$password',0);";
      if(mysqli_query($conn ,$query)) {
-        echo "<html><script>alert('inserted');</script></html>";
-      } else {
-        echo "no";
-      }
+       header("Location:login");
+     }
      db::close($conn);
   }
   public function fetchid () {

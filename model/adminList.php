@@ -103,6 +103,30 @@ class adminList {
         $aoi = implode(",",$aoi);
         return $aoi;
      }
+     public function deleteEmail ($id) {
+       $conn = db::connection();
+       $query = "delete from email where user_id=$id";
+       $row = mysqli_query($conn, $query);
+       db::close($conn);
+     }
+     public function deleteMobile ($id) {
+       $conn = db::connection();
+       $query = "delete from mobile where user_id=$id";
+       $row = mysqli_query($conn, $query);
+       db::close($conn);
+     }
+     public function deleteAreaOfInterest ($id) {
+       $conn = db::connection();
+       $query = "delete from area_of_interest where user_id=$id";
+       $row = mysqli_query($conn, $query);
+       db::close($conn);
+     }
+     public function deleteDetail ($id) {
+       $conn = db::connection();
+       $query = "delete from detail where id=$id";
+       $row = mysqli_query($conn, $query);
+       db::close($conn);
+     }
 }
 
 $adminList = adminList::getInstance();

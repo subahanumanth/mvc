@@ -1,6 +1,7 @@
-<?php include("./model/connection.php"); ?>
-<?php include("./model/dropdown.php");
-include("validation.php");
+<?php
+include("./model/connection.php");
+include("./model/dropdown.php");
+include("./controller/validation.php");
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +18,8 @@ include("validation.php");
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <?php
-include("sky-form.css");
-include("demo.css");
+include("css/sky-form.css");
+include("css/demo.css");
 ?>
 	</head>
 	<body class="bg-cyan">
@@ -43,18 +44,18 @@ include("demo.css");
 
           <span class="e">Email</span>
 					<section class="email">
-							<i class="icon-append icon-envelope-alt"></i>
-              <input type="text"  name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} ?>"><span style="color:red;"><?php echo $error['emailError']; ?></span>
-					</section>
+              <input type="text"  name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} ?>"><br>
+              <span style="color:red;"><?php echo $error['emailError']; ?></span>
+					</section><br>
 
           <span class="e">Mobile number</span>
 					<section class="email">
-							<i class="icon-append icon-envelope-alt"></i>
-              <input type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} ?>"><span style="color:red;"><?php echo $error['mobileError']; ?></span>
-					</section>
+              <input type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} ?>"><br>
+              <span style="color:red;"><?php echo $error['mobileError']; ?></span>
+					</section><br>
 
           <section>
-              <?php include("areaOfInterest.php"); ?>
+              <?php include("./controller/areaOfInterest.php"); ?><span style="color:red;"><br><?php echo $error['areaOfInterestError']; ?></span>
           </section>
 
           <section>
@@ -66,23 +67,25 @@ include("demo.css");
 
           <section>
             <label class="select">
-          <?php include("detailsOfGraduation.php"); ?>
+          <?php include("./controller/detailsOfGraduation.php"); ?><span style="color:red;"><?php echo $error['detailsOfGraduationError']; ?></span>
         </label>
           </section>
 
           <section>
             <label class="select">
-              <?php include("bloodGroup.php"); ?>
+              <?php include("./controller/bloodGroup.php"); ?><span style="color:red;"><?php echo $error['bloodGroupError']; ?></span>
             </label>
           </section>
 
           <section>
               <input type="radio" name="gender" value="male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "male") {echo "checked";} ?>>&nbsp;&nbsp;<span class="m">Male</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="gender" value="female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "female") {echo "checked";} ?>>&nbsp;&nbsp;<span class="m">Female</span>
+              <input type="radio" name="gender" value="female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "female") {echo "checked";} ?>>&nbsp;&nbsp;<span class="m">Female</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <span style="color:red;"><?php echo $error['genderError']; ?></span>
           </section>
 
           <section>
-              <span class="m">Profile Picture</span><input type="file" name="profile"><span style="color:red; margin-right:100px;"><?php echo $error['profileError']; ?></span>
+              <span class="m">Profile Picture</span><input type="file" name="profile"><span style="color:red; margin-right:100px;"><br>
+              <?php echo $error['profileError']; ?></span>
           </section>
 
 					<section>

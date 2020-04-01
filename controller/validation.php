@@ -1,6 +1,5 @@
 <?php
 
-
 class validate {
     public $details;
     public $error;
@@ -25,7 +24,7 @@ class validate {
             if (!empty($this->details['areaOfInterest'])) {
                 $this->correctDetails['areaOfInterest'] = $this->details['areaOfInterest'];
             } else {
-                $this->error['areaOfInterestError']  = "*Choose Area Of Interest";
+                $this->error['areaOfInterestError']  = "*Select Area Of Interest";
             }
 
             if (!empty($this->details['date'])) {
@@ -37,7 +36,7 @@ class validate {
             if (!empty($this->details['detailsOfGraduation'])) {
                 $this->correctDetails['detailsOfGraduation'] = $this->details['detailsOfGraduation'];
             } else {
-                $this->error['detailsOfGraduationError']  = "*Enter Details Of Graduation";
+                $this->error['detailsOfGraduationError']  = "*Select Details Of Graduation";
             }
 
             if ($this->details['bloodGroup'] != "") {
@@ -52,10 +51,11 @@ class validate {
                 $this->error['genderError']  = "*Select Gender";
             }
 
-            $this->details['emailNew'] = explode(',',$this->details['email']);
-            for ($i=0; $i<count($this->details['emailNew']); $i++) {
-                    if (!empty($this->details['emailNew'][$i])) {
-                    $this->correctDetails['email'][$i] = $this->details['emailNew'][$i];
+            $this->details['emailn'] = explode(',',$this->details['email']);
+            for ($i=0; $i<count($this->details['emailn']); $i++) {
+                    $email = $this->details['emailn'][$i];
+                    if (!empty($email)) {
+                    $this->correctDetails['email'][$i] = $email;
                 } else {
                     $this->error["emailError"] = " *Enter Valid Email ID";
                 }
@@ -80,30 +80,28 @@ class validate {
                 $this->error['cpasswordError'] == "";
             }
 
-            if($_FILES['profile']['size'] == 0) {
-                $this->error['profileError'] = "please upload your profile picture";
+            if(empty($_FILES['profile']['name'])) {
+                $this->error['profileError'] = "*please upload your profile picture";
             } else {
-                $targetDir = $_FILES['profile']['name'];
-                $targetFile = "./controller/uploads/".$targetDir;
-                move_uploaded_file($_FILES['profile']['tmp_name'] , $targetFile);
-                $this->correctDetails['profilePicture'] = $targetFile;
+                $this->error['profileError'] == "";
             }
 
             if($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == ""  and $this->error["emailError"] == ""  and $this->error['mobileError'] == "" and $this->error['passwordError'] == "" and $this->error['cpasswordError'] == "" and $this->error['profileError'] == "") {
+              $targetDir = $_FILES['profile']['name'];
+              $targetFile = "./controller/uploads/".$targetDir;
+              move_uploaded_file($_FILES['profile']['tmp_name'] , $targetFile);
+              $this->correctDetails['profilePicture'] = $targetFile;
               return $this->correctDetails;
             }
         }
     return $this->error;
     }
 }
-
 $obj = new validate($_POST);
 $error = $obj->validation();
 include("./model/new.php");
 $newUser->insertDetail($error);
 $id = $newUser->fetchid();
-echo $id;
-print_r($error['email']);
 $newUser->insertEmail($id, $error['email']);
 $newUser->insertMobile($id, $error['mobile']);
 $newUser->insertAreaOfInterest($id, $error['areaOfInterest']);

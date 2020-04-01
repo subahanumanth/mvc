@@ -1,5 +1,14 @@
 <?php
     include("./model/adminList.php");
+    $url = $_GET['url'];
+    $url = explode('/',$url);
+    if(isset($url[1])) {
+      $id = $url[1];
+      $adminList->deleteEmail ($id);
+      $adminList->deleteMobile ($id);
+      $adminList->deleteAreaOfInterest ($id);
+      $adminList->deleteDetail ($id);
+    }
     $list = $adminList->showAllDetail($id);
     for($i = 0;$i<count($list);$i++) {
         $list[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id']);
