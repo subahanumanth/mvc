@@ -99,7 +99,6 @@ class validate {
 }
 $obj = new validate($_POST);
 $error = $obj->validation();
-include("./model/new.php");
 $newUser->insertDetail($error);
 $id = $newUser->fetchid();
 $newUser->insertEmail($id, $error['email']);

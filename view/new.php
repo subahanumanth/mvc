@@ -1,8 +1,3 @@
-<?php
-include("./model/connection.php");
-include("./model/dropdown.php");
-include("./controller/validation.php");
-?>
 
 <!DOCTYPE html>
 <html>
@@ -32,25 +27,25 @@ include("css/demo.css");
           <div class="row">
 						<section class="col col-6">
 							<label class="input">
-								<input type="text" placeholder="First Name" name="firstName" value="<?php if(isset($_POST['submit'])) {echo $_POST['firstName'];} ?>"><span style="color:red;"><?php echo $error['firstError']; ?></span>
+								<input type="text" placeholder="First Name" name="firstName" value="<?php if(isset($_POST['submit'])) {echo $_POST['firstName'];} if(isset($url[1])) {echo $list['fname'];} ?>"><span style="color:red;"><?php echo $error['firstError']; ?></span>
 							</label>
 						</section>
 						<section class="col col-6">
 							<label class="input">
-								<input type="text" placeholder="Last Name" name="lastName" value="<?php if(isset($_POST['submit'])) {echo $_POST['lastName'];} ?>"><span style="color:red;"><?php echo $error['lastError']; ?></span>
+								<input type="text" placeholder="Last Name" name="lastName" value="<?php if(isset($_POST['submit'])) {echo $_POST['lastName'];} if(isset($url[1])) {echo $list['lname'];} ?>"><span style="color:red;"><?php echo $error['lastError']; ?></span>
 							</label>
 						</section>
 					</div>
 
           <span class="e">Email</span>
 					<section class="email">
-              <input type="text"  name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} ?>"><br>
+              <input type="text"  name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} if(isset($url[1])) {echo implode(",",$list['email']);} ?>"><br>
               <span style="color:red;"><?php echo $error['emailError']; ?></span>
 					</section><br>
 
           <span class="e">Mobile number</span>
 					<section class="email">
-              <input type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} ?>"><br>
+              <input type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} if(isset($url[1])) {echo implode(",",$list['mobile']);} ?>"><br>
               <span style="color:red;"><?php echo $error['mobileError']; ?></span>
 					</section><br>
 
@@ -61,7 +56,7 @@ include("css/demo.css");
           <section>
 						<label class="input">
 							<i class="icon-append icon-calendar"></i>
-							<input type="date" placeholder="Date Of Birth" name="date" value="<?php if(isset($_POST['date'])) { echo $_POST['date'];} ?>"><span style="color:red;"><?php echo $error['dateError']; ?></span>
+							<input type="date" placeholder="Date Of Birth" name="date" value="<?php if(isset($_POST['date'])) { echo $_POST['date']; } if(isset($url[1])) {echo $dob; } ?>"><span style="color:red;"><?php echo $error['dateError']; ?></span>
 						</label>
 					</section>
 
@@ -78,8 +73,8 @@ include("css/demo.css");
           </section>
 
           <section>
-              <input type="radio" name="gender" value="male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "male") {echo "checked";} ?>>&nbsp;&nbsp;<span class="m">Male</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <input type="radio" name="gender" value="female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "female") {echo "checked";} ?>>&nbsp;&nbsp;<span class="m">Female</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="gender" value="male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "male") {echo "checked";} if(isset($url[1]) and $gender == "male") {echo "checked";} ?>>&nbsp;&nbsp;<span class="m">Male</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <input type="radio" name="gender" value="female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "female") {echo "checked";} if(isset($url[1]) and $gender == "female") {echo "checked";}  ?>>&nbsp;&nbsp;<span class="m">Female</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <span style="color:red;"><?php echo $error['genderError']; ?></span>
           </section>
 

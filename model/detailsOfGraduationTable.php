@@ -9,14 +9,14 @@ class detailsOfGraduation {
   }
   public function insert($bg) {
     $conn = db::connection();
-    $insert = "insert into details_of_graduation (details_of_graduation) values('$bg')";
+    $insert = "insert into details_of_graduation (details_of_graduation,is_deleted) values('$bg',1)";
     mysqli_query($conn, $insert);
     db::close($conn);
   }
   public function selectBloodGroup() {
     $conn = db::connection();
     $i=-1;
-    $query = "select * from details_of_graduation";
+    $query = "select * from details_of_graduation where is_deleted = 1";
     $row = mysqli_query($conn, $query);
     if(mysqli_num_rows($row) > 0) {
       while($rows = mysqli_fetch_assoc($row)) {

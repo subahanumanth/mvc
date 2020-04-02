@@ -7,8 +7,10 @@ if(isset($_POST['submit'])) {
         $id = $lists['id'];
         $rights = $lists['rights'];
         if($rights == 1) {
+          echo "admin";
           include("adminList.php");
         } else if($rights == 0 and isset($id)) {
+          echo "user";
               $list = $check->select($id);
               $listBloodGroup = $check->selectBloodGroup($id);
               $listDetailsOfGraduation = $check->selectDetailsOfGraduation($id);
@@ -17,7 +19,8 @@ if(isset($_POST['submit'])) {
               $listMobile = $check->selectMobile($id);
               include("./view/check.php");
         } else if(empty($rights)) {
-          header("Location:login/1");
+              session_destroy();
+              header("Location:login/1");
         }
 } else {
       $lists = $check->selectNamePassword($_SESSION['name'],$_SESSION['password']);
@@ -35,7 +38,8 @@ if(isset($_POST['submit'])) {
             $listMobile = $check->selectMobile($id);
             include("./view/check.php");
       } else if (empty($rights)) {
-        header("Location:login/1");
+            session_destroy();
+            header("Location:login/1");
       }
 }
 ?>

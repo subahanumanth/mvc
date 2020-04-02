@@ -9,6 +9,9 @@
       $adminList->deleteAreaOfInterest ($id);
       $adminList->deleteDetail ($id);
     }
+    if(isset($url[2])) {
+       header("Location:../../new/$url[2]");
+    }
     $list = $adminList->showAllDetail($id);
     for($i = 0;$i<count($list);$i++) {
         $list[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id']);

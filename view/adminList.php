@@ -53,7 +53,8 @@
              <td class="column8"><?php echo $list[$i]['mobile'] ?></td>
              <td class="column9"><?php echo $list[$i]['areaOfInterest'] ?></td>
              <td class="column10"><?php echo $list[$i]['profilePicture'] ?></td>
-             <td class="column11"><a href="../check/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-trash"></i></a><i class="fa fa-edit edit"></i></td>
+             <td class="column11"><a href="../../check/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-trash"></i></a>
+             <a href="../../check/0/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a></td>
            </tr>
            <?php
          }
