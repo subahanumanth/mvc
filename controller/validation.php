@@ -99,9 +99,16 @@ class validate {
 }
 $obj = new validate($_POST);
 $error = $obj->validation();
-$newUser->insertDetail($error);
-$id = $newUser->fetchid();
-$newUser->insertEmail($id, $error['email']);
-$newUser->insertMobile($id, $error['mobile']);
-$newUser->insertAreaOfInterest($id, $error['areaOfInterest']);
+if(isset($url[1]) and isset($_POST['submit'])) {
+  $newUser->updateDetail($id,$error);
+  $newUser->updateEmail($id,$error['email']);
+  $newUser->updateMobile($id,$error['mobile']);
+  $newUser->updateAreaOfInterest($id,$error['areaOfInterest']);
+} else {
+    $newUser->insertDetail($error);
+    $id = $newUser->fetchid();
+    $newUser->insertEmail($id, $error['email']);
+    $newUser->insertMobile($id, $error['mobile']);
+    $newUser->insertAreaOfInterest($id, $error['areaOfInterest']);
+}
 ?>

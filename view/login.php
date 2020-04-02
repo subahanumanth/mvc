@@ -37,7 +37,7 @@ if(isset($_SESSION['password'])) {
                             <input type="submit" class="btn btn--pill btn--green" name="submit" value="Submit">
                         </div><br><br>
                     </form>
-                    <a href="new" id="new">Create New User?</a>
+                    <a href="../new" id="new">Create New User?</a>
                 </div>
             </div>
         </div>

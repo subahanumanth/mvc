@@ -21,7 +21,7 @@ class newUser {
      $query = "insert into detail (first_name,last_name,date_of_birth,details_of_graduation,blood_group,gender,profile_picture,password,rights)
       values('$fname','$lname','$dob',$dog,$bg,'$gender','$profile','$password',0);";
      if(mysqli_query($conn ,$query)) {
-       header("Location:./login");
+       header("Location:../login");
      }
      db::close($conn);
   }
@@ -73,6 +73,7 @@ class newUser {
         $list['dog'] = $rows['details_of_graduation'];
         $list['bg'] = $rows['blood_group'];
         $list['gender'] = $rows['gender'];
+        $list['password'] = $rows['password'];
       }
     }
     db::close($conn);
@@ -127,7 +128,7 @@ class newUser {
   public function fetchAreaOfInterest ($id) {
     $conn = db::connection();
     $i = -1;
-    $row = mysqli_query($conn, "select ad.area_of_interest from detail d join area_of_interest a on d.id=a.user_id and a.user_id=$id join admin_area_of_interest ad on a.area_of_interest = ad.id;");
+    $row = mysqli_query($conn, "select *from area_of_interest where user_id=$id");
     if(mysqli_num_rows($row) > 0) {
       while ($rows = mysqli_fetch_assoc ($row)) {
         $i++;
@@ -135,6 +136,46 @@ class newUser {
       }
     }
     return $list;
+  }
+  public function updateDetail($id,$error) {
+    $conn = db::connection();
+    $fname = $error['firstName'];
+    $lname = $error['lastName'];
+    $date = $error['date'];
+    $dog = $error['detailsOfGraduation'];
+    $bg = $error['bloodGroup'];
+    $gender = $error['gender'];
+    $profile = $error['profilePicture'];
+    $password =password_hash($error['password'],PASSWORD_DEFAULT);
+    $query = "update detail set first_name='$fname',last_name='$lname',date_of_birth='$date',details_of_graduation=$dog,blood_group=$bg,gender='$gender',profile_picture='$profile',password='$password' where id=$id";
+    mysqli_query($conn, $query);
+    db::close($conn);
+  }
+  public function updateEmail($id,$error) {
+    $conn = db::connection();
+    mysqli_query($conn, "delete from email where user_id=$id");
+    for($key=0;$key<count($error);$key++) {
+        mysqli_query($conn, "insert into email (user_id,email_id) values($id,'$error[$key]')");
+    }
+    db::close($conn);
+  }
+  public function updateMobile($id,$error) {
+    $conn = db::connection();
+    mysqli_query($conn, "delete from mobile where user_id=$id");
+    for($key=0;$key<count($error);$key++) {
+        mysqli_query($conn, "insert into mobile (user_id,mobile) values($id,'$error[$key]')");
+    }
+    db::close($conn);
+  }
+  public function updateAreaOfInterest($id,$error) {
+    $conn = db::connection();
+    mysqli_query($conn, "delete from area_of_interest where user_id=$id");
+    for($key=0;$key<count($error);$key++) {
+        if(mysqli_query($conn, "insert into area_of_interest (user_id,area_of_interest) values($id,'$error[$key]')")) {
+          header("Location:../login");
+        }
+    }
+    db::close($conn);
   }
 }
 

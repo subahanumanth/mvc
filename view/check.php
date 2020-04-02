@@ -20,6 +20,6 @@ require("css/check.css");
 <span class="email"><b>Email &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listEmail ?></b></span><br><br>
 <span class="mobile"><b>Mobile Number &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listMobile ?></b></span><br><br>
 <span class="aoi"><b>Area Of Interest &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listAreaOfInterest ?></b></span><br><br><br>
-<a href="" id="sample">Update</i></a>
+<a href="../new/<?php echo $_SESSION['id']; ?>" id="sample">Update</i></a>
 </div>
 </html>

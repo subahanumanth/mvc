@@ -1,11 +1,11 @@
 <?php
+session_start();
 include("./model/connection.php");
 include("./model/dropdown.php");
 include("./model/new.php");
-include("validation.php");
 $url = $_GET['url'];
 $url = explode("/",$url);
-if(isset($url[1])) {
+if(isset($url[1]) and isset($_SESSION['name'])) {
   $id = $url[1];
   $list = $newUser->fetchDetail($id);
   $list['aoi'] = $newUser->fetchAreaOfInterest ($id);
@@ -15,10 +15,9 @@ if(isset($url[1])) {
   $gender = $list['gender'];
   $dog = $list['dog'];
   $bg = $list['bg'];
-  echo $list['email'];
-  print_r($list);
+  $aoi = $list['aoi'];
 }
+include("validation.php");
 include("./view/new.php");
-echo var_dump($_POST['date']);
 
 ?>
