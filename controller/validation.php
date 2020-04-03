@@ -4,6 +4,7 @@ class validate {
     public $details;
     public $error;
     public $correctDetails;
+    public $a;
     public function __construct ($values) {
         $this->details = $values;
     }
@@ -51,14 +52,13 @@ class validate {
                 $this->error['genderError']  = "*Select Gender";
             }
 
-            $this->details['emailn'] = explode(',',$this->details['email']);
+            $this->details['emailn'] = explode(",",$this->details['email']);
             for ($i=0; $i<count($this->details['emailn']); $i++) {
-                    $email = $this->details['emailn'][$i];
-                    if (!empty($email)) {
-                    $this->correctDetails['email'][$i] = $email;
-                } else {
-                    $this->error["emailError"] = " *Enter Valid Email ID";
-                }
+                    if (!empty($this->details['emailn'][$i])) {
+                        $this->correctDetails['email'][$i] = $this->details['emailn'][$i];
+                    } else {
+                        $this->error["emailError"] = " *Enter Valid Email ID";
+                    }
             }
             $this->details['mobileNew'] = explode(',',$this->details['mobile']);
             for ($i=0; $i<count($this->details['mobileNew']); $i++) {
@@ -86,19 +86,25 @@ class validate {
                 $this->error['profileError'] == "";
             }
 
+
+            if(!isset($_SESSION['name'])) {
             if($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == ""  and $this->error["emailError"] == ""  and $this->error['mobileError'] == "" and $this->error['passwordError'] == "" and $this->error['cpasswordError'] == "" and $this->error['profileError'] == "") {
               $targetDir = $_FILES['profile']['name'];
               $targetFile = "./controller/uploads/".$targetDir;
               move_uploaded_file($_FILES['profile']['tmp_name'] , $targetFile);
               $this->correctDetails['profilePicture'] = $targetFile;
+              $this->correctDetails['val']= 3;
               return $this->correctDetails;
             }
+          }
         }
     return $this->error;
     }
 }
 $obj = new validate($_POST);
 $error = $obj->validation();
+echo $error['val'];
+
 if(isset($url[1]) and isset($_POST['submit'])) {
   $newUser->updateDetail($id,$error);
   $newUser->updateEmail($id,$error['email']);
@@ -110,5 +116,10 @@ if(isset($url[1]) and isset($_POST['submit'])) {
     $newUser->insertEmail($id, $error['email']);
     $newUser->insertMobile($id, $error['mobile']);
     $newUser->insertAreaOfInterest($id, $error['areaOfInterest']);
+}
+if(isset($error['val'])) {
+  if("<script>alert('hjnchg');</script>") {
+    echo "fdxb";
+  }
 }
 ?>

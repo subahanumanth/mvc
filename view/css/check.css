@@ -57,13 +57,7 @@ body{
   background-color:var(--back-color) ;
   height :60px;
 }
-.center {
-  margin-bottom: 20px;
-  margin-left: 350px;
-width: 70%;
-padding: 30px;
-font-size:20px;
-}
+
 .welcome {
   padding-left: 900px;
   font-size: 25px;
@@ -114,5 +108,10 @@ font-size:20px;
   margin-left:265px;
   text-decoration: none;
   background-color: black;
+}
+.good {
+  font-size:20px;
+  padding-left: 350px;
+  width:100%;
 }
 </style>

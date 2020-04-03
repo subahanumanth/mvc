@@ -9,8 +9,7 @@ require("css/check.css");
     <a href=""><span class="welcome">Welcome <?php echo $_SESSION['name']." ".$list['last_name']; ?></span></a>
      <a href="logOut"><i class="fa fa-sign-out"></i></a>
 </div><br>
-
-<div class="center">
+<div class="good">
 <h3 class="detail">Details</h3>
 <span class="name"><b>Name &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $list['first_name']." ".$list['last_name']; ?></b></span><br><br>
 <span class="dob"><b>Date Of Birth &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo date("d-M-Y",strtotime($list['date_of_birth'])); ?></b></span><br><br>

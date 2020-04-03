@@ -100,7 +100,7 @@ include("css/demo.css");
 				</fieldset>
 
 				<footer>
-					<input type="submit" name="submit" id="submit" class="button" onsubmit="validateForm();">
+					<input type="submit" name="submit" id="submit" class="button">
 				</footer>
 			</form>
 
@@ -109,7 +109,9 @@ include("css/demo.css");
 </html>
 
 <script>
-
+function validateForm() {
+	alert('gfngvhn');
+}
  $(document).ready(function(){
 
  $('#email').tokenfield({

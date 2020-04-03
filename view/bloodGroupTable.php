@@ -12,8 +12,8 @@ require("css/util.css");
    <a href="../../check"><i class="fa fa-home"></i></a>
    <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
    <a href="../logOut"><i class="fa fa-sign-out"></i></a>  </div>
-<div class="limiter">
 
+<div class="limiter">
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="table100">
@@ -32,7 +32,8 @@ require("css/util.css");
               ?>
              <tr>
              <td class="column1" id="rem"><?php echo $list[$i]['bloodGroup']; ?></td>
-             <td><a href="../../bloodGroupTable/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-trash edit"></i></a>
+             <td>
+               <button id="del" onclick="display('<?php echo $list[$i]['id']; ?>')"><i class="fa fa-trash"></i></button>
                  <a href="../../bloodGroupTable/0/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
             </td>
              </tr>
@@ -46,12 +47,10 @@ require("css/util.css");
         <?php
         if($url[1] == "add" or isset($url[2])) {
           ?>
-          <html>
           <form method="post">
               <input type="text" id="blood" name="bg" value="<?php if(isset($url[2])) {echo $value;} ?>"/><br>
               <input type="submit" name="submit" value="Submit" id="sample">
             </form>
-        </html>
         <?php
         }
         ?>
@@ -59,4 +58,13 @@ require("css/util.css");
     </div>
   </div>
 </div>
+<script>
+function display (b) {
+    var a = confirm("are you sure");
+    if(a) {
+        location.replace("../../bloodGroupTable/"+b);
+    }
+}
+</script>
+
 </html>

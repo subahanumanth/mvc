@@ -42,4 +42,8 @@ body {
 .column11 {
   color:black;
 }
+.brn {
+  border:none; 
+  background:none;
+}
 </style>

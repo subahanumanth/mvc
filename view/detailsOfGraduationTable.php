@@ -33,7 +33,7 @@ require("css/util.css");
               ?>
              <tr>
              <td class="column1" id="rem"><?php echo $list[$i]['detailsOfGraduation']; ?></td>
-             <td><a href="../../detailsOfGraduationTable/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-trash edit"></i></a>
+             <td><button id="del" onclick="display('<?php echo $list[$i]['id']; ?>')"><i class="fa fa-trash"></i></button>
                  <a href="../../detailsOfGraduationTable/0/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
             </td>
              </tr>
@@ -59,4 +59,12 @@ require("css/util.css");
     </div>
   </div>
 </div>
+<script>
+function display (b) {
+    var a = confirm("are you sure");
+    if(a) {
+        location.replace("../../detailsOfGraduationTable/"+b);
+    }
+}
+</script>
 </html>

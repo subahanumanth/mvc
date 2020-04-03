@@ -1,5 +1,6 @@
 <?php
 session_start();
+$a=1;
 include("./model/connection.php");
 include("./model/dropdown.php");
 include("./model/new.php");
