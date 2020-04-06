@@ -1,10 +1,10 @@
 <html>
-<select name="detailsOfGraduation">
-  <option value = "" selected disabled>Details Of Graduation</option>
+<select name="detailsOfGraduation" class="selectb bot">
+  <option value = "" selected disabled>Select</option>
   <?php
   for ($key = 0; $key < count($list); $key++) {
     ?>
-    <option value = "<?php echo $list[$key]['id']; ?>" <?php if(isset($_POST['submit']) and $_POST['detailsOfGraduation'] == $list[$key]['id']) { echo "selected"; } if(isset($url[1]) and !isset($_POST['submit']) and $dog == $list[$key]['id']) {echo "selected";} ?>><?php echo $list[$key]['detailsOfGraduation']; ?></option>
+    <option class="optiond" value = "<?php echo $list[$key]['id']; ?>" <?php if(isset($_POST['submit']) and $_POST['detailsOfGraduation'] == $list[$key]['id']) { echo "selected"; } if(isset($url[1]) and !isset($_POST['submit']) and $dog == $list[$key]['id']) {echo "selected";} ?>><?php echo $list[$key]['detailsOfGraduation']; ?></option>
     <?php
   }
   ?>

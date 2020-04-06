@@ -4,7 +4,7 @@ class index {
     require("./view/login.php");
   }
   public function sample () {
-    require("sample.php");
+    require("./view/sample.php");
   }
   public function check () {
     require("check.php");
