@@ -17,6 +17,8 @@ if(isset($url[1]) and isset($_SESSION['name'])) {
   $dog = $list['dog'];
   $bg = $list['bg'];
   $aoi = $list['aoi'];
+  $profile = $list['profilePicture'];
+  $password = $list['password'];
 }
 include("validation.php");
 include("./view/new.php");

@@ -72,6 +72,7 @@ class newUser {
         $list['dog'] = $rows['details_of_graduation'];
         $list['bg'] = $rows['blood_group'];
         $list['gender'] = $rows['gender'];
+        $list['profilePicture'] = $rows['profile_picture'];
         $list['password'] = $rows['password'];
       }
     }
@@ -136,7 +137,7 @@ class newUser {
     }
     return $list;
   }
-  public function updateDetail($id,$error) {
+  public function updateDetail($id,$error,$prof,$pass) {
     $conn = db::connection();
     $fname = $error['firstName'];
     $lname = $error['lastName'];
@@ -144,8 +145,16 @@ class newUser {
     $dog = $error['detailsOfGraduation'];
     $bg = $error['bloodGroup'];
     $gender = $error['gender'];
-    $profile = $error['profilePicture'];
-    $password =password_hash($error['password'],PASSWORD_DEFAULT);
+    if(isset($error['password'])) {
+        $password =password_hash($error['password'],PASSWORD_DEFAULT);
+    } else {
+      $password = $pass;
+    }
+    if($error['pp'] == 2) {
+      $profile = $prof;
+    } else {
+      $profile = $error['profilePicture'];
+    }
     $query = "update detail set first_name='$fname',last_name='$lname',date_of_birth='$date',details_of_graduation=$dog,blood_group=$bg,gender='$gender',profile_picture='$profile',password='$password' where id=$id";
     mysqli_query($conn, $query);
     db::close($conn);
@@ -171,7 +180,7 @@ class newUser {
     mysqli_query($conn, "delete from area_of_interest where user_id=$id");
     for($key=0;$key<count($error);$key++) {
         if(mysqli_query($conn, "insert into area_of_interest (user_id,area_of_interest) values($id,'$error[$key]')")) {
-          header("Location:../login");
+          //header("Location:../login");
         }
     }
     db::close($conn);

@@ -82,11 +82,20 @@ class validate {
 
             if(empty($_FILES['profile']['name'])) {
                 $this->error['profileError'] = "*please upload your profile picture";
+                $this->correctDetails['pp'] = 2;
             } else {
                 $this->error['profileError'] == "";
             }
 
-
+            if(isset($_SESSION['name'])) {
+              if($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == ""  and $this->error["emailError"] == ""  and $this->error['mobileError'] == "") {
+                $targetDir = $_FILES['profile']['name'];
+                $targetFile = "./controller/uploads/".$targetDir;
+                move_uploaded_file($_FILES['profile']['tmp_name'] , $targetFile);
+                $this->correctDetails['profilePicture'] = $targetFile;
+                return $this->correctDetails;
+              }
+            }
             if(!isset($_SESSION['name'])) {
             if($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == ""  and $this->error["emailError"] == ""  and $this->error['mobileError'] == "" and $this->error['passwordError'] == "" and $this->error['cpasswordError'] == "" and $this->error['profileError'] == "") {
               $targetDir = $_FILES['profile']['name'];
@@ -106,7 +115,7 @@ $error = $obj->validation();
 echo $error['val'];
 
 if(isset($url[1]) and isset($_POST['submit'])) {
-  $newUser->updateDetail($id,$error);
+  $newUser->updateDetail($id,$error,$list['profilePicture'],$password);
   $newUser->updateEmail($id,$error['email']);
   $newUser->updateMobile($id,$error['mobile']);
   $newUser->updateAreaOfInterest($id,$error['areaOfInterest']);

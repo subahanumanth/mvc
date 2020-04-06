@@ -12,6 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <?php
 include("css/login.css");
 include("css/demo.css");
@@ -29,29 +30,33 @@ include("css/demo.css");
 						Registration info
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<div class="wrap-input100" data-validate="Name is required">
 						<input class="input100" type="text" placeholder="First Name..." name="firstName" value="<?php if(isset($_POST['submit'])) {echo $_POST['firstName'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo $list['fname'];} ?>"><span class="nameerr"><?php echo $error['firstError']; ?></span>
 						</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Name is required">
+					<div class="wrap-input100" data-validate="Name is required">
 						<input class="input100" type="text" placeholder="Last Name..." name="lastName" value="<?php if(isset($_POST['submit'])) {echo $_POST['lastName'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo $list['lname'];} ?>"><span class="nameerr"><?php echo $error['lastError']; ?></span>
 					</div>
 
-          <div class="wrap-input100 validate-input">
-						<input style="width:90%; padding-right:30px; border:1px solid black" placeholder="Email" type="text" name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['email']);} ?>"><br>
+          <div class="wrap-input100">
+						<span class="label-input100 bot">Email</span>
+						<input style="width:90%; height:200px; padding-right:30px; border:1px solid black" type="text" name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['email']);} ?>"><br>
             <span class="nameerr"><?php echo $error['emailError']; ?></span>
           </div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" placeholder="Mobile Number..." name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['mobile']);} ?>"><br>
+					<div class="wrap-input100">
+						<span class="label-input100 bot">Mobile Number</span>
+						<input class="input100" type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['mobile']);} ?>"><br>
             <span class="moberr"><?php echo $error['mobileError']; ?></span>
 						<span class="focus-input100"></span>
 					</div>
+					<?php $pp = $list['profilePicture'];?>
 
-          <div>
+						<div>
 						<span class="areaerr"><?php echo $error['areaOfInterestError']; ?></span><br>
-					<span class="label-input100 bot top">Area Of Interest</span>
-          <?php include("./controller/areaOfInterest.php"); ?><br>
+					<span class="label-input100 bot">Area Of Interest</span>
+          <?php include("./controller/areaOfInterest.php"); ?>
+					<br>
 
           <span class="dateerr"><?php echo $error['dateError']; ?></span><br>
 					<span class="label-input100 bg bot">Date Of Birth</span>
@@ -67,20 +72,25 @@ include("css/demo.css");
 
 					<span class="nameerr"><?php echo $error['genderError']; ?></span><br>
 					<span class="label-input100 bg bot">Gender</span>
-					<input type="radio" class="gender a" name="gender" value="male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "male") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "male") {echo "checked";} ?>><span class="gender b">Male</span>
+					<input type="radio" class="gender a bot" name="gender" value="male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "male") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "male") {echo "checked";} ?>><span class="gender b">Male</span>
 					<input type="radio" class="gender a1" name="gender" value="female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "female") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "female") {echo "checked";}  ?>><span class="gender b1">Female</span>
 
+				</div>
+				<div>
 					<span class="prof"><?php echo $error['profileError']; ?></span><br>
-					<span class="label-input100 bg bot">Profile Picture</span>
-          <input type="file" class="file" name="profile">
+					<span class="label-input100 bg bot">Profile Picture</span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<span class="profile"><?php if(isset($_FILES['profile'])) {echo $_FILES['profile']['name'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo end(explode('/',$pp));} ?></span>
+
+          <input type="file" class="file bot" name="profile">
+
 
           <span class="pass"><?php echo $error['passwordError']; ?></span>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100">
 						<input class="input100" type="password" name="password" placeholder="Password" value="<?php if(isset($_POST['submit'])) {echo $_POST['password'];} ?>">
 					</div>
 
           <span class="cpass"><?php echo $error['cpasswordError']; ?></span>
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100">
 						<input class="input100" type="password" name="cpassword" placeholder="Confirm Password" value="<?php if(isset($_POST['submit'])) {echo $_POST['cpassword'];} ?>">
 					</div>
 
@@ -92,10 +102,8 @@ include("css/demo.css");
 								Submit
 							</button>
 						</div>
-
 					</div>
 				</form>
-			</div>
 		</div>
 	</div>
 

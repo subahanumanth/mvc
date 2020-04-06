@@ -253,10 +253,10 @@ iframe {
 
 .wrap-input100 {
   width: 100%;
-  position: relative;
   border-bottom: 2px solid #dbdbdb;
   margin-bottom: 45px;
 }
+
 
 .label-input100 {
   font-family: Poppins-SemiBold;
@@ -627,5 +627,11 @@ iframe {
 .cpass {
   color:red;
   padding-left: 240px;
+}
+.bot {
+  margin-bottom: 50px;
+}
+.profile {
+  padding-top: 50px;
 }
 </style>
