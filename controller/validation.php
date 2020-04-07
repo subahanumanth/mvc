@@ -79,11 +79,14 @@ class validate {
             } else {
                 $this->error['cpasswordError'] == "";
             }
-
-            if(empty($_FILES['profile']['name'])) {
+              if(!empty($_FILES['profile']['name'])) {
+                $_SESSION['profile'] = $_FILES['profile']['name'];
+              }
+            echo $_SESSION['profile'];
+            if(!isset($_SESSION['profile'])) {
                 $this->error['profileError'] = "*please upload your profile picture";
                 $this->correctDetails['pp'] = 2;
-            } else {
+            } elseif(isset($_SESSION['profile'])) {
                 $this->error['profileError'] == "";
             }
 
@@ -93,16 +96,17 @@ class validate {
                 $targetFile = "./controller/uploads/".$targetDir;
                 move_uploaded_file($_FILES['profile']['tmp_name'] , $targetFile);
                 $this->correctDetails['profilePicture'] = $targetFile;
+                $this->correctDetails['val']= 2;
                 return $this->correctDetails;
               }
             }
             if(!isset($_SESSION['name'])) {
-            if($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == ""  and $this->error["emailError"] == ""  and $this->error['mobileError'] == "" and $this->error['passwordError'] == "" and $this->error['cpasswordError'] == "" and $this->error['profileError'] == "") {
-              $targetDir = $_FILES['profile']['name'];
-              $targetFile = "./controller/uploads/".$targetDir;
+            if($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == ""  and $this->error["emailError"] == ""  and $this->error['mobileError'] == "" and $this->error['passwordError'] == "" and $this->error['cpasswordError'] == "" and $this->error['profile'] == "") {
+              $targetFile = "./controller/uploads/".$_SESSION['profile'];
               move_uploaded_file($_FILES['profile']['tmp_name'] , $targetFile);
               $this->correctDetails['profilePicture'] = $targetFile;
               $this->correctDetails['val']= 3;
+              session_destroy();
               return $this->correctDetails;
             }
           }
@@ -112,7 +116,19 @@ class validate {
 }
 $obj = new validate($_POST);
 $error = $obj->validation();
-echo $error['val'];
+if($error['val'] == 3) {
+   ?>
+  <script>alert("Registered Successfully");
+  location.replace("login");
+  </script>
+  <?php
+}
+if($error['val'] == 2) { ?>
+  <script>alert("Updated Successfully");
+  location.replace("../../login");
+  </script>
+  <?php
+}
 
 if(isset($url[1]) and isset($_POST['submit'])) {
   $newUser->updateDetail($id,$error,$list['profilePicture'],$password);

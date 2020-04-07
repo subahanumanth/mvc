@@ -8,10 +8,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/css/bootstrap-tokenfield.min.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <?php
 include("css/login.css");
@@ -38,21 +39,15 @@ include("css/demo.css");
 						<input class="input100" type="text" placeholder="Last Name..." name="lastName" value="<?php if(isset($_POST['submit'])) {echo $_POST['lastName'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo $list['lname'];} ?>"><span class="nameerr"><?php echo $error['lastError']; ?></span>
 					</div>
 
-          <div class="wrap-input100">
-						<span class="label-input100 bot">Email</span>
-						<input style="width:90%; height:200px; padding-right:30px; border:1px solid black" type="text" name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['email']);} ?>"><br>
-            <span class="nameerr"><?php echo $error['emailError']; ?></span>
-          </div>
+					<span class="emailerr"><?php echo $error['emailError']; ?></span>
+						<span class="label-input100 em">Email</span>
+						<input style="width:90%; position:absolute;" type="text" name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['email']);} ?>"><br>
 
-					<div class="wrap-input100">
-						<span class="label-input100 bot">Mobile Number</span>
-						<input class="input100" type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['mobile']);} ?>"><br>
-            <span class="moberr"><?php echo $error['mobileError']; ?></span>
-						<span class="focus-input100"></span>
-					</div>
+						<span class="moberr"><?php echo $error['mobileError']; ?></span>
+						<span class="label-input100 mob">Mobile Number</span>
+						<input style="width:90%; position:absolute;" type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['mobile']);} ?>">
 					<?php $pp = $list['profilePicture'];?>
-
-						<div>
+						<div><br><br>
 						<span class="areaerr"><?php echo $error['areaOfInterestError']; ?></span><br>
 					<span class="label-input100 bot">Area Of Interest</span>
           <?php include("./controller/areaOfInterest.php"); ?>
@@ -79,7 +74,7 @@ include("css/demo.css");
 				<div>
 					<span class="prof"><?php echo $error['profileError']; ?></span><br>
 					<span class="label-input100 bg bot">Profile Picture</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="profile"><?php if(isset($_FILES['profile'])) {echo $_FILES['profile']['name'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo end(explode('/',$pp));} ?></span>
+					<span class="profile"><?php  if(isset($url[1]) and !isset($_POST['submit'])) {echo end(explode('/',$pp));} if(isset($_POST['submit']) and isset($_SESSION['profile'])) {echo $_SESSION['profile'];} ?></span>
 
           <input type="file" class="file bot" name="profile">
 
@@ -114,7 +109,14 @@ include("css/demo.css");
 function validateForm() {
 	alert('gfngvhn');
 }
- $(document).ready(function(){
+
+function register() {
+	alert("Successfully Registered");
+}
+function update() {
+	alert("Successfully Updated");
+}
+$(document).ready(function(){
 
  $('#email').tokenfield({
   autocomplete:{
