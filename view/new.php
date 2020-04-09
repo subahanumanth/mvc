@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V13</title>
+	<title>Registration Page</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="form.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 <?php
 include("css/login.css");
@@ -21,11 +19,13 @@ include("css/demo.css");
 </head>
 <body style="background-color: #999999;">
 
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="login100-more" style="background-image: url('');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+
 				<form class="login100-form validate-form" name="add_name" method="post" enctype="multipart/form-data">
 					<span class="login100-form-title p-b-59">
 						Registration info
@@ -67,8 +67,8 @@ include("css/demo.css");
 
 					<span class="nameerr"><?php echo $error['genderError']; ?></span><br>
 					<span class="label-input100 bg bot">Gender</span>
-					<input type="radio" class="gender a bot" name="gender" value="male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "male") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "male") {echo "checked";} ?>><span class="gender b">Male</span>
-					<input type="radio" class="gender a1" name="gender" value="female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "female") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "female") {echo "checked";}  ?>><span class="gender b1">Female</span>
+					<input type="radio" class="gender a bot" name="gender" value="Male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "Male") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "Male") {echo "checked";} ?>><span class="gender b">Male</span>
+					<input type="radio" class="gender a1" name="gender" value="Female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "Female") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "Female") {echo "checked";}  ?>><span class="gender b1">Female</span>
 
 				</div>
 				<div>
@@ -101,21 +101,50 @@ include("css/demo.css");
 				</form>
 		</div>
 	</div>
-
+	<div id="confirm">
+		 <div class="message"></div><br><br>
+		 <button class="yes">Ok</button>
+	</div>
 </body>
 </html>
 
-<script>
-function validateForm() {
-	alert('gfngvhn');
-}
 
-function register() {
-	alert("Successfully Registered");
+<script>
+function functionConfirm(msg, myYes) {
+	 var confirmBox = $("#confirm");
+	 confirmBox.find(".message").text(msg);
+	 confirmBox.find(".yes").unbind().click(function() {
+			confirmBox.hide();
+	 });
+	 confirmBox.find(".yes").click(myYes);
+	 confirmBox.show();
 }
-function update() {
-	alert("Successfully Updated");
+</script>
+<?php
+if($error['val'] == 3) {
+  ?>
+ <script>
+  functionConfirm('Successfully Registered', function yes() {
+    location.replace('../../login');
+  });
+ </script>
+ <?php
 }
+?>
+
+<?php
+if($error['val'] == 2) {
+  ?>
+ <script>
+  functionConfirm('Successfully Updated', function yes() {
+    location.replace('../../check');
+  });
+ </script>
+ <?php
+}
+?>
+<script>
+
 $(document).ready(function(){
 
  $('#email').tokenfield({
@@ -132,4 +161,6 @@ $('#mobile').tokenfield({
   showAutocompleteOnFocus: true
  });
  });
+
+
  </script>

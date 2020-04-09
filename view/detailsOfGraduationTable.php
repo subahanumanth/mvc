@@ -1,16 +1,22 @@
 <html>
 <?php session_start(); ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Details Of Graduation Table</title>
 <?php
 include("css/detailsOfGraduationTable.css");
 require("css/util.css");
  ?>
+ <div id="confirm">
+    <div class="message"></div><hr class="hr"><br>
+    <button class="yes">Yes</button>
+    <button class="no">No</button>
+ </div>
  <div class="topnav">
+   <a href="../../check"><i class="fa fa-home"></i></a>
    <a class="active" href="../bloodGroupTable">Manage Blood Group</a>
    <a href="../areaOfInterestTable">Manage Area Of Interest</a>
    <a href="../detailsOfGraduationTable">Manage Details Of Graduation</a>
-   <a href="../../check"><i class="fa fa-home"></i></a>
    <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
    <a href="../logOut"><i class="fa fa-sign-out"></i></a>  </div>
 <div class="limiter">
@@ -33,7 +39,9 @@ require("css/util.css");
               ?>
              <tr>
              <td class="column1" id="rem"><?php echo $list[$i]['detailsOfGraduation']; ?></td>
-             <td><button id="del" onclick="display('<?php echo $list[$i]['id']; ?>')"><i class="fa fa-trash"></i></button>
+             <td><button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
+               location.replace('../../detailsOfGraduationTable/'+<?php echo $list[$i]['id']; ?>);
+             });"><i class="fa fa-trash"></i></button>
                  <a href="../../detailsOfGraduationTable/0/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
             </td>
              </tr>
@@ -60,11 +68,14 @@ require("css/util.css");
   </div>
 </div>
 <script>
-function display (b) {
-    var a = confirm("are you sure");
-    if(a) {
-        location.replace("../../detailsOfGraduationTable/"+b);
-    }
-}
+   function functionConfirm(msg, myYes) {
+      var confirmBox = $("#confirm");
+      confirmBox.find(".message").text(msg);
+      confirmBox.find(".yes,.no").unbind().click(function() {
+         confirmBox.hide();
+      });
+      confirmBox.find(".yes").click(myYes);
+      confirmBox.show();
+   }
 </script>
 </html>

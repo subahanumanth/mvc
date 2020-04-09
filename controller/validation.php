@@ -1,10 +1,10 @@
-<?php
 
+
+<?php
 class validate {
     public $details;
     public $error;
     public $correctDetails;
-    public $a;
     public function __construct ($values) {
         $this->details = $values;
     }
@@ -54,11 +54,12 @@ class validate {
 
             $this->details['emailn'] = explode(",",$this->details['email']);
             for ($i=0; $i<count($this->details['emailn']); $i++) {
-                    if (!empty($this->details['emailn'][$i])) {
-                        $this->correctDetails['email'][$i] = $this->details['emailn'][$i];
-                    } else {
-                        $this->error["emailError"] = " *Enter Valid Email ID";
-                    }
+              $email = $this->details['emailn'][$i];
+              if(!empty($email)){
+                  $this->correctDetails['email'][$i] = $this->details['emailn'][$i];
+              } else {
+                  $this->error["emailError"] = " *Enter Valid Email ID";
+              }
             }
             $this->details['mobileNew'] = explode(',',$this->details['mobile']);
             for ($i=0; $i<count($this->details['mobileNew']); $i++) {
@@ -82,7 +83,6 @@ class validate {
               if(!empty($_FILES['profile']['name'])) {
                 $_SESSION['profile'] = $_FILES['profile']['name'];
               }
-            echo $_SESSION['profile'];
             if(!isset($_SESSION['profile'])) {
                 $this->error['profileError'] = "*please upload your profile picture";
                 $this->correctDetails['pp'] = 2;
@@ -116,19 +116,7 @@ class validate {
 }
 $obj = new validate($_POST);
 $error = $obj->validation();
-if($error['val'] == 3) {
-   ?>
-  <script>alert("Registered Successfully");
-  location.replace("login");
-  </script>
-  <?php
-}
-if($error['val'] == 2) { ?>
-  <script>alert("Updated Successfully");
-  location.replace("../../login");
-  </script>
-  <?php
-}
+
 
 if(isset($url[1]) and isset($_POST['submit'])) {
   $newUser->updateDetail($id,$error,$list['profilePicture'],$password);
@@ -142,9 +130,5 @@ if(isset($url[1]) and isset($_POST['submit'])) {
     $newUser->insertMobile($id, $error['mobile']);
     $newUser->insertAreaOfInterest($id, $error['areaOfInterest']);
 }
-if(isset($error['val'])) {
-  if("<script>alert('hjnchg');</script>") {
-    echo "fdxb";
-  }
-}
+
 ?>

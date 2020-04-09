@@ -22,6 +22,4 @@ if(isset($url[1]) and isset($_SESSION['name'])) {
 }
 include("validation.php");
 include("./view/new.php");
-
-
 ?>

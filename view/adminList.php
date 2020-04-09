@@ -3,6 +3,7 @@
 <head>
   <title>Admin Page</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <?php
   require("css/adminList.css");
   require("css/main.css");
@@ -10,7 +11,11 @@
   ?>
 </head>
 <body>
-
+  <div id="confirm">
+     <div class="message"></div><hr class="hr"><br>
+     <button class="yes">Yes</button>
+     <button class="no">No</button>
+  </div>
 <div class="topnav">
   <a class="active" href="../bloodGroupTable">Manage Blood Group</a>
   <a href="../areaOfInterestTable">Manage Area Of Interest</a>
@@ -34,7 +39,7 @@
               <th class="column7">Email</th>
               <th class="column8">Mobile Number</th>
               <th class="column9">Area Of Interest</th>
-              <th class="column10">profile Picture</th>
+              <th class="column10">Profile Picture</th>
               <th class="column11">Action</th>
             </tr>
           </thead>
@@ -52,10 +57,12 @@
              <td class="column7"><?php echo $list[$i]['email'] ?></td>
              <td class="column8"><?php echo $list[$i]['mobile'] ?></td>
              <td class="column9"><?php echo $list[$i]['areaOfInterest'] ?></td>
-             <td class="column10"><?php echo $list[$i]['profilePicture'] ?></td>
+             <td class="column10"><img style="height:40px" src="<?php echo $list[$i]['profilePicture'] ?>"></td>
              <td>
-             <button class="brn" onclick="display('<?php echo $list[$i]['id']; ?>')"><i class="fa fa-trash"></i></button>
-             <a href="../../check/0/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a>
+               <button class="brn" id="del" onclick="functionConfirm('Are You Sure?', function yes() {
+                 location.replace('../../check/'+<?php echo $list[$i]['id']; ?>);
+               });"><i class="fa fa-trash"></i></button>
+               <a href="../../check/0/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a>
              </td>
            </tr>
            <?php
@@ -69,11 +76,14 @@
 </div>
 </body>
 <script>
-function display (b) {
-    var a = confirm("are you sure");
-    if(a) {
-        location.replace("../../check/"+b);
-    }
-}
+   function functionConfirm(msg, myYes) {
+      var confirmBox = $("#confirm");
+      confirmBox.find(".message").text(msg);
+      confirmBox.find(".yes,.no").unbind().click(function() {
+         confirmBox.hide();
+      });
+      confirmBox.find(".yes").click(myYes);
+      confirmBox.show();
+   }
 </script>
 </html>
