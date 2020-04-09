@@ -1,7 +1,7 @@
 <?php
 include("./model/connection.php");
-include("./model/bloodGroupTable.php");
-
+require("./model/bloodGroupTable.php");
+include("./model/bloodGroupAdapter.php");
 $url = $_GET['url'];
 $url = explode('/',$url);
 if (isset($url[1]) and !isset($url[2])) {
@@ -19,7 +19,7 @@ if (isset($_POST['submit']) and isset($url[2])) {
   $bloodGroup->update($url[2],$_POST['bg']);
   header("Location:../bloodGroupTable");
 }
-$list = $bloodGroup->selectBloodGroup();
+$list = $bloodGroup->select();
 session_start();
 if(isset($_SESSION['name'])) {
     include("./view/bloodGroupTable.php");

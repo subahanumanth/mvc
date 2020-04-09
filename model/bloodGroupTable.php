@@ -1,12 +1,5 @@
 <?php
 class bloodGroup {
-  public static $instance;
-  public static function getInstance () {
-    return bloodGroup::$instance = new bloodGroup();
-  }
-  private function __construct () {
-
-  }
   public function insert($bg) {
     $conn = db::connection();
     $insert = "insert into blood_group (blood_group,is_deleted) values('$bg',1)";
@@ -62,5 +55,4 @@ class bloodGroup {
     db::close($conn);
   }
 }
-$bloodGroup = bloodGroup::getInstance();
  ?>

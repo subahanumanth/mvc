@@ -1,12 +1,5 @@
 <?php
 class dropdown {
-  public static $instance;
-  public static function getInstance () {
-    return dropdown::$instance = new dropdown ();
-  }
-  private function __construct () {
-
-  }
   public function bloodGroup () {
     $i = -1;
     $conn = db::connection ();
@@ -53,5 +46,3 @@ class dropdown {
     return $list;
   }
 }
-
-$dropdown = dropdown::getInstance ();
