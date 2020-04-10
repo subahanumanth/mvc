@@ -1,0 +1,12 @@
+Unit test cases for registration page :
+
+If user enters all details,after clicking submit it will be redirected to login page inwhich user can login using registered name and password.
+
+If user is not entering one or two fields and clicking submit button it will throw an error near specific field.
+After entering all details only user will be registered and redirected to login page,otherwise it will stay in same page.
+For example,
+if user enters all details except blood group,after clicking submit it will throw an error like "select blood group" near blood group field.
+After entering blood group only,user will be registered.
+
+Password must be a minimum of 8 characters and contain at least one capital letter, a number and a special character and one small letter,otherwise it will throw an error.
+If user enters one value in password field and different value in confirm password field,it will throw an error like "Enter correct password" near confirm password field.

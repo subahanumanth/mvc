@@ -100,17 +100,22 @@ body{
 .log {
   color : var(--back-color);
 }
-#sample{
-  padding-left:290px;
-  color:white;
-  border-radius: 5px;
-  padding-left: 2px;
-  margin-left:265px;
-  text-decoration: none;
-  background-color: black;
+#sample {
+    background: -webkit-linear-gradient(top,#c77ff2, #e8519e,#e8519e);
+    color: white;
+padding: 0.5em 2em;
+margin-left: 225px;
+text-decoration: none;
+border-radius: 20px;
 }
+
+#sample:hover {
+background-color: #555;
+}
+
 .good {
   font-size:20px;
+  font-family: sans-serif;
   padding-left: 350px;
   width:100%;
 }

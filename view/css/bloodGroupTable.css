@@ -323,18 +323,17 @@ tbody tr:hover {
   height:20px;
   border-radius: 5px;
 }
+
 #sample {
-  margin-left:125px;
-  border-radius:5px;
-  width:70px;
-  height:20px;
-  background-color: black;
-  color:white;
   text-decoration: none;
-  margin-bottom:10px;
 }
-#sample1 {
-  text-decoration: none;
+#samp{
+  background: -webkit-linear-gradient(top,#c77ff2, #e8519e,#e8519e);
+  width:100px;
+  height:28px;
+  border-radius: 10px;
+  font-size : 15px;
+  margin-left:110px;
 }
 .topnav {
   overflow: hidden;
@@ -393,4 +392,5 @@ tbody tr:hover {
   margin-top:20px;
   border-color:black;
 }
+
 </style>

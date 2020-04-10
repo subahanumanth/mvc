@@ -1,7 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['password'])) {
-  header("Location:check");
+if (isset($_SESSION['password']))
+{
+    header("Location:list");
 }
 ?>
 
@@ -15,7 +16,8 @@ if(isset($_SESSION['password'])) {
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
     <title>Login Page</title>
-<?php  include("css/style1.css") ?>
+    <link rel="stylesheet" type="text/css" href="../../view/css/styles.css">
+    <script src="../../view/js/index.js"></script>
 </head>
 <body>
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
@@ -26,7 +28,7 @@ if(isset($_SESSION['password'])) {
                     <h2 class="title">Login Info</h2>
                     <div id="error">
                     </div>
-                    <form method="POST" action="../check">
+                    <form method="POST" action="../list">
                         <div class="input-group">
                             <input class="input--style-3" type="text" placeholder="Name" name="name">
                         </div>
@@ -47,21 +49,16 @@ if(isset($_SESSION['password'])) {
 
 <?php
 $url = $_GET['url'];
-$url = explode('/',$url);
+$url = explode('/', $url);
 
-if($url[1]==1){
-  ?>
+if ($url[1] == "error")
+{
+?>
   <html>
  <script>
-    var h4 = document.createElement("h4");
-    var text = document.createTextNode("Incorrect username or password.");
-    h4.appendChild(text);
-    h4.classList.add("h");
-    var div = document.querySelector("#error");
-    div.appendChild(h4);
-    div.classList.add("error");
+ error();
  </script>
  </html>
  <?php
 }
- ?>
+?>

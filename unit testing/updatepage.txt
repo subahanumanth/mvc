@@ -1,0 +1,9 @@
+Unit test cases for update page :
+
+If user clicks update button in admin page or user page,this page will be redirected.
+The details of user will be popped up in the form.
+
+In this page except profile picture,password and confirm password all fields are mandatory.
+If user skips any fields other than profile picture,password and confirm password, it will throws an error and stays in same page.
+
+If user clicks cancel button,it will redirects to their list page.

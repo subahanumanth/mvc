@@ -4,18 +4,16 @@
 	<title>Registration Page</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="form.js"></script>
+	<script src="../../../view/js/index.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tokenfield/0.12.0/bootstrap-tokenfield.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="../../../view/css/login.css">
+		<link rel="stylesheet" href="../../../view/css/demo.css">
 
-<?php
-include("css/login.css");
-include("css/demo.css");
-?>
 </head>
 <body style="background-color: #999999;">
 
@@ -32,70 +30,138 @@ include("css/demo.css");
 					</span>
 
 					<div class="wrap-input100" data-validate="Name is required">
-						<input class="input100" type="text" placeholder="First Name..." name="firstName" value="<?php if(isset($_POST['submit'])) {echo $_POST['firstName'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo $list['fname'];} ?>"><span class="nameerr"><?php echo $error['firstError']; ?></span>
+						<input class="input100" type="text" placeholder="First Name..." name="firstName" value="<?php if (isset($_POST['submit']))
+{
+    echo $_POST['firstName'];
+}
+if (isset($url[1]) and !isset($_POST['submit']))
+{
+    echo $list['fname'];
+} ?>"><span class="nameerr"><?php echo $error['firstError']; ?></span>
 						</div>
 
 					<div class="wrap-input100" data-validate="Name is required">
-						<input class="input100" type="text" placeholder="Last Name..." name="lastName" value="<?php if(isset($_POST['submit'])) {echo $_POST['lastName'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo $list['lname'];} ?>"><span class="nameerr"><?php echo $error['lastError']; ?></span>
+						<input class="input100" type="text" placeholder="Last Name..." name="lastName" value="<?php if (isset($_POST['submit']))
+{
+    echo $_POST['lastName'];
+}
+if (isset($url[1]) and !isset($_POST['submit']))
+{
+    echo $list['lname'];
+} ?>"><span class="nameerr"><?php echo $error['lastError']; ?></span>
 					</div>
 
 					<span class="emailerr"><?php echo $error['emailError']; ?></span>
 						<span class="label-input100 em">Email</span>
-						<input style="width:90%; position:absolute;" type="text" name="email" id="email" value="<?php if(isset($_POST['submit'])) {echo $_POST['email'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['email']);} ?>"><br>
+						<input style="width:90%; position:absolute;" type="text" name="email" id="email" value="<?php if (isset($_POST['submit']))
+{
+    echo $_POST['email'];
+}
+if (isset($url[1]) and !isset($_POST['submit']))
+{
+    echo implode(",", $list['email']);
+} ?>"><br>
 
 						<span class="moberr"><?php echo $error['mobileError']; ?></span>
 						<span class="label-input100 mob">Mobile Number</span>
-						<input style="width:90%; position:absolute;" type="text" name="mobile" id="mobile" value="<?php if(isset($_POST['submit'])) {echo $_POST['mobile'];} if(isset($url[1]) and !isset($_POST['submit'])) {echo implode(",",$list['mobile']);} ?>">
-					<?php $pp = $list['profilePicture'];?>
+						<input style="width:90%; position:absolute;" type="text" name="mobile" id="mobile" value="<?php if (isset($_POST['submit']))
+{
+    echo $_POST['mobile'];
+}
+if (isset($url[1]) and !isset($_POST['submit']))
+{
+    echo implode(",", $list['mobile']);
+} ?>">
+					<?php $pp = $list['profilePicture']; ?>
 						<div><br><br>
 						<span class="areaerr"><?php echo $error['areaOfInterestError']; ?></span><br>
 					<span class="label-input100 bot">Area Of Interest</span>
-          <?php include("./controller/areaOfInterest.php"); ?>
+          <?php include ("./controller/areaOfInterest.php"); ?>
 					<br>
 
           <span class="dateerr"><?php echo $error['dateError']; ?></span><br>
 					<span class="label-input100 bg bot">Date Of Birth</span>
-          <input type="date" class="date" name="date" value="<?php if(isset($_POST['date'])) { echo $_POST['date']; } if(isset($url[1]) and !isset($_POST['submit'])) {echo $dob; } ?>"><br>
+          <input type="date" class="date" name="date" value="<?php if (isset($_POST['date']))
+{
+    echo $_POST['date'];
+}
+if (isset($url[1]) and !isset($_POST['submit']))
+{
+    echo $dob;
+} ?>"><br>
 
              <span class="deterr"><?php echo $error['detailsOfGraduationError']; ?></span><br>
 						 <span class="label-input100 bg bot">Details Of Graduation</span>
-             <?php include("./controller/detailsOfGraduation.php"); ?>
+             <?php include ("./controller/detailsOfGraduation.php"); ?>
 
           <span class="nameerr"><?php echo $error['bloodGroupError']; ?></span>
 					<span class="label-input100 bg bot">Blood Group</span>
-          <?php include("./controller/bloodGroup.php"); ?>
+          <?php include ("./controller/bloodGroup.php"); ?>
 
 					<span class="nameerr"><?php echo $error['genderError']; ?></span><br>
 					<span class="label-input100 bg bot">Gender</span>
-					<input type="radio" class="gender a bot" name="gender" value="Male" <?php if(isset($_POST['gender']) and $_POST['gender'] == "Male") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "Male") {echo "checked";} ?>><span class="gender b">Male</span>
-					<input type="radio" class="gender a1" name="gender" value="Female" <?php if(isset($_POST['gender']) and $_POST['gender'] == "Female") {echo "checked";} if(isset($url[1]) and !isset($_POST['submit']) and $gender == "Female") {echo "checked";}  ?>><span class="gender b1">Female</span>
+					<input type="radio" class="gender a bot" name="gender" value="Male" <?php if (isset($_POST['gender']) and $_POST['gender'] == "Male")
+{
+    echo "checked";
+}
+if (isset($url[1]) and !isset($_POST['submit']) and $gender == "Male")
+{
+    echo "checked";
+} ?>><span class="gender b">Male</span>
+					<input type="radio" class="gender a1" name="gender" value="Female" <?php if (isset($_POST['gender']) and $_POST['gender'] == "Female")
+{
+    echo "checked";
+}
+if (isset($url[1]) and !isset($_POST['submit']) and $gender == "Female")
+{
+    echo "checked";
+} ?>><span class="gender b1">Female</span>
 
 				</div>
 				<div>
 					<span class="prof"><?php echo $error['profileError']; ?></span><br>
 					<span class="label-input100 bg bot">Profile Picture</span>&nbsp;&nbsp;&nbsp;&nbsp;
-					<span class="profile"><?php  if(isset($url[1]) and !isset($_POST['submit'])) {echo end(explode('/',$pp));} if(isset($_POST['submit']) and isset($_SESSION['profile'])) {echo $_SESSION['profile'];} ?></span>
+					<span class="profile"><?php if (isset($url[1]))
+{
+    echo end(explode('/', $pp));
+}
+echo $_SESSION['profile']; ?></span>
 
           <input type="file" class="file bot" name="profile">
 
 
           <span class="pass"><?php echo $error['passwordError']; ?></span>
 					<div class="wrap-input100">
-						<input class="input100" type="password" name="password" placeholder="Password" value="<?php if(isset($_POST['submit'])) {echo $_POST['password'];} ?>">
+						<input class="input100" type="password" name="password" placeholder="Password" value="<?php if (isset($_POST['submit']))
+{
+    echo $_POST['password'];
+} ?>">
 					</div>
 
           <span class="cpass"><?php echo $error['cpasswordError']; ?></span>
 					<div class="wrap-input100">
-						<input class="input100" type="password" name="cpassword" placeholder="Confirm Password" value="<?php if(isset($_POST['submit'])) {echo $_POST['cpassword'];} ?>">
+						<input class="input100" type="password" name="cpassword" placeholder="Confirm Password" value="<?php if (isset($_POST['submit']))
+{
+    echo $_POST['cpassword'];
+} ?>">
 					</div>
 
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn" name="submit" id="submit">
-								Submit
-							</button>
+							<button class="login100-form-btn" name="submit" id="submit">Submit</button>
+						</div>
+					</div><br>
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<?php if (isset($url[1]))
+							{ ?>
+								<button class='login100-form-btn' name='cancel'>Cancel</button>
+								<?php
+							}
+							?>
 						</div>
 					</div>
 				</form>
@@ -108,21 +174,10 @@ include("css/demo.css");
 </body>
 </html>
 
-
-<script>
-function functionConfirm(msg, myYes) {
-	 var confirmBox = $("#confirm");
-	 confirmBox.find(".message").text(msg);
-	 confirmBox.find(".yes").unbind().click(function() {
-			confirmBox.hide();
-	 });
-	 confirmBox.find(".yes").click(myYes);
-	 confirmBox.show();
-}
-</script>
 <?php
-if($error['val'] == 3) {
-  ?>
+if ($error['val'] == 3)
+{
+?>
  <script>
   functionConfirm('Successfully Registered', function yes() {
     location.replace('../../login');
@@ -133,16 +188,18 @@ if($error['val'] == 3) {
 ?>
 
 <?php
-if($error['val'] == 2) {
-  ?>
+if ($error['val'] == 2)
+{
+?>
  <script>
   functionConfirm('Successfully Updated', function yes() {
-    location.replace('../../check');
+    location.replace('../../list');
   });
  </script>
  <?php
 }
 ?>
+
 <script>
 
 $(document).ready(function(){
