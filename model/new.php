@@ -191,7 +191,8 @@ class newUser
         }
         else
         {
-            $profile = $error['profilePicture'];
+            session_start();
+            $profile = "./controller/uploads/".$_SESSION['profile'];
         }
         $query = "update detail set first_name='$fname',last_name='$lname',date_of_birth='$date',details_of_graduation=$dog,blood_group=$bg,gender='$gender',profile_picture='$profile',password='$password' where id=$id";
         mysqli_query($conn, $query);

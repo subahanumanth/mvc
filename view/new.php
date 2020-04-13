@@ -76,7 +76,13 @@ if (isset($url[1]) and !isset($_POST['submit']))
 						<div><br><br>
 						<span class="areaerr"><?php echo $error['areaOfInterestError']; ?></span><br>
 					<span class="label-input100 bot">Area Of Interest</span>
-          <?php include ("./controller/areaOfInterest.php"); ?>
+					<?php
+					 $var = 'areaOfInterest';
+					 if ($var = 'areaOfInterest')
+					 {
+							 include ("./controller/areaOfInterest.php");
+					 }
+					?>
 					<br>
 
           <span class="dateerr"><?php echo $error['dateError']; ?></span><br>
@@ -91,12 +97,24 @@ if (isset($url[1]) and !isset($_POST['submit']))
 } ?>"><br>
 
              <span class="deterr"><?php echo $error['detailsOfGraduationError']; ?></span><br>
-						 <span class="label-input100 bg bot">Details Of Graduation</span>
-             <?php include ("./controller/detailsOfGraduation.php"); ?>
+						 <span class="label-input100 bg bot">Details Of Gradtion</span>
+						 <?php
+						 $var = 'detailsOfGraduation';
+						 if ($var = 'detailsOfGraduation')
+						 {
+								 include ("./controller/detailsOfGraduation.php");
+						 }
+						?>
 
           <span class="nameerr"><?php echo $error['bloodGroupError']; ?></span>
 					<span class="label-input100 bg bot">Blood Group</span>
-          <?php include ("./controller/bloodGroup.php"); ?>
+          <?php
+					 $var = 'bloodGroup';
+					 if ($var = 'bloodGroup')
+					 {
+					     include ("./controller/bloodGroup.php");
+					 }
+					?>
 
 					<span class="nameerr"><?php echo $error['genderError']; ?></span><br>
 					<span class="label-input100 bg bot">Gender</span>
