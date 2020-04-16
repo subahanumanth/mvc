@@ -1,14 +1,14 @@
 <html>
-<title>BloodGroup Table</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="view/js/index.js"></script>
-<link rel="stylesheet" href="../../../view/css/bloodGroupTable.css">
-<link rel="stylesheet" href="../../../view/css/util.css">
+<link rel="stylesheet" href="../../../view/css/table.css">
+<link rel="stylesheet" href="../../../view/css/main.css">
+<title>Blood Group Table</title>
 
  <div id="confirm">
     <div class="message"></div><hr class="hr"><br>
-    <button class="yes">Yes</button>
+    <button class="result">Yes</button>
     <button class="no">No</button>
  </div>
  <div class="topnav">
@@ -39,11 +39,10 @@ for ($i = 0;$i < count($list);$i++)
 ?>
              <tr>
              <td class="column1" id="rem"><?php echo $list[$i]['bloodGroup']; ?></td>
-             <td>
-               <button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
-                 location.replace('../../manageBloodGroup/delete/'+<?php echo $list[$i]['id']; ?>);
-               });"><i class="fa fa-trash"></i></button>
-                 <a href="../../manageBloodGroup/update/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
+             <td><button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
+               location.replace('../../managebloodGroup/delete/'+<?php echo $list[$i]['id']; ?>);
+             });"><i class="fa fa-trash"></i></button>
+                 <a href="../../managebloodGroup/update/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
             </td>
              </tr>
            <?php
@@ -51,7 +50,7 @@ for ($i = 0;$i < count($list);$i++)
 ?>
           </tbody>
         </table><br>
-        <a href="../../../../manageBloodGroup/add" id="sample"><input type="submit" name="submit" value="Add" id="samp"></a><br>
+        <a href="../../../../managebloodGroup/add" id="sample"><input type="submit" name="submit" value="Add" id="samp"></a><br>
         <?php
 if ($url[1] == "add" or $url[1] == "update")
 {
@@ -70,4 +69,5 @@ if ($url[1] == "add" or $url[1] == "update")
     </div>
   </div>
 </div>
+
 </html>

@@ -37,7 +37,7 @@
 if (isset($url[1]) and !isset($_POST['submit']))
 {
     echo $list['fname'];
-} ?>"><span class="nameerr"><?php echo $error['firstError']; ?></span>
+} ?>"><span class="nameerror"><?php echo $error['firstError']; ?></span>
 						</div>
 
 					<div class="wrap-input100" data-validate="Name is required">
@@ -48,12 +48,12 @@ if (isset($url[1]) and !isset($_POST['submit']))
 if (isset($url[1]) and !isset($_POST['submit']))
 {
     echo $list['lname'];
-} ?>"><span class="nameerr"><?php echo $error['lastError']; ?></span>
+} ?>"><span class="nameerror"><?php echo $error['lastError']; ?></span>
 					</div>
 					<?php $pp = $list['profilePicture']; ?>
 
-					<span class="emailerr"><?php echo $error['emailError']; ?></span>
-						<span class="label-input100 em">Email</span>
+					<span class="emailerror"><?php echo $error['emailError']; ?></span>
+						<span class="label-input100 headEmail">Email</span>
 						<input style="width:90%; position:absolute;" type="text" name="email" id="email" value="<?php if (isset($_POST['submit']))
 {
     echo $_POST['email'];
@@ -62,8 +62,8 @@ if (isset($url[1]) and !isset($_POST['submit']))
 {
     echo implode(",", $list['email']);
 } ?>">
-						<span class="moberr"><?php echo $error['mobileError']; ?></span>
-						<span class="label-input100 mob">Mobile Number</span>
+						<span class="mobileerror"><?php echo $error['mobileError']; ?></span>
+						<span class="label-input100 headMobile">Mobile Number</span>
 						<input style="width:90%; position:absolute;" type="text" name="mobile" id="mobile" value="<?php if (isset($_POST['submit']))
 {
     echo $_POST['mobile'];
@@ -74,7 +74,7 @@ if (isset($url[1]) and !isset($_POST['submit']))
 } ?>">
 
 						<div>
-						<span class="areaerr"><?php echo $error['areaOfInterestError']; ?></span><br>
+						<span class="areaerror"><?php echo $error['areaOfInterestError']; ?></span><br>
 					<span class="label-input100 bot">Area Of Interest</span>
 					<?php
 					 $page = 'areaOfInterest';
@@ -82,7 +82,7 @@ if (isset($url[1]) and !isset($_POST['submit']))
 					?>
 					<br>
 
-          <span class="dateerr"><?php echo $error['dateError']; ?></span><br>
+          <span class="dateerror"><?php echo $error['dateError']; ?></span><br>
 					<span class="label-input100 bg bot">Date Of Birth</span>
           <input type="date" class="date" name="date" value="<?php if (isset($_POST['date']))
 {
@@ -93,38 +93,38 @@ if (isset($url[1]) and !isset($_POST['submit']))
     echo $dob;
 } ?>"><br>
 
-             <span class="deterr"><?php echo $error['detailsOfGraduationError']; ?></span><br>
+             <span class="deterror"><?php echo $error['detailsOfGraduationError']; ?></span><br>
 						 <span class="label-input100 bg bot">Details Of Graduation</span>
 						 <?php
 	 					     $page = 'detailsOfGraduation';
 	 					     include ("./controller/dropdown.php");
 	 					 ?>
 
-          <span class="nameerr"><?php echo $error['bloodGroupError']; ?></span>
+          <span class="nameerror"><?php echo $error['bloodGroupError']; ?></span>
 					<span class="label-input100 bg bot">Blood Group</span>
           <?php
 					    $page = 'bloodGroup';
 					    include ("./controller/dropdown.php");
 					?>
 
-					<span class="nameerr"><?php echo $error['genderError']; ?></span><br>
+					<span class="nameerror"><?php echo $error['genderError']; ?></span><br>
 					<span class="label-input100 bg bot">Gender</span>
-					<input type="radio" class="gender a bot" name="gender" value="Male" <?php if (isset($_POST['gender']) and $_POST['gender'] == "Male")
+					<input type="radio" class="gender male bot" name="gender" value="Male" <?php if (isset($_POST['gender']) and $_POST['gender'] == "Male")
 {
     echo "checked";
 }
 if (isset($url[1]) and !isset($_POST['submit']) and $gender == "Male")
 {
     echo "checked";
-} ?>><span class="gender b">Male</span>
-					<input type="radio" class="gender a1" name="gender" value="Female" <?php if (isset($_POST['gender']) and $_POST['gender'] == "Female")
+} ?>><span class="gender topicMale">Male</span>
+					<input type="radio" class="gender female" name="gender" value="Female" <?php if (isset($_POST['gender']) and $_POST['gender'] == "Female")
 {
     echo "checked";
 }
 if (isset($url[1]) and !isset($_POST['submit']) and $gender == "Female")
 {
     echo "checked";
-} ?>><span class="gender b1">Female</span>
+} ?>><span class="gender topicFemale">Female</span>
 
 				</div>
 				<div>
@@ -139,7 +139,7 @@ echo $_SESSION['profile']; ?></span>
           <input type="file" class="file bot" name="profile">
 
 
-          <span class="pass"><?php echo $error['passwordError']; ?></span>
+          <span class="password"><?php echo $error['passwordError']; ?></span>
 					<div class="wrap-input100">
 						<input class="input100" type="password" name="password" placeholder="Password" value="<?php if (isset($_POST['submit']))
 {
@@ -147,7 +147,7 @@ echo $_SESSION['profile']; ?></span>
 } ?>">
 					</div>
 
-          <span class="cpass"><?php echo $error['cpasswordError']; ?></span>
+          <span class="confirmPassword"><?php echo $error['cpasswordError']; ?></span>
 					<div class="wrap-input100">
 						<input class="input100" type="password" name="cpassword" placeholder="Confirm Password" value="<?php if (isset($_POST['submit']))
 {
@@ -178,7 +178,7 @@ echo $_SESSION['profile']; ?></span>
 	</div>
 	<div id="confirm">
 		 <div class="message"></div><br><br>
-		 <button class="yes">Ok</button>
+		 <button class="result">Ok</button>
 	</div>
 </body>
 </html>

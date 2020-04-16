@@ -1,0 +1,114 @@
+<style>
+:root{
+  --back-color:#ccbd2c;
+}
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:#D3D3D3;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #301934;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+#logout {
+  margin-left:490px;
+}
+.nav {
+  background-color:var(--back-color) ;
+  height :60px;
+}
+
+.welcome {
+  padding-left: 300px;
+  font-size:20px;
+}
+.edit{
+  margin-left:16px;
+}
+
+.column11 {
+  color:black;
+}
+.list {
+  border:none;
+  background:none;
+}
+#confirm {
+   display: none;
+   background-color: #ca3e47;
+   border: 1px solid #301934;
+   position: fixed;
+   z-index:10;
+   width: 340px;
+   height:150px;
+   border-radius:6px;
+   left: 50%;
+   margin-left: -170px;
+   padding: 6px 8px 8px;
+   box-sizing: border-box;
+   text-align: center;
+}
+#confirm button {
+   background-color: #301934;
+   display: inline-block;
+   border-radius: 5px;
+   border: 1px solid #301934;
+   padding: 5px;
+   text-align: center;
+   width: 80px;
+   cursor: pointer;
+   margin-bottom: 20px;
+   margin-top:10px;
+   color:white;
+}
+#confirm .message {
+    padding-top:10px;
+    font-size: 25px;
+   text-align: center;
+   color:black;
+}
+.result {
+  margin-right: 30px;
+}
+.hr {
+  margin-top:20px;
+  border-color:black;
+}
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  position:absolute;
+  table-layout: fixed;
+}
+
+#customers td, #customers th {
+  height:50px;
+  text-align: center;
+
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #301934;
+  color: white;
+}
+</style>

@@ -1,6 +1,6 @@
 <style>
 :root{
-  --back-color:#ccbd2c;
+  --back-color:-webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
 }
 body {
   margin: 0;
@@ -50,13 +50,7 @@ body {
 .submit{
   padding-left:250px;
 }
-body{
-  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
-}
-.nav {
-  background-color:var(--back-color) ;
-  height :60px;
-}
+
 
 .welcome {
   padding-left: 900px;
@@ -97,29 +91,25 @@ body{
     background: linear-gradient(top,  rgba(254,193,81,1) 0%,rgba(254,231,154,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fec151', endColorstr='#fee79a',GradientType=0 );
 }
-.log {
-  color : var(--back-color);
-}
+
 #sample {
     background: -webkit-linear-gradient(top,#c77ff2, #e8519e,#e8519e);
     color: white;
-padding: 0.5em 2em;
-margin-left: 225px;
-text-decoration: none;
-border-radius: 20px;
+    padding: 0.5em 2em;
+    margin-left: 225px;
+    text-decoration: none;
+    border-radius: 20px;
 }
 
 #sample:hover {
-background-color: #555;
+    background-color: #555;
 }
 
-.good {
-  font-size:20px;
-  font-family: sans-serif;
-  padding-left: 380px;
-  width:100%;
+.area {
+    font-size:20px;
+    font-family: sans-serif;
+    padding-left: 380px;
+    width:100%;
 }
-.img {
 
-}
 </style>

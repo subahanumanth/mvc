@@ -3,13 +3,13 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="view/js/index.js"></script>
-<link rel="stylesheet" href="../../../view/css/detailsOfGraduationTable.css">
-<link rel="stylesheet" href="../../../view/css/util.css">
+<link rel="stylesheet" href="../../../view/css/table.css">
+<link rel="stylesheet" href="../../../view/css/main.css">
 <title>Details Of Graduation Table</title>
 
  <div id="confirm">
     <div class="message"></div><hr class="hr"><br>
-    <button class="yes">Yes</button>
+    <button class="result">Yes</button>
     <button class="no">No</button>
  </div>
  <div class="topnav">

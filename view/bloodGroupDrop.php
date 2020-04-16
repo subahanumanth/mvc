@@ -1,5 +1,5 @@
 <html>
-<select name="bloodGroup" class="selectd bot">
+<select name="bloodGroup" class="selectblood bot">
   <option value = "" selected disabled>Select</option>
   <?php
 for ($key = 0;$key < count($list);$key++)

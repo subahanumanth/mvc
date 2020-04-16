@@ -1,5 +1,5 @@
 <html>
-<select name="detailsOfGraduation" class="selectb bot">
+<select name="detailsOfGraduation" class="selectdetails bot">
   <option value = "" selected disabled>Select</option>
   <?php
 for ($key = 0;$key < count($list);$key++)

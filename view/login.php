@@ -9,7 +9,6 @@ if (isset($_SESSION['password']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Colorlib Templates">
@@ -17,6 +16,7 @@ if (isset($_SESSION['password']))
     <meta name="keywords" content="Colorlib Templates">
     <title>Login Page</title>
     <link rel="stylesheet" type="text/css" href="../../view/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../view/css/main.css">
     <script src="../../view/js/index.js"></script>
 </head>
 <body>

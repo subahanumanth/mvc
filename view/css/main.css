@@ -1,27 +1,11 @@
-<style>
-#customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-  position:absolute;
-  table-layout: fixed;
+body{
+  background:-webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
 }
 
-#customers td, #customers th {
-  height:50px;
-  text-align: center;
-
+.bg-gra-01 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
-
-#customers tr:hover {background-color: #ddd;}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: #301934;
-  color: white;
+.container-table100 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
 }
-</style>

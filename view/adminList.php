@@ -5,15 +5,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="view/js/index.js"></script>
-  <link rel="stylesheet" href="view/css/adminList.css">
-  <link rel="stylesheet" href="view/css/util.css">
-<?php include ("css/main.css"); ?>
+  <link rel="stylesheet" href="view/css/admin.css">
 
 </head>
 <body>
   <div id="confirm">
      <div class="message"></div><hr class="hr"><br>
-     <button class="yes">Yes</button>
+     <button class="result">Yes</button>
      <button class="no">No</button>
   </div>
 <div class="topnav">
@@ -60,7 +58,7 @@ for ($i = 0;$i < count($list);$i++)
              <td class="column9"><?php echo $list[$i]['areaOfInterest'] ?></td>
              <td class="column10"><img style="height:40px" src="<?php echo $list[$i]['profilePicture'] ?>"></td>
              <td>
-               <button class="brn" id="del" onclick="functionConfirm('Are You Sure?', function yes() {
+               <button class="list" id="del" onclick="functionConfirm('Are You Sure?', function yes() {
                  location.replace('../../../../list/delete/'+<?php echo $list[$i]['id']; ?>);
                });"><i class="fa fa-trash"></i></button>
                <a href="../../../list/update/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a>

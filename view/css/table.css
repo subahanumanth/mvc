@@ -1,18 +1,11 @@
 <style>
 
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-
 @font-face {
   font-family: OpenSans-Regular;
   src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
 
-
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
 * {
 	margin: 0px;
 	padding: 0px;
@@ -24,35 +17,6 @@ body, html {
 	font-family: sans-serif;
 }
 
-/* ------------------------------------ */
-a {
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-}
-
-a:focus {
-	outline: none !important;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-/* ------------------------------------ */
-h1,h2,h3,h4,h5,h6 {margin: 0px;}
-
-p {margin: 0px;}
-
-ul, li {
-	margin: 0px;
-	list-style-type: none;
-}
-
-
-/* ------------------------------------ */
 input {
   display: block;
 	outline: none;
@@ -83,29 +47,9 @@ iframe {
 	border: none !important;
 }
 
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ Utiliti ]*/
-
-
-
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ Table ]*/
-
-.limiter {
-  width: 100%;
-  margin: 0 auto;
-}
-
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -120,7 +64,7 @@ background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a
 
 .wrap-table100 {
   width: 317px;
-  margin-bottom:150px;
+  margin-bottom:210px;
 }
 
 table {
@@ -142,7 +86,7 @@ table td, table th {
 }
 table thead tr {
   height: 60px;
-  background: #36304a;
+  background: #301934;
 }
 table tbody tr {
   height: 50px;
@@ -165,7 +109,7 @@ table td.r, table th.r {
 
 
 .table100-head th{
-  font-family: OpenSans-Regular;
+  font-family: sans-serif;
   font-size: 18px;
   color: #fff;
   line-height: 1.2;
@@ -197,6 +141,7 @@ tbody tr:hover {
 
 .column2 {
   width: 160px;
+  padding-left: 30px;
 }
 
 .column3 {
@@ -291,18 +236,6 @@ tbody tr:hover {
   }
 }
 
-@media (max-width: 576px) {
-  .container-table100 {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-.column1{
-  padding-left:50px;
-}
-.column2{
-  padding-left: 30px;
-}
 .table100 #del{
   padding-left:20px;
   color:black;
@@ -323,6 +256,7 @@ tbody tr:hover {
   height:20px;
   border-radius: 5px;
 }
+
 #sample {
   text-decoration: none;
 }
@@ -350,19 +284,6 @@ tbody tr:hover {
 .welcome {
   padding-left: 250px;
   font-size:20px;
-}
-#sample {
-  margin-left:125px;
-  border-radius:5px;
-  width:70px;
-  height:20px;
-  background-color: black;
-  color:white;
-  text-decoration: none;
-  margin-bottom:10px;
-}
-#sample1 {
-  text-decoration: none;
 }
 #confirm {
    display: none;
@@ -397,11 +318,12 @@ tbody tr:hover {
    text-align: center;
    color:black;
 }
-.yes {
+.result {
   margin-right: 30px;
 }
 .hr {
   margin-top:20px;
   border-color:black;
 }
+
 </style>
