@@ -14,21 +14,21 @@ class adminList
     {
         $conn = db::connection();
         $row = mysqli_query($conn, "select *from detail where id != $id");
-        $i = - 1;
+        $key = -1;
         if (mysqli_num_rows($row) > 0)
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i]['id'] = $rows['id'];
-                $list[$i]['firstName'] = $rows['first_name'];
-                $list[$i]['lastName'] = $rows['last_name'];
-                $list[$i]['dateOfBirth'] = $rows['date_of_birth'];
-                $list[$i]['detailsOfGraduation'] = $rows['details_of_graduation'];
-                $list[$i]['bloodGroup'] = $rows['blood_group'];
-                $list[$i]['gender'] = $rows['gender'];
-                $list[$i]['profilePicture'] = $rows['profile_picture'];
-                $list[$i]['rights'] = $rows['rights'];
+                $key++;
+                $list[$key]['id'] = $rows['id'];
+                $list[$key]['firstName'] = $rows['first_name'];
+                $list[$key]['lastName'] = $rows['last_name'];
+                $list[$key]['dateOfBirth'] = $rows['date_of_birth'];
+                $list[$key]['detailsOfGraduation'] = $rows['details_of_graduation'];
+                $list[$key]['bloodGroup'] = $rows['blood_group'];
+                $list[$key]['gender'] = $rows['gender'];
+                $list[$key]['profilePicture'] = $rows['profile_picture'];
+                $list[$key]['rights'] = $rows['rights'];
             }
         }
         db::close($conn);

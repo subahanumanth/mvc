@@ -124,7 +124,7 @@ class validate
             if (!isset($_SESSION['profile']))
             {
                 $this->error['profileError'] = "*please upload your profile picture";
-                $this->correctDetails['pp'] = 2;
+                $this->correctDetails['test'] = 2;
             }
             elseif (isset($_SESSION['profile']))
             {

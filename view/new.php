@@ -50,6 +50,7 @@ if (isset($url[1]) and !isset($_POST['submit']))
     echo $list['lname'];
 } ?>"><span class="nameerr"><?php echo $error['lastError']; ?></span>
 					</div>
+					<?php $pp = $list['profilePicture']; ?>
 
 					<span class="emailerr"><?php echo $error['emailError']; ?></span>
 						<span class="label-input100 em">Email</span>
@@ -60,8 +61,7 @@ if (isset($url[1]) and !isset($_POST['submit']))
 if (isset($url[1]) and !isset($_POST['submit']))
 {
     echo implode(",", $list['email']);
-} ?>"><br>
-
+} ?>">
 						<span class="moberr"><?php echo $error['mobileError']; ?></span>
 						<span class="label-input100 mob">Mobile Number</span>
 						<input style="width:90%; position:absolute;" type="text" name="mobile" id="mobile" value="<?php if (isset($_POST['submit']))
@@ -72,16 +72,13 @@ if (isset($url[1]) and !isset($_POST['submit']))
 {
     echo implode(",", $list['mobile']);
 } ?>">
-					<?php $pp = $list['profilePicture']; ?>
-						<div><br><br>
+
+						<div>
 						<span class="areaerr"><?php echo $error['areaOfInterestError']; ?></span><br>
 					<span class="label-input100 bot">Area Of Interest</span>
 					<?php
-					 $var = 'areaOfInterest';
-					 if ($var = 'areaOfInterest')
-					 {
-							 include ("./controller/areaOfInterest.php");
-					 }
+					 $page = 'areaOfInterest';
+					 include ("./controller/dropdown.php");
 					?>
 					<br>
 
@@ -97,23 +94,17 @@ if (isset($url[1]) and !isset($_POST['submit']))
 } ?>"><br>
 
              <span class="deterr"><?php echo $error['detailsOfGraduationError']; ?></span><br>
-						 <span class="label-input100 bg bot">Details Of Gradtion</span>
+						 <span class="label-input100 bg bot">Details Of Graduation</span>
 						 <?php
-						 $var = 'detailsOfGraduation';
-						 if ($var = 'detailsOfGraduation')
-						 {
-								 include ("./controller/detailsOfGraduation.php");
-						 }
-						?>
+	 					     $page = 'detailsOfGraduation';
+	 					     include ("./controller/dropdown.php");
+	 					 ?>
 
           <span class="nameerr"><?php echo $error['bloodGroupError']; ?></span>
 					<span class="label-input100 bg bot">Blood Group</span>
           <?php
-					 $var = 'bloodGroup';
-					 if ($var = 'bloodGroup')
-					 {
-					     include ("./controller/bloodGroup.php");
-					 }
+					    $page = 'bloodGroup';
+					    include ("./controller/dropdown.php");
 					?>
 
 					<span class="nameerr"><?php echo $error['genderError']; ?></span><br>
@@ -235,6 +226,7 @@ $('#mobile').tokenfield({
   },
   showAutocompleteOnFocus: true
  });
+
  });
 
 

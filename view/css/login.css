@@ -667,7 +667,7 @@ iframe {
   height : 10px;
 }
 .mob {
-  padding-right: 100px;
+  margin-right: 200px;
 }
 .emailerr {
   color:red;
@@ -680,6 +680,7 @@ iframe {
 .moberr {
   color:red;
   padding-left:10px;
+  margin-bottom: 0px;
   padding-top:20px;
 }
 #confirm {

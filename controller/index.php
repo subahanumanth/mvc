@@ -19,15 +19,15 @@ class index
     }
     public function manageBloodGroup()
     {
-        require ("bloodGroupTable.php");
+        require ("bloodGroup.php");
     }
     public function manageareaOfInterest()
     {
-        require ("areaOfInterestTable.php");
+        require ("areaOfInterest.php");
     }
     public function manageDetailsOfGraduation()
     {
-        require ("detailsOfGraduationTable.php");
+        require ("detailsOfGraduation.php");
     }
     public function logOut()
     {

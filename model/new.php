@@ -22,10 +22,8 @@ class newUser
         $profile = $detail['profilePicture'];
         $password = password_hash($detail['password'], PASSWORD_DEFAULT);
         $query = "insert into detail (first_name,last_name,date_of_birth,details_of_graduation,blood_group,gender,profile_picture,password,rights)
-      values('$fname','$lname','$dob',$dog,$bg,'$gender','$profile','$password',0);";
-        if (mysqli_query($conn, $query))
-        {
-        }
+        values('$fname','$lname','$dob',$dog,$bg,'$gender','$profile','$password',0);";
+        mysqli_query($conn, $query);
         db::close($conn);
     }
     public function fetchid()
@@ -104,8 +102,8 @@ class newUser
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i] = $rows['email_id'];
+                $key++;
+                $list[$key] = $rows['email_id'];
             }
         }
         return $list;
@@ -113,14 +111,14 @@ class newUser
     public function fetchMobile($id)
     {
         $conn = db::connection();
-        $i = - 1;
+        $key = -1;
         $row = mysqli_query($conn, "select *from mobile where user_id=$id");
         if (mysqli_num_rows($row) > 0)
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i] = $rows['mobile'];
+                $key++;
+                $list[$key] = $rows['mobile'];
             }
         }
         return $list;
@@ -128,7 +126,6 @@ class newUser
     public function fetchBloodGroup($id)
     {
         $conn = db::connection();
-        $i = - 1;
         $row = mysqli_query($conn, "select *from blood_group where id=$id");
         if (mysqli_num_rows($row) > 0)
         {
@@ -142,7 +139,6 @@ class newUser
     public function fetchDetailsOfGraduation($id)
     {
         $conn = db::connection();
-        $i = - 1;
         $row = mysqli_query($conn, "select *from details_of_graduation where id=$id");
         if (mysqli_num_rows($row) > 0)
         {
@@ -156,14 +152,14 @@ class newUser
     public function fetchAreaOfInterest($id)
     {
         $conn = db::connection();
-        $i = - 1;
+        $key = -1;
         $row = mysqli_query($conn, "select *from area_of_interest where user_id=$id");
         if (mysqli_num_rows($row) > 0)
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i] = $rows['area_of_interest'];
+                $key++;
+                $list[$key] = $rows['area_of_interest'];
             }
         }
         return $list;
@@ -185,7 +181,7 @@ class newUser
         {
             $password = $pass;
         }
-        if ($error['pp'] == 2)
+        if ($error['test'] == 2)
         {
             $profile = $prof;
         }
@@ -224,11 +220,7 @@ class newUser
         mysqli_query($conn, "delete from area_of_interest where user_id=$id");
         for ($key = 0;$key < count($error);$key++)
         {
-            if (mysqli_query($conn, "insert into area_of_interest (user_id,area_of_interest) values($id,'$error[$key]')"))
-            {
-                //header("Location:../login");
-
-            }
+            mysqli_query($conn, "insert into area_of_interest (user_id,area_of_interest) values($id,'$error[$key]')");
         }
         db::close($conn);
     }

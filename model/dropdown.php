@@ -3,7 +3,7 @@ class dropdown
 {
     public function bloodGroup()
     {
-        $i = - 1;
+        $key = -1;
         $conn = db::connection();
         $query = "select *from blood_group where is_deleted=1";
         $row = mysqli_query($conn, $query);
@@ -11,9 +11,9 @@ class dropdown
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i]['id'] = $rows['id'];
-                $list[$i]['bloodGroup'] = $rows['blood_group'];
+                $key++;
+                $list[$key]['id'] = $rows['id'];
+                $list[$key]['bloodGroup'] = $rows['blood_group'];
             }
         }
         db::close($conn);
@@ -21,7 +21,7 @@ class dropdown
     }
     public function detailsOfGraduation()
     {
-        $i = - 1;
+        $key = -1;
         $conn = db::connection();
         $query = "select *from details_of_graduation where is_deleted = 1";
         $row = mysqli_query($conn, $query);
@@ -29,9 +29,9 @@ class dropdown
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i]['id'] = $rows['id'];
-                $list[$i]['detailsOfGraduation'] = $rows['details_of_graduation'];
+                $key++;
+                $list[$key]['id'] = $rows['id'];
+                $list[$key]['detailsOfGraduation'] = $rows['details_of_graduation'];
             }
         }
         db::close($conn);
@@ -39,7 +39,7 @@ class dropdown
     }
     public function areaOfInterest()
     {
-        $i = - 1;
+        $key = -1;
         $conn = db::connection();
         $query = "select *from admin_area_of_interest where is_deleted=1";
         $row = mysqli_query($conn, $query);
@@ -47,12 +47,14 @@ class dropdown
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $i++;
-                $list[$i]['id'] = $rows['id'];
-                $list[$i]['areaOfInterest'] = $rows['area_of_interest'];
+                $key++;
+                $list[$key]['id'] = $rows['id'];
+                $list[$key]['areaOfInterest'] = $rows['area_of_interest'];
             }
         }
         db::close($conn);
         return $list;
     }
 }
+
+$dropdown = new dropdown ();
