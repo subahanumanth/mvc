@@ -1,8 +1,11 @@
 <?php
 session_start();
 $a = 1;
+
 include ("./model/connection.php");
 include ("./model/dropdown.php");
+include ("./model/commandPattern.php");
+
 include ("./model/new.php");
 $url = $_GET['url'];
 $url = explode("/", $url);

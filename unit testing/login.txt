@@ -1,4 +1,4 @@
-Unit test cases for loginpage:
+loginpage:
 
 if user enters correct name and password,after clicking submit button it redirects to admin page or user page according to input.
 

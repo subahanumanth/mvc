@@ -1,18 +1,19 @@
 <?php
+
 if ($page == "areaOfInterest")
 {
-    $list = $dropdown->areaOfInterest();
-    include ("./view/areaOfInterestDrop.php");
+    $list = $areaOfInterest->dropdown();
+    include ("./view/selectAreaOfInterest.php");
 }
 
-if ($page == "bloodGroup")
+elseif ($page == "bloodGroup")
 {
-    $list = $dropdown->bloodGroup();
-    include ("./view/bloodGroupDrop.php");
+    $list = $bloodGroup->dropdown();
+    include ("./view/selectBloodGroup.php");
 }
 
-if ($page == "detailsOfGraduation")
+elseif ($page == "detailsOfGraduation")
 {
-    $list = $dropdown->detailsOfGraduation ();
-    include("./view/detailsOfGraduationDrop.php");
+    $list = $detailsOfGraduation->dropdown ();
+    include("./view/selectDetailsOfGraduation.php");
 }

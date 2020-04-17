@@ -2,9 +2,9 @@
 <select name="detailsOfGraduation" class="selectdetails bot">
   <option value = "" selected disabled>Select</option>
   <?php
-for ($key = 0;$key < count($list);$key++)
-{
-?>
+  for ($key = 0;$key < count($list);$key++)
+  {
+  ?>
     <option class="optiond" value = "<?php echo $list[$key]['id']; ?>" <?php if (isset($_POST['submit']) and $_POST['detailsOfGraduation'] == $list[$key]['id'])
     {
         echo "selected";
@@ -13,8 +13,8 @@ for ($key = 0;$key < count($list);$key++)
     {
         echo "selected";
     } ?>><?php echo $list[$key]['detailsOfGraduation']; ?></option>
-    <?php
-}
-?>
+  <?php
+  }
+  ?>
 </select>
 </html>

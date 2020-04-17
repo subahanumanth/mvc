@@ -2,10 +2,11 @@
 <html>
 <head>
   <title>Admin Page</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script src="../../../view/js/jquery.min.js"></script>
   <script src="view/js/index.js"></script>
   <link rel="stylesheet" href="view/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -42,10 +43,10 @@
             </tr>
           </thead>
           <tbody>
-            <?php
-for ($i = 0;$i < count($list);$i++)
-{
-?>
+             <?php
+             for ($i = 0;$i < count($list);$i++)
+             {
+             ?>
              <tr>
              <td class="column1"><?php echo $list[$i]['firstName'] ?></td>
              <td class="column2"><?php echo $list[$i]['lastName'] ?></td>
@@ -65,8 +66,8 @@ for ($i = 0;$i < count($list);$i++)
              </td>
            </tr>
            <?php
-}
-?>
+           }
+           ?>
           </tbody>
         </table>
       </div>

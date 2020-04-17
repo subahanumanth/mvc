@@ -56,5 +56,3 @@ class dropdown
         return $list;
     }
 }
-
-$dropdown = new dropdown ();
