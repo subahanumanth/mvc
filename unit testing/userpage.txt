@@ -1,0 +1,8 @@
+Unit test cases of user page :
+
+If user is successfully logged in,the details of that user will be displayed.
+
+If user clicks the logout icon, then their session will be expired and they will be redirected to login page.
+
+If user clicks update button,it will be redirected to update form and their details will be pop-uped in that form.
+After updating details user will be redirected to user page inwhich updated details will be listed.

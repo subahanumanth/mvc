@@ -1,0 +1,11 @@
+body{
+  background:-webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
+}
+
+.bg-gra-01 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
+}
+
+.container-table100 {
+  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
+}

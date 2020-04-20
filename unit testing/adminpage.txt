@@ -1,0 +1,12 @@
+Unit test cases for admin page :
+
+All details of all users will be displayed here.
+
+In each user's row,there are two buttons such as delete and update.
+If delete button is clicked,that specific user's data will be deleted.
+If update button is clicked that specific user's details will be popped-up in the update form and now user can edit their details.
+
+If admin clicks the logout icon, then their session will be expired and they will be redirected to login page.
+
+At top of the page there is a navigation bar which contains three managing areas such as manage blood group, manage area of interest, manage details of graduation.
+If admin clicks each of these links it will go to their respective pages.
