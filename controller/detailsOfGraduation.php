@@ -1,5 +1,5 @@
 <?php
-include ("./model/connection.php");
+include ("autoload.php");
 include ("./model/table.php");
 include ("./model/tableAdapter.php");
 

@@ -6,4 +6,4 @@ if(isset($url[0])) {
   $controller = new index ();
   $controller->{$url[0]} ();
 }
-?>
+

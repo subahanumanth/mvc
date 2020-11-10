@@ -1,7 +1,7 @@
 <?php
 session_start();
 $rights = 3;
-include("./model/connection.php");
-include("./model/check.php");
+include("autoload.php");
+$check = check::getInstance();
 include("auth.php");
 ?>

@@ -226,5 +226,5 @@ class newUser
     }
 }
 
-$newUser = newUser::getInstance();
+
 ?>

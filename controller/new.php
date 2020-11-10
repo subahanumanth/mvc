@@ -2,11 +2,15 @@
 session_start();
 $a = 1;
 
-include ("./model/connection.php");
+include ("autoload.php");
 include ("./model/dropdown.php");
 include ("./model/commandPattern.php");
 
-include ("./model/new.php");
+$bloodGroup = new bloodGroup ();
+$areaOfInterest = new areaOfInterest ();
+$detailsOfGraduation = new detailsOfGraduation ();
+
+$newUser = newUser::getInstance();
 $url = $_GET['url'];
 $url = explode("/", $url);
 if (isset($url[1]) and isset($_SESSION['name']))

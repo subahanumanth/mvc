@@ -12,7 +12,7 @@
     <button class="no">No</button>
  </div>
  <div class="topnav">
-   <a href="../../list"><i class="fa fa-home"></i></a>
+   <a href="../../../list/1/5/"><i class="fa fa-home"></i></a>
    <a class="active" href="../../manageBloodGroup">Manage Blood Group</a>
    <a href="../../manageareaOfInterest">Manage Area Of Interest</a>
    <a href="../../manageDetailsOfGraduation">Manage Details Of Graduation</a>

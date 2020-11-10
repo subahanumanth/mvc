@@ -134,5 +134,5 @@ class check
     }
 }
 
-$check = check::getInstance();
+
 ?>
