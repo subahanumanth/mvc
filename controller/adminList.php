@@ -1,4 +1,8 @@
 <?php
+if(isset($_POST['query'])) {
+    $search = $_POST['query'];
+    echo $search;
+}
 include ("autoload.php");
 $url = $_GET['url'];
 $url = explode('/', $url);
@@ -33,7 +37,8 @@ if(isset($url[3]) and $url[3] == "sortByName") {
         $list[$i]['email'] = $adminList->showAllEmail($list[$i]['id']);
         $list[$i]['mobile'] = $adminList->showAllMobile($list[$i]['id']);
     }
-} else {
+} else if(!isset($search)) {
+    $a = 1;
     $list = $adminList->showAllDetail($_SESSION['id']);
     for ($i = 0;$i < count($list);$i++)
     {
@@ -43,6 +48,20 @@ if(isset($url[3]) and $url[3] == "sortByName") {
         $list[$i]['email'] = $adminList->showAllEmail($list[$i]['id']);
         $list[$i]['mobile'] = $adminList->showAllMobile($list[$i]['id']);
     }
+} else if(isset($search)) {
+    $a = 2;
+    echo "two";
+    $finalList = $adminList->showAllName($_SESSION['id'], $search);
+
+    for ($i = 0;$i < count($list);$i++)
+    {
+        $finalList[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id']);
+        $finalList[$i]['detailsOfGraduation'] = $adminList->showAllDetailsOfGraduation($list[$i]['id']);
+        $finalList[$i]['areaOfInterest'] = $adminList->showAllAreaOfInterest($list[$i]['id']);
+        $finalList[$i]['email'] = $adminList->showAllEmail($list[$i]['id']);
+        $finalList[$i]['mobile'] = $adminList->showAllMobile($list[$i]['id']);
+    }
+
 }
 $_SESSION['fullName'] = $adminList->selectName($_SESSION['id']);
 if ($url[1] == "delete" and isset($url[2]))
@@ -64,11 +83,17 @@ if(isset($url[1]) and isset($url[2]) and is_numeric($url[1])) {
     $from = ($url[1] * $records) - $records;
 } else {
     $records = 5;
-    if(isset($url[1]) and is_numeric($url[1])) {
+    if(isset($url[1]) and is_numeric($url[1]) and !isset($finalList)) {
         $to = $url[1] * $records;
         $from = ($url[1] * $records) - $records;
         $pages = ceil(count($list) / 5);
+    } else if(isset($finalList)){
+        $to = $url[1] * $records;
+        $from = ($url[1] * $records) - $records;
+        $pages = ceil(count($finalList) / 5);
+        echo $pages;
     }
 }
-include_once("./view/adminList.php");
+
+require("./view/adminList.php");
 ?>

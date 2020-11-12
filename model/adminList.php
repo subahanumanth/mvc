@@ -11,7 +11,8 @@ class adminList
 
     }
     public function showAllDetail($id)
-    {
+    { 
+        echo $searchName;
         $conn = db::connection();
         $row = mysqli_query($conn, "select *from detail where id != $id");
         $key = -1;
@@ -181,6 +182,31 @@ class adminList
     public function sortByGender ($id) {
         $conn = db::connection();
         $row = mysqli_query($conn, "select * from detail where id != $id order by gender");
+        $key = -1;
+        if (mysqli_num_rows($row) > 0)
+        {
+            while ($rows = mysqli_fetch_assoc($row))
+            {
+                $key++;
+                $list[$key]['id'] = $rows['id'];
+                $list[$key]['firstName'] = $rows['first_name'];
+                $list[$key]['lastName'] = $rows['last_name'];
+                $list[$key]['dateOfBirth'] = $rows['date_of_birth'];
+                $list[$key]['detailsOfGraduation'] = $rows['details_of_graduation'];
+                $list[$key]['bloodGroup'] = $rows['blood_group'];
+                $list[$key]['gender'] = $rows['gender'];
+                $list[$key]['profilePicture'] = $rows['profile_picture'];
+                $list[$key]['rights'] = $rows['rights'];
+            }
+        }
+        db::close($conn);
+        return $list;
+    }
+    public function showAllName($id, $searchName = null)
+    { 
+        echo $searchName;
+        $conn = db::connection();
+        $row = mysqli_query($conn, "select *from detail where id != $id and first_name like '{$searchName}%'");
         $key = -1;
         if (mysqli_num_rows($row) > 0)
         {

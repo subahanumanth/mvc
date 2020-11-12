@@ -1,18 +1,18 @@
+          <?php
+
+if(!isset($_POST['query'])) { 
+
+?>
 <!DOCTYPE html>
 <html>
-
-
 <head>
   <title>Admin Page</title>
   <script src="../../../view/js/jquery.min.js"></script>
   <script src="../../../view/js/index.js"></script>
-  <link rel="stylesheet" href="../../../../view/css/admin.css">
+  <link rel="stylesheet" href="../../../../view/css/admin.css">	
   <link rel="stylesheet" href="../../../../view/css/pagination.css">
 <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
-         
- 
-
 </head>
 <body>
 
@@ -27,6 +27,7 @@
   <a href="../../../../manageDetailsOfGraduation">Manage Details Of Graduation</a>
   <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
   <a href="../../../../logOut"><i class="fa fa-sign-out"></i></a>  </div>
+
 <div class="limiter">
   <div class="container-table100">
     <div class="wrap-table100">
@@ -34,6 +35,7 @@
         <h2 align="center">Details</h2><br>
  search here : <input type="text" name="search" id="search">
           <div id="res"></div><br>
+
         <table id="customers">
           <thead>
             <tr class="table100-head">
@@ -52,10 +54,15 @@
             </tr>
           </thead>
           <tbody>
+          <?php 
+
+}?>
              <?php
+
              for ($i = $from;$i < $to;$i++)
-             {
-             if(isset($list[$i]['id'])) {
+             { 
+             if(isset($list[$i]['id']) or isset($search)) {
+                          print_r($finalList);
              ?>
              <tr>
              <td class="column1"><?php echo $list[$i]['id'] ?></td>
@@ -77,15 +84,23 @@
              </td>
            </tr>
            <?php
+
            }
            }
+
            ?>
           </tbody>
         </table>
       </div>
     </div>
   </div>  
+
 </div><br><br><br>
+          <?php
+
+if(!isset($_POST['query'])) { 
+
+?>
     <div class="container">
     <?php if($url[1]-1 != 0) { ?>
     <a href="../../../../../list/<?php echo ($url[1]-1).'/'.$records.'/'.$url[3]; ?>" class="pagination"><</a>
@@ -114,7 +129,7 @@
   <option value="sortByName" <?php if(isset($url[3]) and $url[3] == "sortByName") {echo "selected"; } ?>>Name</option>
   <option value="sortByGender" <?php if(isset($url[3]) and $url[3] == "sortByGender") {echo "selected"; } ?>>Gender</option>
   </select>
-  
+
   <script>
   $('.sort').on('change', function() {
     var value = this.value;
@@ -137,11 +152,11 @@
     location.replace("../../../../list/1/"+value);
   });
   </script>
+
 <script>
 $(document).ready(function() {
     $("#search").keyup(function() {
         var txt = $(this).val();
-        console.log(txt);
         if(txt != "") {
             $.ajax({
                 method:"post",
@@ -151,13 +166,14 @@ $(document).ready(function() {
                     $("#res").html(data);
                 }
             });
-            return true;
         }
     });
 });
 </script>
+
   </div>
 </body>
 </html>
 
-
+<?php }
+?>
