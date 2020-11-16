@@ -1,18 +1,49 @@
-          <?php
 
-if(!isset($_POST['query'])) { 
-
-?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Admin Page</title>
+      <script src="../../view/js/jquery.dataTables.min.js"></script>
   <script src="../../../view/js/jquery.min.js"></script>
   <script src="../../../view/js/index.js"></script>
-  <link rel="stylesheet" href="../../../../view/css/admin.css">	
+
+  <link rel="stylesheet" href="../view/css/admin.css">	
   <link rel="stylesheet" href="../../../../view/css/pagination.css">
 <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+<script type = "text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  <style>
+  #customers_filter {
+      margin:0px 0px 10px 1050px;
+  }
+  .dataTables_info {
+      margin:20px 0px 20px 0px;
+      text-align:center;
+  }
+  .paging_simple_numbers {
+      text-align:center;
+  }
+
+  .paginate_button {
+      padding:6px 6px 6px 6px;
+      margin:10px 10px 10px 10px;
+      border-radius:0px;
+      border :1px solid black;
+      color:white;
+      background-color:#301934;
+  }
+    .current {
+      padding:6px 6px 6px 6px;
+      margin:10px 10px 10px 10px;
+      border-radius:0px;
+      border :1px solid black;
+      color:black;
+      background-color:red;
+  }
+
+ 
+  </style>  
 </head>
 <body>
 
@@ -22,20 +53,18 @@ if(!isset($_POST['query'])) {
      <button class="no">No</button>
   </div>
 <div class="topnav">
+<div class="<?php if(!isset($search)) {echo 'menu';} ?>">
   <a class="active" href="../../../../manageBloodGroup">Manage Blood Group</a>
   <a href="../../../../manageAreaOfInterest">Manage Area Of Interest</a>
   <a href="../../../../manageDetailsOfGraduation">Manage Details Of Graduation</a>
   <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
   <a href="../../../../logOut"><i class="fa fa-sign-out"></i></a>  </div>
-
+</div>
 <div class="limiter">
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="table100">
         <h2 align="center">Details</h2><br>
- search here : <input type="text" name="search" id="search">
-          <div id="res"></div><br>
-
         <table id="customers">
           <thead>
             <tr class="table100-head">
@@ -53,16 +82,12 @@ if(!isset($_POST['query'])) {
               <th class="column11">Action</th>
             </tr>
           </thead>
-          <tbody>
-          <?php 
+          <tbody>	
 
-}?>
              <?php
-
-             for ($i = $from;$i < $to;$i++)
+             for ($i = 0;$i < count($list);$i++)
              { 
-             if(isset($list[$i]['id']) or isset($search)) {
-                          print_r($finalList);
+             if(isset($list[$i]['id'])) {
              ?>
              <tr>
              <td class="column1"><?php echo $list[$i]['id'] ?></td>
@@ -96,84 +121,17 @@ if(!isset($_POST['query'])) {
   </div>  
 
 </div><br><br><br>
-          <?php
-
-if(!isset($_POST['query'])) { 
-
-?>
-    <div class="container">
-    <?php if($url[1]-1 != 0) { ?>
-    <a href="../../../../../list/<?php echo ($url[1]-1).'/'.$records.'/'.$url[3]; ?>" class="pagination"><</a>
-    <?php } ?>
-    <?php
-         if (isset($url[1]) and isset($url[2])) {
-             $pages = ceil(count($list) / $records);
-         } else {
-             $pages = ceil(count($list) / 5);
-         }
-         for ($i = 1;$i <= $pages;$i++) {
-    ?>
-    <a href="../../../../../list/<?php echo $i.'/'.$records.'/'.$url[3] ; ?>" class="<?php if($url[1] == $i) {echo 'dark';} else {echo 'pagination';} ?>"><?php echo $i; ?></a>
-    <?php
-    }
-    ?>
-    <?php if($url[1]+1 != $pages+1) { ?>
-    <a href="../../../../../list/<?php echo ($url[1]+1).'/'.$records.'/'.$url[3]; ?>" class="pagination">></a>
-    <?php } ?>
-    <br><br>
-    <br>
-  <i class="fa fa-filter"></i>
-     
-  <select class="sort">
-  <option>sort by</option>
-  <option value="sortByName" <?php if(isset($url[3]) and $url[3] == "sortByName") {echo "selected"; } ?>>Name</option>
-  <option value="sortByGender" <?php if(isset($url[3]) and $url[3] == "sortByGender") {echo "selected"; } ?>>Gender</option>
-  </select>
-
-  <script>
-  $('.sort').on('change', function() {
-    var value = this.value;
-    var str = window.location.pathname;
-    result = str.split("/");
-    location.replace("../../../../list/1/"+ result[3]+"/"+value);
-  });
-  </script>
-  
-  <select class="page">
-  <option>pages</option>
-  <option value="5" <?php if(isset($url[2]) and $url[2] == 5) {echo "selected"; } ?>>5</option>
-  <option value="10"<?php if(isset($url[2]) and $url[2] == 10) {echo "selected"; } ?>>10</option>
-  <option value="15" <?php if(isset($url[2]) and $url[2] == 15) {echo "selected"; } ?>>15</option>
-  <option value="20" <?php if(isset($url[2]) and $url[2] == 20) {echo "selected"; } ?>>20</option>
-  </select>
-  <script>
-  $('.page').on('change', function() {
-    var value = this.value;
-    location.replace("../../../../list/1/"+value);
-  });
-  </script>
 
 <script>
+
 $(document).ready(function() {
-    $("#search").keyup(function() {
-        var txt = $(this).val();
-        if(txt != "") {
-            $.ajax({
-                method:"post",
-                data:{query:txt},
-                processData:true,
-                success:function(data){
-                    $("#res").html(data);
-                }
-            });
-        }
-    });
+    $("#customers").DataTable();    
 });
 </script>
 
   </div>
 </body>
+
 </html>
 
-<?php }
-?>
+

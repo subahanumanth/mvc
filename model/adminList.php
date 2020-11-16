@@ -12,8 +12,18 @@ class adminList
     }
     public function showAllDetail($id)
     { 
-        echo $searchName;
         $conn = db::connection();
+        try {
+            if(isset($conn)) {
+
+            } else {
+                throw new Exception("Database Error");
+            }
+        }
+        catch (Exception $e) {
+            echo $e->getMessage();
+        }   
+
         $row = mysqli_query($conn, "select *from detail where id != $id");
         $key = -1;
         if (mysqli_num_rows($row) > 0)
@@ -226,6 +236,18 @@ class adminList
         }
         db::close($conn);
         return $list;
+    }
+    public function fetchData ($id) {
+        $conn = db::connection();
+        $row = mysqli_query($conn, "select id from detail");
+        if (mysqli_num_rows($row) > 0) {
+            while ($row = mysqli_fetch_assoc($row)) {
+                if($id == $row['id']) {
+                    return true;
+                    break;
+                } 
+            }
+        }
     }
 
 }

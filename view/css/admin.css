@@ -11,6 +11,9 @@ body {
   text-align:center;
   font-family:Arial, Helvetica, sans-serif;
 }
+.previous {
+  color:blue;
+}
 .pagination {
 
   margin-left:20px;
