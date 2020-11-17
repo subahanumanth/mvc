@@ -1,4 +1,4 @@
 <?php 
 if(isset($_POST['query'])) {
-    $name = $_POST['query'];
+    echo $_POST['query'];
 }

@@ -25,7 +25,7 @@ if (isset($_POST['submit']))
     else if (empty($rights))
     {
         session_destroy();
-        header("Location:login/error");
+        header("Location:../login/error");
     }
 }
 else
@@ -51,7 +51,7 @@ else
     else if (empty($rights))
     {
         session_destroy();
-        header("Location:login/error");
+        header("Location:../login/error");
     }
 }
 ?>

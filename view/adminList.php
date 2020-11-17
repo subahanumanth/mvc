@@ -4,15 +4,17 @@
 
 <head>
   <title>Admin Page</title>
+
       <script src="../../view/js/jquery.dataTables.min.js"></script>
   <script src="../../../view/js/jquery.min.js"></script>
   <script src="../../../view/js/index.js"></script>
 
-  <link rel="stylesheet" href="../view/css/admin.css">	
+  <link rel="stylesheet" href="../../view/css/admin.css">	
   <link rel="stylesheet" href="../../../../view/css/pagination.css">
 <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type = "text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+
   <style>
   #customers_filter {
       margin:0px 0px 10px 1050px;
@@ -49,11 +51,11 @@
 
   <div id="confirm">
      <div class="message"></div><hr class="hr"><br>
-     <button class="result">Yes</button>
-     <button class="no">No</button>
+     <button class="result" >Yes</button>
+     <button value="1" class="no">No</button>
   </div>
 <div class="topnav">
-<div class="<?php if(!isset($search)) {echo 'menu';} ?>">
+<div>
   <a class="active" href="../../../../manageBloodGroup">Manage Blood Group</a>
   <a href="../../../../manageAreaOfInterest">Manage Area Of Interest</a>
   <a href="../../../../manageDetailsOfGraduation">Manage Details Of Graduation</a>
@@ -68,7 +70,6 @@
         <table id="customers">
           <thead>
             <tr class="table100-head">
-              <th class="column1">ID</th>
               <th class="column1">First Name</th>
               <th class="column2">Last Name</th>
               <th class="column3">DOB</th>
@@ -90,7 +91,6 @@
              if(isset($list[$i]['id'])) {
              ?>
              <tr>
-             <td class="column1"><?php echo $list[$i]['id'] ?></td>
              <td class="column1"><?php echo $list[$i]['firstName'] ?></td>
              <td class="column2"><?php echo $list[$i]['lastName'] ?></td>
              <td class="column3"><?php echo date("d-M-Y", strtotime($list[$i]['dateOfBirth'])); ?></td>
@@ -102,7 +102,7 @@
              <td class="column9"><?php echo $list[$i]['areaOfInterest'] ?></td>
              <td class="column10"><img style="height:40px" src="<?php echo $list[$i]['profilePicture'] ?>"></td>
              <td>
-               <button class="list" id="del" onclick="functionConfirm('Are You Sure?', function yes() {
+               <button class="list" id="del" value="<?php echo $list[$i]['id'] ?>" onclick="functionConfirm('Are You Sure?', function yes() {
                  location.replace('../../../../list/delete/'+<?php echo $list[$i]['id']; ?>);
                });"><i class="fa fa-trash"></i></button>
                <a href="../../../list/update/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a>
@@ -119,17 +119,18 @@
       </div>
     </div>
   </div>  
-
+<div id="res"></div>
 </div><br><br><br>
 
-<script>
 
-$(document).ready(function() {
-    $("#customers").DataTable();    
-});
+    <script>
+
+  $(document).ready(function() {
+      $("#customers").DataTable();
+  });
 </script>
 
-  </div>
+</div>
 </body>
 
 </html>

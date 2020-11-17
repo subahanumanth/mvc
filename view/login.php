@@ -28,7 +28,7 @@ if (isset($_SESSION['password']))
                     <h2 class="title">Login Info</h2>
                     <div id="error">
                     </div>
-                    <form method="POST" action="../list/1">
+                    <form method="POST" action="../list">
                         <div class="input-group">
                             <input class="input--style-3" type="text" placeholder="Name" name="name">
                         </div>
