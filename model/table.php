@@ -64,4 +64,38 @@ class table
         mysqli_query($conn, $query);
         db::close($conn);
     }
+    public function check ($id, $columnName) 
+    {
+        $conn = db::connection();
+        $query = "select {$columnName} from detail";
+        $row = mysqli_query($conn, $query);
+        if (mysqli_num_rows($row) > 0) {
+            while ($rows = mysqli_fetch_assoc($row)) {
+                if($id == $rows[$columnName]) {
+                    return true;
+                    break;
+                } else {
+                    continue;
+                }
+            }
+        }
+        db::close($conn);    
+    }
+    public function checkArea ($id) 
+    {
+        $conn = db::connection();
+        $query = "select area_of_interest from area_of_interest";
+        $row = mysqli_query($conn, $query);
+        if (mysqli_num_rows($row) > 0) {
+            while ($rows = mysqli_fetch_assoc($row)) {
+                if($id == $rows['area_of_interest']) {
+                    return true;
+                    break;
+                } else {
+                    continue;
+                }
+            }
+        }
+        db::close($conn);    
+    }
 }

@@ -4,6 +4,14 @@
 <link rel="stylesheet" href="../../../view/css/table.css">
 <link rel="stylesheet" href="../../../view/css/main.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
+<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<style>
+#toast-container {
+  margin-top:40px;   
+}
+</style>
 <title>Blood Group Table</title>
 
  <div id="confirm">
@@ -37,10 +45,10 @@
              for ($i = 0;$i < count($list);$i++)
              {
              ?>
-             <tr>
+             <tr class="<?php echo $list[$i]['id'] ?>">
              <td class="column1" id="rem"><?php echo $list[$i]['bloodGroup']; ?></td>
              <td><button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
-               location.replace('../../managebloodGroup/delete/'+<?php echo $list[$i]['id']; ?>);
+             var a = <?php echo $list[$i]['id'] ?>; display(a);
              });"><i class="fa fa-trash"></i></button>
                  <a href="../../managebloodGroup/update/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
              </td>
@@ -68,6 +76,20 @@
       </div>
     </div>
   </div>
+  <div id="res"></div>
+<script>
+function display(id) { 
+    if(id != "") {
+        $.ajax({ 
+            type:"post",
+            data:{query:id},
+            success:function(data) {
+                $("#res").html(data);
+            }
+        });
+     }
+}
+</script>
 </div>
 
 </html>

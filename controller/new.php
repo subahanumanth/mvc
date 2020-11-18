@@ -34,5 +34,6 @@ if (isset($_POST['cancel']))
     header("Location:../list");
 }
 include ("validation.php");
+session_start();
 include ("./view/new.php");
 ?>

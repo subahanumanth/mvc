@@ -18,6 +18,12 @@ if (isset($_SESSION['password']))
     <link rel="stylesheet" type="text/css" href="../../view/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../../view/css/main.css">
     <script src="../../view/js/index.js"></script>
+     <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
+
+
+
 </head>
 <body>
     <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
@@ -46,7 +52,12 @@ if (isset($_SESSION['password']))
     </div>
 </body>
 </html>
-
+<?php
+if(isset($_SESSION['register'])) { ?>
+    <script>toastr.success("Registered Successfully");</script>
+<?php
+}
+?>
 <?php
 $url = $_GET['url'];
 $url = explode('/', $url);

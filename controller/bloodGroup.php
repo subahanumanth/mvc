@@ -5,11 +5,21 @@ include ("./model/tableAdapter.php");
 
 $url = $_GET['url'];
 $url = explode('/', $url);
-if ($url[1] == "delete" and isset($url[2]))
-{
-    $table->delete($url[2], "blood_group");
-    header("Location:../../manageBloodGroup");
-}
+if(isset($_POST['query'])) {
+    $id = $_POST['query'];
+    echo $id;
+    if($table->check($id, "blood_group")) { ?>
+        <script>toastr.error("Deletion Failed");</script>
+        <?php
+        exit;
+    } else {
+        $table->delete($id, "blood_group"); ?>
+        <script>$("."+<?php echo $id; ?>).remove();toastr.warning("Deleted Successfully");</script>
+<?php
+        exit;
+    }
+}  
+
 if ($url[1] == "add" and isset($_POST['submit']))
 {
     $bg = $_POST['bg'];

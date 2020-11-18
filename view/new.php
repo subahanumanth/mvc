@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="../../../view/css/jquery.min.css">
 	<link rel="stylesheet" href="../../../view/css/login.css">
 	<link rel="stylesheet" href="../../../view/css/demo.css">
+	  <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
+
 </head>
 <body style="background-color: #999999;">
 
@@ -178,11 +181,19 @@
 <?php
 if ($error['val'] == 3)
 {
+
+    $_SESSION['register'] = 3;
 ?>
  <script>
-  functionConfirm('Successfully Registered', function yes() {
-    location.replace('../../login');
-  });
+ display();
+function display() {
+    $.ajax({ 
+        success:function() {
+        location.href = "../login";
+        }
+    });
+
+}
  </script>
  <?php
 }
@@ -191,11 +202,18 @@ if ($error['val'] == 3)
 <?php
 if ($error['val'] == 2)
 {
+    $_SESSION['update'] = 3;
 ?>
  <script>
-  functionConfirm('Successfully Updated', function yes() {
-    location.replace('../../list');
-  });
+ display();
+function display() {
+    $.ajax({ 
+        success:function() {
+        location.href = "../list";
+        }
+    });
+
+}
  </script>
  <?php
 }

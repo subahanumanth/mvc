@@ -8,10 +8,12 @@
       <script src="../../view/js/jquery.dataTables.min.js"></script>
   <script src="../../../view/js/jquery.min.js"></script>
   <script src="../../../view/js/index.js"></script>
-
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="../../view/css/admin.css">	
   <link rel="stylesheet" href="../../../../view/css/pagination.css">
-<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
 <script type = "text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 
@@ -43,7 +45,9 @@
       color:black;
       background-color:red;
   }
-
+    #toast-container {
+        margin-top:40px;
+    }
  
   </style>  
 </head>
@@ -70,6 +74,7 @@
         <table id="customers">
           <thead>
             <tr class="table100-head">
+              <th class="column1">Id</th>
               <th class="column1">First Name</th>
               <th class="column2">Last Name</th>
               <th class="column3">DOB</th>
@@ -90,7 +95,8 @@
              { 
              if(isset($list[$i]['id'])) {
              ?>
-             <tr>
+             <tr class="<?php echo $list[$i]['id'] ?>">
+             <td class="column1"><?php echo $list[$i]['id'] ?></td>
              <td class="column1"><?php echo $list[$i]['firstName'] ?></td>
              <td class="column2"><?php echo $list[$i]['lastName'] ?></td>
              <td class="column3"><?php echo date("d-M-Y", strtotime($list[$i]['dateOfBirth'])); ?></td>
@@ -102,8 +108,7 @@
              <td class="column9"><?php echo $list[$i]['areaOfInterest'] ?></td>
              <td class="column10"><img style="height:40px" src="<?php echo $list[$i]['profilePicture'] ?>"></td>
              <td>
-               <button class="list" id="del" value="<?php echo $list[$i]['id'] ?>" onclick="functionConfirm('Are You Sure?', function yes() {
-                 location.replace('../../../../list/delete/'+<?php echo $list[$i]['id']; ?>);
+               <button class="list" id="del" value="<?php echo $list[$i]['id'] ?>" onclick="functionConfirm('Are You Sure?', function yes() { var a = <?php echo $list[$i]['id'] ?>; display(a);
                });"><i class="fa fa-trash"></i></button>
                <a href="../../../list/update/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a>
              </td>
@@ -121,10 +126,29 @@
   </div>  
 <div id="res"></div>
 </div><br><br><br>
-
-
+<?php
+session_start();
+if(isset($_SESSION['update'])) { ?>
+    <script>toastr.success("Updated Successfully");</script>
+<?php
+$_SESSION['update'] = null;
+}
+?>
     <script>
 
+function display(id) {
+    if(id != "") {
+        $.ajax({ 
+            type:"post",
+            data:{query:id},
+            success:function(data) {
+                $("."+id).remove();
+                $("#res").html(data);
+                toastr.warning("Deleted Successfully");
+            }
+        });
+     }
+}
   $(document).ready(function() {
       $("#customers").DataTable();
   });

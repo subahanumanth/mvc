@@ -733,4 +733,8 @@ font-size: 16px;
 color: #fff;
 line-height: 1.2;
 }
+
+#toast-container {
+    margin-top:400px;
+}
 </style>

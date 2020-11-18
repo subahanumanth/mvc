@@ -37,6 +37,18 @@ class tableAdapter
             ->variable
             ->update($id, $value, $tableName, $columnName);
     }
+    public function check($id, $columnName)
+    {
+        return $this
+            ->variable
+            ->check($id, $columnName);
+    }
+    public function checkArea ($id)  
+    {
+        return $this
+            ->variable
+            ->checkArea($id);
+    }
 }
 $table = new tableAdapter ();
 ?>

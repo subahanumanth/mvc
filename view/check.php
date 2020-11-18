@@ -2,6 +2,14 @@
 <link rel="stylesheet" href="../../view/css/main.css">
 <link rel="stylesheet" href="../../view/css/check.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <style>
+  #toast-container {
+    margin-top:50px;
+}
+  </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
 <title>User Page</title>
 <?php
 $name = $list['first_name'] . " " . $list['last_name'];
@@ -21,4 +29,12 @@ $name = $list['first_name'] . " " . $list['last_name'];
 <span class="aoi"><b>Area Of Interest &nbsp;&nbsp;&nbsp;&nbsp;&emsp; <?php echo $listAreaOfInterest ?></b></span><br><br><br>
 <a href="../new/<?php echo $_SESSION['id']; ?>" id="sample"><span class="up">Update</span></a>
 </div>
+<?php
+session_start();
+if(isset($_SESSION['update'])) { ?>
+    <script>toastr.success("Updated Successfully");</script>
+<?php
+$_SESSION['update'] = null;
+}
+?>
 </html>

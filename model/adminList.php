@@ -199,6 +199,7 @@ class adminList
         }
         catch (Exception $e) {
             error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
+            return false;            
         } 
         db::close($conn);
     }
@@ -215,6 +216,7 @@ class adminList
         }
         catch (Exception $e) {
             error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
+            return false;            
         } 
         db::close($conn);
     }
@@ -231,6 +233,7 @@ class adminList
         }
         catch (Exception $e) {
             error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
+            return false;            
         } 
         db::close($conn);
     }
@@ -249,6 +252,19 @@ class adminList
             error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
             return false;
         } 
+        db::close($conn);
+    }
+    public function commit()
+    {
+        $conn = db::connection();
+        mysqli_autocommit($conn, FALSE);
+        mysqli_commit($conn);
+        db::close($conn);
+    }
+    public function rollback()
+    {
+        $conn = db::connection();
+        mysqli_rollback($conn);
         db::close($conn);
     }
 }
