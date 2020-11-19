@@ -1,7 +1,9 @@
 <?php
+
 class adminList
 {
     public static $instance;
+    public $name;
     public static function getInstance()
     {
         return adminList::$instance = new adminList();
@@ -94,22 +96,6 @@ class adminList
         return implode(',', $list);
     }
 
-    public function selectName($id)
-    {
-        $conn = db::connection();
-        $query = "select *from detail where id=$id";
-        $row = mysqli_query($conn, $query);
-        if (mysqli_num_rows($row) > 0)
-        {
-            while ($rows = mysqli_fetch_assoc($row))
-            {
-                $firstName = $rows['first_name'];
-                $lastName = $rows['last_name'];
-            }
-        }
-        db::close($conn);
-        return $firstName . " " . $lastName;
-    }
     public function showAllBloodGroup($id, $i)
     {
         $conn = db::connection();
@@ -186,6 +172,22 @@ class adminList
         $aoi = implode(",", $aoi);
         return $aoi;
     }
+    public function selectName($id)
+    {
+        $conn = db::connection();
+        $query = "select *from detail where id=$id";
+        $row = mysqli_query($conn, $query);
+        if (mysqli_num_rows($row) > 0)
+        {
+            while ($rows = mysqli_fetch_assoc($row))
+            {
+                $firstName = $rows['first_name'];
+                $lastName = $rows['last_name'];
+            }
+        }
+        db::close($conn);
+        return $firstName . " " . $lastName;
+    }
     public function deleteEmail($id)
     {
         $conn = db::connection();
@@ -241,15 +243,19 @@ class adminList
     {
         $conn = db::connection();
         $query = "delete from detail where id=$id";
+        $run = mysqli_query($conn, $query);
+        $row = mysqli_affected_rows($conn);
          try {
-            if(!($row = mysqli_query($conn, $query))) {
+            if($row <= 0 && !(mysqli_query($conn, $query))) {
                  throw new Exception("Error in Deleting Detail at ".__FILE__." in deleteDetail() function");
-            } else {
+            } else if($row == 1) {
                 return true;
+            } else {
+                return false;
             }
         }
         catch (Exception $e) {
-            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
+            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "../../model/error.php");
             return false;
         } 
         db::close($conn);
@@ -267,6 +273,16 @@ class adminList
         mysqli_rollback($conn);
         db::close($conn);
     }
+    public function setName ($name) 
+    {
+        $this->name = $name;
+        return $this->name;
+    }
+    public function getName() 
+    {
+        return "hanu";
+    }
+
 }
 
 

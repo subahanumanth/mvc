@@ -475,3 +475,13 @@
 [November 18,2020,3:05]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
 [November 18,2020,3:05]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
 [November 18,2020,3:05]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 19,2020,3:37]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:14]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:14]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:15]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:17]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:18]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:20]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:20]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:21]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function
+[November 19,2020,10:21]Error in Deleting Detail at /var/www/html/usermanagementsystem/model/adminList.php in deleteDetail() function

@@ -1,9 +1,9 @@
 <?php 
-
-include ("autoload.php");
+include ("./model/adminList.php");
 $url = $_GET['url'];
 $url = explode('/', $url);
 $adminList = adminList::getInstance();
+
 if(isset($_POST['query'])) {
     $id = $_POST['query'];
     $conn = mysqli_connect("localhost", "hanu", "1234", "profile");

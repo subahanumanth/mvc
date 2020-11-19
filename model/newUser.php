@@ -13,17 +13,24 @@ class newUser
     public function insertDetail($detail)
     {
         $conn = db::connection();
-        $fname = $detail['firstName'];
-        $lname = $detail['lastName'];
-        $dob = $detail['date'];
-        $dog = $detail['detailsOfGraduation'];
-        $bg = $detail['bloodGroup'];
-        $gender = $detail['gender'];
-        $profile = $detail['profilePicture'];
-        $password = password_hash($detail['password'], PASSWORD_DEFAULT);
-        $query = "insert into detail (first_name,last_name,date_of_birth,details_of_graduation,blood_group,gender,profile_picture,password,rights)
+        if(isset($detail)) {
+            $fname = $detail['firstName'];
+            $lname = $detail['lastName'];
+            $dob = $detail['date'];
+            $dog = $detail['detailsOfGraduation'];
+            $bg = $detail['bloodGroup'];
+            $gender = $detail['gender'];
+            $profile = $detail['profilePicture'];
+            $password = password_hash($detail['password'], PASSWORD_DEFAULT);
+            $query = "insert into detail     (first_name,last_name,date_of_birth,details_of_graduation,blood_group,gender,profile_picture,password,rights)
         values('$fname','$lname','$dob',$dog,$bg,'$gender','$profile','$password',0);";
         mysqli_query($conn, $query);
+        if(mysqli_affected_rows($conn) == 1) {
+            return true;
+        }
+        } else {
+            return false;
+        }
         db::close($conn);
     }
     public function fetchid()
