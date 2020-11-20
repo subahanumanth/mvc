@@ -13,6 +13,23 @@ $detailsOfGraduation = new detailsOfGraduation ();
 $newUser = newUser::getInstance();
 $url = $_GET['url'];
 $url = explode("/", $url);
+if(!isset($url[1])) {
+if(count($_POST) > 0) {
+    $nameExist = $newUser->checkFirstName ($_POST['firstName']);
+    $_POST['emailn'] = explode(", ", $_POST['email']);    
+    for($i = 0;$i < count($_POST['emailn']);$i++) {
+        $emailExist[] = $newUser->checkEmail ($_POST['emailn'][$i]);
+    }
+    $_POST['mobileNew'] = explode(', ', $_POST['mobile']);  
+    for($i = 0;$i < count($_POST['mobileNew']);$i++) {
+        $mobileExist[] = $newUser->checkMobile ($_POST['mobileNew'][$i]);
+    }     
+}
+} else {
+    $nameExist = "false";
+    $emailExist = ["false"];
+    $mobileExist = ["false"];
+}
 if (isset($url[1]) and isset($_SESSION['name']))
 {
     $id = $url[1];

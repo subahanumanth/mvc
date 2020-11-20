@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../../../../view/css/pagination.css">
   <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
 <script type = "text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -135,23 +136,24 @@ $_SESSION['update'] = null;
 }
 ?>
     <script>
-
+  $(document).ready(function() {
+      var table = $("#customers").DataTable();
+  });
 function display(id) {
     if(id != "") {
         $.ajax({ 
+            url:"./view/delete.php",
             type:"post",
             data:{query:id},
             success:function(data) {
-                $("."+id).remove();
                 $("#res").html(data);
-                toastr.warning("Deleted Successfully");
+                //$('#customers').DataTable().ajax.reload();
+                console.log(id);
             }
         });
      }
 }
-  $(document).ready(function() {
-      $("#customers").DataTable();
-  });
+
 </script>
 
 </div>

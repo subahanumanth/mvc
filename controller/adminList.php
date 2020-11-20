@@ -4,26 +4,7 @@ $url = $_GET['url'];
 $url = explode('/', $url);
 $adminList = adminList::getInstance();
 
-if(isset($_POST['query'])) {
-    $id = $_POST['query'];
-    $conn = mysqli_connect("localhost", "hanu", "1234", "profile");
-    mysqli_autocommit($conn, FALSE);
 
-        mysqli_commit($conn);
-    if($adminList->deleteEmail($id) && $adminList->deleteMobile($id) && $adminList->deleteAreaOfInterest($id) && $adminList->deleteDetail($id)) {
-        mysqli_commit($conn);
-        echo "all deleted";
-        exit;
-    } else {
-            echo mysqli_rollback($conn);
-        echo "non deleted";
-        $result = mysqli_query($conn, "select @@autocommit");
-        $row = mysqli_fetch_row($result);
-        echo $row[0];
-        mysqli_close($conn);
-        exit;
-    }
-}
 $list = $adminList->showAllDetail($_SESSION['id']);
 for ($i = 0;$i < count($list);$i++)
 {

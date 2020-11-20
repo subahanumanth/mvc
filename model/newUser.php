@@ -188,16 +188,16 @@ class newUser
         {
             $password = $pass;
         }
-        if ($error['test'] == 2)
-        {
+        session_start();
+        if($_SESSION['set'] == 0) {
+            $profile = "./controller/uploads/".$_SESSION['profile']['name'];
+        } 
+        else {
             $profile = $prof;
         }
-        else
-        {
-            session_start();
-            $profile = "./controller/uploads/".$_SESSION['profile'];
-        }
         $query = "update detail set first_name='$fname',last_name='$lname',date_of_birth='$date',details_of_graduation=$dog,blood_group=$bg,gender='$gender',profile_picture='$profile',password='$password' where id=$id";
+                    $_SESSION['set'] = null; 
+            $_SESSION['profile']['name'] = null;
         mysqli_query($conn, $query);
         db::close($conn);
     }
@@ -231,7 +231,50 @@ class newUser
         }
         db::close($conn);
     }
+    public function checkFirstName ($name) 
+    {
+        $conn = db::connection();
+        $row = mysqli_query($conn, "select * from detail where first_name = '{$name}'");        
+        if(mysqli_num_rows($row) > 0) 
+        {
+             return "true";
+        } 
+        else
+        {
+            return "false";
+        }
+        db::close($conn);
+    }
+    public function checkEmail ($email) 
+    {
+        $conn = db::connection();
+        $row = mysqli_query($conn, "select * from email where email_id = '{$email}'"); 
+        if(mysqli_num_rows($row) > 0) 
+        {
+             return "true";
+        } 
+        else
+        {
+            return "false";
+        }
+        db::close($conn);
+    }
+    public function checkMobile ($mobile) 
+    {
+        $conn = db::connection();
+        $row = mysqli_query($conn, "select * from mobile where mobile = '{$mobile}'"); 
+        if(mysqli_num_rows($row) > 0) 
+        {
+             return "true";
+        } 
+        else
+        {
+            return "false";
+        }
+        db::close($conn);
+    }
 }
+
 
 
 ?>

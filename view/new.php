@@ -129,8 +129,9 @@
 					<span class="profile"><?php if (isset($url[1]))
           {
               echo end(explode('/', $pp));
+              $_SESSION['pp'] = 2;
           }
-          echo $_SESSION['profile'];
+
 					?></span>
           <input type="file" class="file bot" name="profile">
 
