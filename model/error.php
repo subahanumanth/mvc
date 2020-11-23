@@ -756,3 +756,9 @@
 [November 20,2020,11:07]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
 [November 20,2020,11:07]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
 [November 20,2020,11:07]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 23,2020,7:32]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 23,2020,7:32]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 23,2020,7:32]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 23,2020,7:32]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 23,2020,7:32]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 23,2020,7:32]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php

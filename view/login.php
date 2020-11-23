@@ -58,18 +58,9 @@ if(isset($_SESSION['register'])) { ?>
 <?php
 }
 ?>
-<?php
-$url = $_GET['url'];
-$url = explode('/', $url);
-
-if ($url[1] == "error")
-{
-?>
-  <html>
- <script>
- error();
- </script>
- </html>
- <?php
+<?php 
+if(isset($_SESSION['loginError'])) { ?>
+    <script>error();</script>
+    <?php
+    $_SESSION['loginError']=null;
 }
-?>

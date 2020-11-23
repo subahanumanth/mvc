@@ -51,7 +51,7 @@
              <td><button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
              var a = <?php echo $list[$i]['id'] ?>; display(a);
              });"><i class="fa fa-trash"></i></button>
-                 <a href="../../manageDetailsOfGraduation/update/<?php echo $list[$i]['id']; ?>" id="del"><i class="fa fa-edit edit"></i></a>
+                 <button id="del" class="update" onclick="update (<?php echo $list[$i]['id']; ?>,'<?php echo $list[$i]['detailsOfGraduation']; ?>')"><i class="fa fa-edit edit"></i></button>
             </td>
              </tr>
            <?php
@@ -59,39 +59,63 @@
            ?>
           </tbody>
         </table><br>
-        <a href="../../../../manageDetailsOfGraduation/add" id="sample"><input type="submit" name="submit" value="Add" id="samp"></a><br>
-        <?php
-        if ($url[1] == "add" or $url[1] == "update")
-        {
-        ?>
-          <html>
-          <form method="post">
-              <input type="text" id="blood" name="bg" value="<?php if (isset($url[2]))
-        {
-            echo $value;
-        } ?>"/><br>
-              <input type="submit" name="submit" value="Submit" id="samp">
-            </form>
-        </html>
-        <?php
-        }
-        ?>
+          <button id="samp" class="add">Add</button></a><br><br>
+          <div style="display:none" id="form">
+          <input type="text" id="blood" name="bg" placeholder="Enter Details Of Graduation Here" /><br>
+          <button id="samp" class="submit">Submit</button>
+          </div>
       </div>
     </div>
   </div>
     <div id="res"></div>
 </div>
 <script>
-function display(id) {
+function display(id) { 
     if(id != "") {
         $.ajax({ 
+            url:"./view/delete.php",
             type:"post",
-            data:{query:id},
+            data:{query:id, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
             success:function(data) {
                 $("#res").html(data);
             }
         });
      }
 }
+function update (id, bg) {
+    console.log(id);
+    $("#blood").val(bg);
+    $("#form").show();
+    $(".submit").click(function () {    
+        var value = $("#blood").val();        
+        console.log(value);
+        $.ajax({
+            url:"./view/update.php",
+            type:"post",
+            data:{id:id, bg:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
+            success:function(data) {
+                location.reload(true);
+            }  
+        });
+    });
+}
+
+$(document).ready(function () { 
+    $(".add").click (function () {
+        $("#form").show();
+        $(".submit").click(function () {
+            var value = $("#blood").val();
+            $.ajax({
+                url:"./view/update.php",
+                type:"post",
+                data:{query:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
+                success:function(data) {
+                    location.reload(true);
+                }  
+            });
+        });
+    });     
+ 
+});
 </script>
 </html>

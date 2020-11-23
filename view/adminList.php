@@ -144,9 +144,10 @@ function display(id) {
         $.ajax({ 
             url:"./view/delete.php",
             type:"post",
-            data:{query:id},
+            data:{query:id, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
             success:function(data) {
                 $("#res").html(data);
+                location.reload(true);
                 //$('#customers').DataTable().ajax.reload();
                 console.log(id);
             }

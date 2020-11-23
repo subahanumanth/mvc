@@ -1,7 +1,0 @@
-loginpage:
-
-if user enters correct name and password,after clicking submit button it redirects to admin page or user page according to input.
-
-if user enters wrong name or password,after clicking submit button it will throw an error like Incorrect username or password.
-
-if user clicks "Create New User?",it will redirects to registration page.
