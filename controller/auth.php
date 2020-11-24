@@ -20,6 +20,7 @@ if (isset($_POST['submit']))
         $listEmail = $check->selectEmail($_SESSION['id']);
         $listMobile = $check->selectMobile($_SESSION['id']);
         include ("./view/check.php");
+
     }
     else if (empty($rights))
     {

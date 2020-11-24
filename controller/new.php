@@ -1,7 +1,6 @@
 <?php
 session_start();
 $a = 1;
-
 include ("autoload.php");
 include ("./model/dropdown.php");
 include ("./model/commandPattern.php");
@@ -44,8 +43,8 @@ if (isset($url[1]) and isset($_SESSION['name']))
     $aoi = $list['aoi'];
     $profile = $list['profilePicture'];
     $password = $list['password'];
+    $_SESSION['userPassword'] = $password;
 }
-
 if (isset($_POST['cancel']))
 {
     header("Location:../list");

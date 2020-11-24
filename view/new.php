@@ -129,7 +129,7 @@
 					<span class="profile"><?php if (isset($url[1]))
           {
               echo end(explode('/', $pp));
-              $_SESSION['pp'] = 2;
+              $_SESSION['pp'] = $pp;
           }
 
 					?></span>
@@ -220,7 +220,9 @@ function display() {
 }
 ?>
 <script>
+
 $(document).ready(function(){
+
 $('#email').tokenfield();
 $('#mobile').tokenfield();
  });

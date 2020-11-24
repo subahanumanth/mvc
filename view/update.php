@@ -5,14 +5,14 @@ include ("../model/tableAdapter.php");
 if($_POST['page'] == "/manageBloodGroup") {
     if(isset($_POST['query'])) { 
         $bg = $_POST['query'];
-        $table->save($bg, "blood_group", "blood_group"); ?>
-        <script>$("#form").hide();</script>
-        <?php
+        $table->save($bg, "blood_group", "blood_group"); 
+        exit;
     }
     if(isset($_POST['id'])) { 
         $id = $_POST['id'];
         $bg = $_POST['bg'];
-        $table->update($id, $bg, "blood_group", "blood_group");    
+        $table->update($id, $bg, "blood_group", "blood_group");  
+        exit;
     }
 }
 

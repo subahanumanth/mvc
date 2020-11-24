@@ -39,7 +39,7 @@ class check
         if (mysqli_num_rows($row) > 0)
         {
             while ($rows = mysqli_fetch_assoc($row))
-            {
+            { 
                 $list['id'] = $rows['id'];
                 $list['first_name'] = $rows['first_name'];
                 $list['last_name'] = $rows['last_name'];
@@ -53,8 +53,14 @@ class check
                 if (password_verify($password, $list['password']))
                 {
                     return $list;
-                }
+                } else {
+                    session_destroy();
+                    header("Location:../login/error");
+        }	
             }
+        } else {
+            session_destroy();
+            header("Location:../login/error");
         }
         db::close($conn);
     }

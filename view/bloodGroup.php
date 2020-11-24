@@ -32,32 +32,8 @@
     <div class="wrap-table100">
       <div class="table100">
         <h1 style="text-align:center;">Blood Group Table</h1><br><br>
-
-        <table id="table">
-          <thead>
-            <tr class="table100-head">
-              <th class="column1">Blood Group</th>
-              <th class="column2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-             <?php
-             for ($i = 0;$i < count($list);$i++)
-             {
-             ?>
-             <tr class="<?php echo $list[$i]['id'] ?>">
-             <td class="column1" id="rem"><?php echo $list[$i]['bloodGroup']; ?></td>
-             <td><button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
-             var a = <?php echo $list[$i]['id'] ?>; display(a);
-             });"><i class="fa fa-trash"></i></button>
-                 <button id="del" class="update" onclick="update (<?php echo $list[$i]['id']; ?>,'<?php echo $list[$i]['bloodGroup']; ?>')"><i class="fa fa-edit edit"></i></button>
-             </td>
-             </tr>
-             <?php
-             }
-             ?>
-          </tbody>
-        </table><br>
+        <div id="table"></div>
+        
         <button id="samp" class="add">Add</button></a><br><br>
           <div style="display:none" id="form">
           <input type="text" id="blood" name="bg" placeholder="Enter Blood Group Here" /><br>
@@ -68,7 +44,18 @@
   </div>
   <div id="res"></div>
 <script>
+fetch_data();
+function fetch_data () {
+    $.ajax({
+        url:"./view/select.php",
+        type:"post",
+        success:function(data){  
+            $('#table').html(data); 
+        }  
+    });
+}
 function display(id) { 
+console.log(id);
     if(id != "") {
     console.log(id);
         $.ajax({ 
@@ -76,24 +63,27 @@ function display(id) {
             type:"post",
             data:{query:id, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
             success:function(data) {
-                $("#res").html(data);
+                fetch_data();
+                id=null;
             }
         });
      }
 }
 function update (id, bg) {
-    console.log(id);
     $("#blood").val(bg);
     $("#form").show();
     $(".submit").click(function () {    
-        var value = $("#blood").val();        
-        console.log(value);
+        var value = $("#blood").val();  
+        console.log(value);      
         $.ajax({
             url:"./view/update.php",
             type:"post",
             data:{id:id, bg:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
             success:function(data) {
-                location.reload(true);
+                $("#form").hide();
+                fetch_data();
+                id=null;
+                bg=null;
             }  
         });
     });
@@ -102,14 +92,17 @@ function update (id, bg) {
 $(document).ready(function () { 
     $(".add").click (function () {
         $("#form").show();
+        var value = null;
         $(".submit").click(function () {
-            var value = $("#blood").val();
+            value = $("#blood").val();
             $.ajax({
                 url:"./view/update.php",
                 type:"post",
                 data:{query:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
                 success:function(data) {
-                    location.reload(true);
+                    $("#form").hide();
+                    fetch_data();
+                    value=null;
                 }  
             });
         });

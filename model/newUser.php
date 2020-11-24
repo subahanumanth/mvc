@@ -180,15 +180,13 @@ class newUser
         $dog = $error['detailsOfGraduation'];
         $bg = $error['bloodGroup'];
         $gender = $error['gender'];
-        if (isset($error['password']))
-        {
+        if($error['password'] != "") {
+            $_SESSION['password'] = $error['password'];
             $password = password_hash($error['password'], PASSWORD_DEFAULT);
         }
-        else
-        {
-            $password = $pass;
+        else {
+            $password = password_hash($_SESSION['password'], PASSWORD_DEFAULT);
         }
-        session_start();
         if($_SESSION['set'] == 0) {
             $profile = "./controller/uploads/".$_SESSION['profile']['name'];
         } 

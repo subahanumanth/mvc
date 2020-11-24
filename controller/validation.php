@@ -160,6 +160,7 @@ class validate
             $targetFile = "./controller/uploads/". $_SESSION['profile']['name'];
             $extensions = ["png","jpg","jpeg"];
             $ext = end(explode(".",$_SESSION['profile']['name']));
+
             if(in_array($ext, $extensions) == 1) 
             { 
                 move_uploaded_file($_SESSION['profile']['tmp_name'], $targetFile);
@@ -175,9 +176,10 @@ class validate
             {
                 $this->error['profileError'] = "Only Jpg,Jpeg and Png File Extensions are allowed";
             }
-            
+           
             if (isset($_SESSION['name']))
-            {
+            { 
+                
                 if ($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == "" and $this->error["emailError"] == "" and $this->error['mobileError'] == "" and $this->error['profileError'] == "")
                 {
 

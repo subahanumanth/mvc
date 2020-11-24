@@ -8,6 +8,7 @@
   #toast-container {
     margin-top:50px;
 }
+
   </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
 <title>User Page</title>
