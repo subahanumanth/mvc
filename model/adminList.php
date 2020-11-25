@@ -188,101 +188,80 @@ class adminList
         db::close($conn);
         return $firstName . " " . $lastName;
     }
-    public function deleteEmail($id)
-    {
-        $conn = db::connection();
-        $query = "delete from email where user_id=$id";
-        try {
-            if(!($row = mysqli_query($conn, $query))) {
-                throw new Exception("Error in Deleting Email at ".__FILE__." in deleteEmail() function");
-            } else {
-                return true;
-            }
-        }
-        catch (Exception $e) {
-            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
-            return false;            
-        } 
-        db::close($conn);
-    }
-    public function deleteMobile($id)
-    {
-        $conn = db::connection();
-        $query = "delete from mobile where user_id=$id";
-        try {
-            if(!($row = mysqli_query($conn, $query))) {
-                 throw new Exception("Error in Deleting Mobile Number at ".__FILE__." in deleteMobile() function");
-            } else {
-                return true;
-            }
-        }
-        catch (Exception $e) {
-            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
-            return false;            
-        } 
-        db::close($conn);
-    }
-    public function deleteAreaOfInterest($id)
-    {
-        $conn = db::connection();
-        $query = "delete from area_of_interest where user_id=$id";
-         try {
-            if(!($row = mysqli_query($conn, $query))) {
-                 throw new Exception("Error in Deleting Area Of Interest at ".__FILE__." in deleteAreaOfInterest() function");
-            } else {
-                return true;
-            }
-        }
-        catch (Exception $e) {
-            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "model/error.php");
-            return false;            
-        } 
-        db::close($conn);
-    }
-    public function deleteDetail($id)
-    {
-        $conn = db::connection();
-        $query = "delete from detail where id=$id";
-        $run = mysqli_query($conn, $query);
-        $row = mysqli_affected_rows($conn);
-         try {
-            if($row <= 0 && !(mysqli_query($conn, $query))) {
-                 throw new Exception("Error in Deleting Detail at ".__FILE__." in deleteDetail() function");
-            } else if($row == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        catch (Exception $e) {
-            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "../../model/error.php");
-            return false;
-        } 
-        db::close($conn);
-    }
-    public function commit()
-    {
+
+    
+    public function delete($id)
+    { 
         $conn = db::connection();
         mysqli_autocommit($conn, FALSE);
         mysqli_commit($conn);
+        
+        $query = "delete from email where user_id=$id";
+        mysqli_query($conn, $query);
+        $status1 = mysqli_affected_rows($conn);
+        try {
+            if($status1 < 1) {         
+                 throw new Exception("Error in Deleting Email at ".__FILE__." in delete() function");
+            }
+        }
+        catch (Exception $e) {
+            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "../model/error.php");
+            mysqli_rollback($conn);
+            return "Error in Deleting Email";            
+        } 
+                
+        $query = "delete from mobile where user_id=$id";
+        mysqli_query($conn, $query);
+        $status2 = mysqli_affected_rows($conn);
+        try {
+            if($status2 < 1) {         
+                 throw new Exception("Error in Deleting Mobile Number at ".__FILE__." in delete() function");
+            }
+        }
+        catch (Exception $e) {
+            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "../model/error.php");
+            mysqli_rollback($conn);
+            return "Error in Deleting Mobile Number";            
+        } 
+                
+        $query = "delete from area_of_interest where user_id=$id";
+        mysqli_query($conn, $query);
+        $status3 = mysqli_affected_rows($conn);
+        try {
+            if($status3 < 1) {         
+                 throw new Exception("Error in Deleting Area Of Interest at ".__FILE__." in delete() function");
+            }
+        }
+        catch (Exception $e) {
+            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "../model/error.php");
+            mysqli_rollback($conn);
+            return "Error in Deleting Area Of Interest";
+        } 
+                
+        $query = "delete from detail where id=$id";
+        mysqli_query($conn, $query);
+        $status4 = mysqli_affected_rows($conn);  
+        try {
+            if($status4 < 1) {         
+                 throw new Exception("Error in Deleting Details at ".__FILE__." in delete() function");
+            }
+        }
+        catch (Exception $e) {
+            error_log("[".date("F j,Y,g:i")."]".$e->getMessage()."\n", 3, "../model/error.php");
+            mysqli_rollback($conn);
+            return "Error in Deleting Details";            
+        }         
+        
+        if($status1 == 1 and $status2 == 1 and $status3 == 1 and $status4 == 1) {
+            mysqli_commit($conn);
+            return "true";
+        } else {
+            mysqli_rollback($conn);
+            return false;
+        }
         db::close($conn);
     }
-    public function rollback()
-    {
-        $conn = db::connection();
-        mysqli_rollback($conn);
-        db::close($conn);
-    }
-    public function setName ($name) 
-    {
-        $this->name = $name;
-        return $this->name;
-    }
-    public function getName() 
-    {
-        return "hanu";
-    }
-
+    
 }
 
 

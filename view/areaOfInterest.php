@@ -33,31 +33,7 @@
       <div class="table100">
         <h1 style="text-align:center;">Area Of Interest Table</h1><br><br>
 
-        <table>
-          <thead>
-            <tr class="table100-head">
-              <th class="column1">Area Of Interest</th>
-              <th class="column2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-             <?php
-             for ($i = 0;$i < count($list);$i++)
-             {
-             ?>
-             <tr class="<?php echo $list[$i]['id'] ?>">
-             <td class="column1" id="rem"><?php echo $list[$i]['areaOfInterest']; ?></td>
-             <td><button id="del" onclick="functionConfirm('Are You Sure?', function yes() {
-             var a = <?php echo $list[$i]['id'] ?>; display(a);
-             });"><i class="fa fa-trash"></i></button>
-             <button id="del" class="update" onclick="update (<?php echo $list[$i]['id']; ?>,'<?php echo $list[$i]['areaOfInterest']; ?>')"><i class="fa fa-edit edit"></i></button>
-            </td>
-            </tr>
-            <?php
-            }
-            ?>
-          </tbody>
-        </table><br>
+        <div id="table"></div><br>
           <button id="samp" class="add">Add</button></a><br><br>
           <div style="display:none" id="form">
           <input type="text" id="blood" name="bg" placeholder="Enter Area Of Interest Here" /><br>
@@ -69,6 +45,18 @@
 <div id="res"></div>
 </div>
 <script>
+fetch_data();
+function fetch_data () {
+    $.ajax({
+        url:"./view/select.php",
+        type:"post",
+        data:{page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
+        success:function(data){  
+            $('#table').html(data); 
+        }  
+    });
+}
+
 function display(id) { 
     if(id != "") {
         $.ajax({ 
@@ -76,46 +64,59 @@ function display(id) {
             type:"post",
             data:{query:id, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
             success:function(data) {
-                $("#res").html(data);
+                if(data == "success") {
+                    toastr.warning("deleted Successfully");
+                } else {
+                    toastr.error("deletion Failed");                    
+                }
+                fetch_data();
             }
         });
      }
 }
-
 function update (id, bg) {
-    console.log(id);
     $("#blood").val(bg);
     $("#form").show();
-    $(".submit").click(function () {    
-        var value = $("#blood").val();        
-        console.log(value);
+    $(".submit").val(id);
+}
+
+$(".submit").click(function () {  
+    if($(".submit").val() != "") { 
+        var id = $(".submit").val();
+        var value = $("#blood").val();     
         $.ajax({
             url:"./view/update.php",
             type:"post",
             data:{id:id, bg:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
             success:function(data) {
-                location.reload(true);
+                $("#form").hide();
+                fetch_data();
+                toastr.success("Updated Successfully");                                        
             }  
         });
-    });
-}
+     }
+});
 
-$(document).ready(function () { 
-    $(".add").click (function () {
+$(".add").click(function() {
         $("#form").show();
-        $(".submit").click(function () {
-            var value = $("#blood").val();
-            $.ajax({
-                url:"./view/update.php",
-                type:"post",
-                data:{query:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
-                success:function(data) {
-                    location.reload(true);
-                }  
-            });
-        });
-    });     
- 
+        $("#blood").val("");
+        $(".submit").val("");
+});
+
+$(".submit").click(function () {
+    if($(".submit").val() == "") { 
+    value = $("#blood").val();
+    $.ajax({
+        url:"./view/update.php",
+        type:"post",
+        data:{query:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
+        success:function(data) {        
+            $("#form").hide();                     
+            fetch_data();  
+            toastr.success("Added Successfully");                                        
+        }  
+    });
+    }
 });
 </script>
 </html>

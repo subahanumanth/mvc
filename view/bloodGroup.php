@@ -34,9 +34,9 @@
         <h1 style="text-align:center;">Blood Group Table</h1><br><br>
         <div id="table"></div>
         
-        <button id="samp" class="add">Add</button></a><br><br>
+        <button id="samp" class="add">Add</button><br><br>
           <div style="display:none" id="form">
-          <input type="text" id="blood" name="bg" placeholder="Enter Blood Group Here" /><br>
+          <input type="text" id="blood" name="bg" value = "" placeholder="Enter Blood Group Here" /><br>
           <button id="samp" class="submit">Submit</button>
           </div>
       </div>
@@ -44,27 +44,32 @@
   </div>
   <div id="res"></div>
 <script>
+
 fetch_data();
 function fetch_data () {
     $.ajax({
         url:"./view/select.php",
         type:"post",
+        data:{page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
         success:function(data){  
             $('#table').html(data); 
         }  
     });
 }
+
 function display(id) { 
-console.log(id);
     if(id != "") {
-    console.log(id);
         $.ajax({ 
             url:"./view/delete.php",
             type:"post",
             data:{query:id, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
             success:function(data) {
+                if(data == "success") {
+                    toastr.warning("deleted Successfully");
+                } else {
+                    toastr.error("deletion Failed");                    
+                }
                 fetch_data();
-                id=null;
             }
         });
      }
@@ -72,9 +77,13 @@ console.log(id);
 function update (id, bg) {
     $("#blood").val(bg);
     $("#form").show();
-    $(".submit").click(function () {    
-        var value = $("#blood").val();  
-        console.log(value);      
+    $(".submit").val(id);
+}
+
+$(".submit").click(function () {  
+    if($(".submit").val() != "") { 
+        var id = $(".submit").val();
+        var value = $("#blood").val();     
         $.ajax({
             url:"./view/update.php",
             type:"post",
@@ -82,33 +91,34 @@ function update (id, bg) {
             success:function(data) {
                 $("#form").hide();
                 fetch_data();
-                id=null;
-                bg=null;
+                toastr.success("Updated Successfully");                                        
             }  
         });
-    });
-}
-
-$(document).ready(function () { 
-    $(".add").click (function () {
-        $("#form").show();
-        var value = null;
-        $(".submit").click(function () {
-            value = $("#blood").val();
-            $.ajax({
-                url:"./view/update.php",
-                type:"post",
-                data:{query:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
-                success:function(data) {
-                    $("#form").hide();
-                    fetch_data();
-                    value=null;
-                }  
-            });
-        });
-    });     
- 
+     }
 });
+
+$(".add").click(function() {
+        $("#form").show();
+        $("#blood").val("");
+        $(".submit").val("");
+});
+
+$(".submit").click(function () {
+    if($(".submit").val() == "") { 
+    value = $("#blood").val();
+    $.ajax({
+        url:"./view/update.php",
+        type:"post",
+        data:{query:value, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},     
+        success:function(data) {        
+            $("#form").hide();                     
+            fetch_data();  
+            toastr.success("Added Successfully");                                        
+        }  
+    });
+    }
+});
+
 </script>
 </div>
 

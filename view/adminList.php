@@ -13,7 +13,14 @@
   <link rel="stylesheet" href="../../../../view/css/pagination.css">
   <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"> 
 <script type = "text/javascript" src = "https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
@@ -53,79 +60,40 @@
   </style>  
 </head>
 <body>
-
+<div class="bg">
   <div id="confirm">
      <div class="message"></div><hr class="hr"><br>
-     <button class="result" >Yes</button>
+     <button class="result yes" >Yes</button>
      <button value="1" class="no">No</button>
   </div>
 <div class="topnav">
-<div>
-  <a class="active" href="../../../../manageBloodGroup">Manage Blood Group</a>
-  <a href="../../../../manageAreaOfInterest">Manage Area Of Interest</a>
-  <a href="../../../../manageDetailsOfGraduation">Manage Details Of Graduation</a>
-  <a href=""><span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span></a>
-  <a href="../../../../logOut"><i class="fa fa-sign-out"></i></a>  </div>
+
+<div class="dropdown" style="position:absolute;">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bars"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="active" href="../../../../manageBloodGroup">Manage Blood Group</a></li>
+      <li><a href="../../../../manageAreaOfInterest">Manage Area Of Interest</a></li>
+      <li><a href="../../../../manageDetailsOfGraduation">Manage Details Of Graduation</a></li>
+    </ul>
+  </div>
+
+
+  <span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span>
+  <a href="../../../../logOut"><i class="fa fa-sign-out"></i></a>  
+
 </div>
 <div class="limiter">
   <div class="container-table100">
     <div class="wrap-table100">
       <div class="table100">
         <h2 align="center">Details</h2><br>
-        <table id="customers">
-          <thead>
-            <tr class="table100-head">
-              <th class="column1">Id</th>
-              <th class="column1">First Name</th>
-              <th class="column2">Last Name</th>
-              <th class="column3">DOB</th>
-              <th class="column4">Details Of Graduation</th>
-              <th class="column5">Blood Group</th>
-              <th class="column6">Gender</th>
-              <th class="column7">Email</th>
-              <th class="column8">Mobile Number</th>
-              <th class="column9">Area Of Interest</th>
-              <th class="column10">Profile Picture</th>
-              <th class="column11">Action</th>
-            </tr>
-          </thead>
-          <tbody>	
-
-             <?php
-             for ($i = 0;$i < count($list);$i++)
-             { 
-             if(isset($list[$i]['id'])) {
-             ?>
-             <tr class="<?php echo $list[$i]['id'] ?>">
-             <td class="column1"><?php echo $list[$i]['id'] ?></td>
-             <td class="column1"><?php echo $list[$i]['firstName'] ?></td>
-             <td class="column2"><?php echo $list[$i]['lastName'] ?></td>
-             <td class="column3"><?php echo date("d-M-Y", strtotime($list[$i]['dateOfBirth'])); ?></td>
-             <td class="column4"><?php echo $list[$i]['detailsOfGraduation'] ?></td>
-             <td class="column5"><?php echo $list[$i]['bloodGroup'] ?></td>
-             <td class="column6"><?php echo $list[$i]['gender'] ?></td>
-             <td class="column7"><?php echo $list[$i]['email'] ?></td>
-             <td class="column8"><?php echo $list[$i]['mobile'] ?></td>
-             <td class="column9"><?php echo $list[$i]['areaOfInterest'] ?></td>
-             <td class="column10"><img style="height:40px" src="<?php echo $list[$i]['profilePicture'] ?>"></td>
-             <td>
-               <button class="list" id="del" value="<?php echo $list[$i]['id'] ?>" onclick="functionConfirm('Are You Sure?', function yes() { var a = <?php echo $list[$i]['id'] ?>; display(a);
-               });"><i class="fa fa-trash"></i></button>
-               <a href="../../../list/update/<?php echo $list[$i]['id']; ?>" class="column11"><i class="fa fa-edit edit"></i></a>
-             </td>
-           </tr>
-           <?php
-
-           }
-           }
-
-           ?>
-          </tbody>
-        </table>
+        <div id="table"></div>
       </div>
     </div>
   </div>  
 <div id="res"></div>
+<div id="r"></div>
 </div><br><br><br>
 <?php
 session_start();
@@ -135,10 +103,21 @@ if(isset($_SESSION['update'])) { ?>
 $_SESSION['update'] = null;
 }
 ?>
-    <script>
-  $(document).ready(function() {
-      var table = $("#customers").DataTable();
-  });
+<script>
+
+  fetch_data();
+function fetch_data () {
+    $.ajax({
+        url:"./view/select.php",
+        type:"post",
+        data:{page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
+        success:function(data){  
+            $('#table').html(data); 
+            $("#customers").DataTable();
+        }  
+    });
+}
+
 function display(id) {
     if(id != "") {
         $.ajax({ 
@@ -146,10 +125,12 @@ function display(id) {
             type:"post",
             data:{query:id, page:"<?php echo $_SERVER['REQUEST_URI'] ?>"},
             success:function(data) {
-                $("#res").html(data);
-                location.reload(true);
-                //$('#customers').DataTable().ajax.reload();
-                console.log(id);
+                fetch_data();
+                if(data == "true") {
+                    toastr.success("deleted Successfully");
+                } else {
+                    toastr.error(data);
+                }
             }
         });
      }
@@ -157,6 +138,7 @@ function display(id) {
 
 </script>
 
+</div>
 </div>
 </body>
 

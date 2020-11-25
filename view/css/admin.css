@@ -5,7 +5,20 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color:#D3D3D3;
+}
+.bg {
+background-image: linear-gradient(to bottom left,#fbc2eb, #a18cd1);
+  height: 100%;
+   background-repeat: no-repeat;
+  background-size: cover;
+  position:fixed;
+background-position:50% ;
+  image-rendering: pixelated;
+
+
+}
+.dropdown {
+  margin-top:9px;
 }
 .container {
   text-align:center;
@@ -72,6 +85,9 @@ body {
 .welcome {
   padding-left: 160px;
   font-size:20px;
+  float: left;
+  color: white;
+  padding: 14px 16px 0px 900px;;
 }
 .edit{
   margin-left:16px;
@@ -110,7 +126,7 @@ body {
    width: 80px;
    cursor: pointer;
    margin-bottom: 20px;
-   margin-top:10px;
+   margin-top:0px;
    color:white;
 }
 #confirm .message {
