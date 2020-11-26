@@ -2,29 +2,35 @@
 session_start();
 $a = 1;
 include ("autoload.php");
-include ("./model/dropdown.php");
-include ("./model/commandPattern.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/model/dropdown.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/model/commandPattern.php");
 
-$bloodGroup = new bloodGroup ();
-$areaOfInterest = new areaOfInterest ();
-$detailsOfGraduation = new detailsOfGraduation ();
+$bloodGroup = new bloodGroup();
+$areaOfInterest = new areaOfInterest();
+$detailsOfGraduation = new detailsOfGraduation();
 
 $newUser = newUser::getInstance();
 $url = $_GET['url'];
 $url = explode("/", $url);
-if(!isset($url[1])) {
-if(count($_POST) > 0) {
-    $nameExist = $newUser->checkFirstName ($_POST['firstName']);
-    $_POST['emailn'] = explode(", ", $_POST['email']);    
-    for($i = 0;$i < count($_POST['emailn']);$i++) {
-        $emailExist[] = $newUser->checkEmail ($_POST['emailn'][$i]);
+if (!isset($url[1]))
+{
+    if (count($_POST) > 0)
+    {
+        $nameExist = $newUser->checkFirstName($_POST['firstName']);
+        $_POST['emailn'] = explode(", ", $_POST['email']);
+        for ($i = 0;$i < count($_POST['emailn']);$i++)
+        {
+            $emailExist[] = $newUser->checkEmail($_POST['emailn'][$i]);
+        }
+        $_POST['mobileNew'] = explode(', ', $_POST['mobile']);
+        for ($i = 0;$i < count($_POST['mobileNew']);$i++)
+        {
+            $mobileExist[] = $newUser->checkMobile($_POST['mobileNew'][$i]);
+        }
     }
-    $_POST['mobileNew'] = explode(', ', $_POST['mobile']);  
-    for($i = 0;$i < count($_POST['mobileNew']);$i++) {
-        $mobileExist[] = $newUser->checkMobile ($_POST['mobileNew'][$i]);
-    }     
 }
-} else {
+else
+{
     $nameExist = "false";
     $emailExist = ["false"];
     $mobileExist = ["false"];
@@ -53,3 +59,4 @@ include ("validation.php");
 session_start();
 include ("./view/new.php");
 ?>
+

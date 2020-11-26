@@ -1,5 +1,4 @@
 <?php
-
 if ($page == "areaOfInterest")
 {
     $list = $areaOfInterest->dropdown();
@@ -14,6 +13,8 @@ elseif ($page == "bloodGroup")
 
 elseif ($page == "detailsOfGraduation")
 {
-    $list = $detailsOfGraduation->dropdown ();
-    include("./view/selectDetailsOfGraduation.php");
+    $list = $detailsOfGraduation->dropdown();
+    include ("./view/selectDetailsOfGraduation.php");
 }
+
+

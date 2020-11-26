@@ -1727,3 +1727,45 @@
 [November 25,2020,9:32]Error in Deleting Email at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
 [November 25,2020,9:32]Error in Deleting Details at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
 [November 25,2020,9:34]Error in Deleting Area Of Interest at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 26,2020,9:47]Error in Deleting Details at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 26,2020,9:47]Error in Deleting Mobile Number at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 26,2020,9:55]Error in Deleting Mobile Number at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 26,2020,11:58]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:58]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:58]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:58]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:58]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:58]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:03]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:03]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:03]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:05]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:05]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:05]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:05]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:05]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:05]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:15]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:15]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:15]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:15]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:15]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,12:15]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Data is not fetched yet/var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Details Of Graduation fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Blood Group fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Data is not fetched yet/var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Details Of Graduation fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Blood Group fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Data is not fetched yet/var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Email fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Mobile number fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Details Of Graduation fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Blood Group fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 26,2020,11:06]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php

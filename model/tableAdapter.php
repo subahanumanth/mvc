@@ -1,11 +1,10 @@
 <?php
-
 class tableAdapter
 {
     private $variable;
     public function __construct()
     {
-        $this->variable = table::getInstance ();
+        $this->variable = table::getInstance();
     }
     public function save($value, $tableName, $columnName)
     {
@@ -43,12 +42,13 @@ class tableAdapter
             ->variable
             ->check($id, $columnName);
     }
-    public function checkArea ($id)  
+    public function checkArea($id)
     {
         return $this
             ->variable
             ->checkArea($id);
     }
 }
-$table = new tableAdapter ();
+$table = new tableAdapter();
 ?>
+

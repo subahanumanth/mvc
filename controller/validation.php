@@ -3,17 +3,17 @@ class validate
 {
     public $details;
     public $nameExist;
-    public $emailExist=[];
-    public $mobileExist=[];   
+    public $emailExist = [];
+    public $mobileExist = [];
     public $id;
     public $error;
     public $correctDetails;
-    public function __construct($values, $nameExist, $emailExist, $mobileExist, $id=null)
+    public function __construct($values, $nameExist, $emailExist, $mobileExist, $id = null)
     {
         $this->details = $values;
         $this->nameExist = $nameExist;
-        $this->emailExist = $emailExist;        
-        $this->mobileExist = $mobileExist;      
+        $this->emailExist = $emailExist;
+        $this->mobileExist = $mobileExist;
         $this->id = $id;
     }
     public function validation()
@@ -25,13 +25,14 @@ class validate
                 $this->correctDetails['firstName'] = $this->details['firstName'];
                 $this->error["firstError"] = "";
             }
-            else if($this->nameExist == "true" and !isset($this->id)){
-                $this->error["firstError"] = " *Name Already Exists";                
-            }             
+            else if ($this->nameExist == "true" and !isset($this->id))
+            {
+                $this->error["firstError"] = " *Name Already Exists";
+            }
             else
-            { 
+            {
                 $this->error["firstError"] = " *Enter Valid First Name";
-            }           
+            }
 
             if (!empty($this->details['lastName']) and preg_match("/^[a-zA-Z ]*$/", $this->details['lastName']) and strlen($this->details['lastName']) < 10 and ctype_alpha($this->details['lastName']))
             {
@@ -86,10 +87,12 @@ class validate
             {
                 $this->error['genderError'] = "*Select Gender";
             }
-            if(in_array("true",$this->emailExist)) {
+            if (in_array("true", $this->emailExist))
+            {
                 $checkEmail = "true";
             }
-            else {
+            else
+            {
                 $checkEmail = "false";
             }
             $this->details['emailn'] = explode(", ", $this->details['email']);
@@ -100,19 +103,21 @@ class validate
                 {
                     $this->correctDetails['email'][$i] = $this->details['emailn'][$i];
                 }
-                else if($checkEmail == "true" and !isset($this->id)) 
+                else if ($checkEmail == "true" and !isset($this->id))
                 {
-                    $this->error["emailError"] = " *Email ID Already Exists";                    
+                    $this->error["emailError"] = " *Email ID Already Exists";
                 }
                 else
                 {
                     $this->error["emailError"] = " *Enter Valid Email ID";
                 }
             }
-            if(in_array("true",$this->mobileExist)) {
+            if (in_array("true", $this->mobileExist))
+            {
                 $checkMobile = "true";
             }
-            else {
+            else
+            {
                 $checkMobile = "false";
             }
             $this->details['mobileNew'] = explode(', ', $this->details['mobile']);
@@ -123,10 +128,10 @@ class validate
                 {
                     $this->correctDetails['mobile'][$i] = $this->details['mobileNew'][$i];
                 }
-                else if($checkMobile == "true" and !isset($this->id)) 
+                else if ($checkMobile == "true" and !isset($this->id))
                 {
-                    $this->error["mobileError"] = " *Mobile Number Already Exists";                    
-                }                
+                    $this->error["mobileError"] = " *Mobile Number Already Exists";
+                }
                 else
                 {
                     $this->error['mobileError'] = "*Enter Valid Mobile Number";
@@ -150,37 +155,40 @@ class validate
                 $this->error['cpasswordError'] == "";
             }
             session_start();
-            if(isset($this->id)) {
-                $this->correctDetails['id'] = 2; 
+            if (isset($this->id))
+            {
+                $this->correctDetails['id'] = 2;
             }
-            if(!empty($_FILES['profile']['name'])) {
+            if (!empty($_FILES['profile']['name']))
+            {
                 $_SESSION['profile'] = $_FILES['profile'];
             }
-
-            $targetFile = "./controller/uploads/". $_SESSION['profile']['name'];
-            $extensions = ["png","jpg","jpeg"];
-            $ext = end(explode(".",$_SESSION['profile']['name']));
-
-            if(in_array($ext, $extensions) == 1) 
-            { 
-                move_uploaded_file($_SESSION['profile']['tmp_name'], $targetFile);
-                $this->correctDetails['profilePicture'] = $targetFile;
-                $_SESSION['set'] = 0;
-                $this->error['profileError'] = "";
-            }
-            else if(empty($_SESSION['profile']['name']))
+            if (isset($_SESSION['profile']['name']))
             {
-                $this->error['profileError'] = "No Profile Picture Selected";                
+                $targetFile = "./controller/uploads/" . $_SESSION['profile']['name'];
+                $extensions = ["png", "jpg", "jpeg"];
+                $ext = end(explode(".", $_SESSION['profile']['name']));
+
+                if (in_array($ext, $extensions) == 1)
+                {
+                    move_uploaded_file($_SESSION['profile']['tmp_name'], $targetFile);
+                    $this->correctDetails['profilePicture'] = $targetFile;
+                    $_SESSION['set'] = 0;
+                    $this->error['profileError'] = "";
+                }
+                else if (empty($_SESSION['profile']['name']))
+                {
+                    $this->error['profileError'] = "No Profile Picture Selected";
+                }
+                else if (in_array($ext, $extensions) != 1)
+                {
+                    $this->error['profileError'] = "Only Jpg,Jpeg and Png File Extensions are allowed";
+                }
             }
-            else if(in_array($ext, $extensions) != 1)
-            {
-                $this->error['profileError'] = "Only Jpg,Jpeg and Png File Extensions are allowed";
-            }
-           
             if (isset($_SESSION['name']))
-            { 
-                
-                if ($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == "" and $this->error["emailError"] == "" and $this->error['mobileError'] == "" and $this->error['profileError'] == "")
+            {
+
+                if ($this->error["firstError"] == "" and $this->error["lastError"] == "" and $this->error['areaOfIntrestError'] == "" and $this->error['dateError'] == "" and $this->error['detailsOfGraduationError'] == "" and $this->error['bloodGroupError'] == "" and $this->error['genderError'] == "" and $this->error["emailError"] == "" and $this->error['mobileError'] == "")
                 {
 
                     $this->correctDetails['val'] = 2;
@@ -205,6 +213,7 @@ $error = $obj->validation();
 
 if (isset($url[1]) and isset($_POST['submit']))
 {
+    $_SESSION['userName'] = $error['firstName'];
     $newUser->updateDetail($id, $error, $list['profilePicture'], $password);
     $newUser->updateEmail($id, $error['email']);
     $newUser->updateMobile($id, $error['mobile']);
@@ -220,3 +229,4 @@ else
 }
 
 ?>
+

@@ -37,10 +37,11 @@ class index
     {
         require ("new.php");
     }
-    public function ajax ()
+    public function ajax()
     {
         require ("ajax.php");
     }
 }
 
 ?>
+

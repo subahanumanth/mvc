@@ -16,27 +16,32 @@ body {
   float: left;
   color: white;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 16px 0px;
   text-decoration: none;
-  font-size: 17px;
 }
 .detail{
   padding-left: 263px;
 }
 .name{
     padding: 220px;
+    padding-right: 48px;
+}
+.box {
+
 }
 .dob{
-    padding: 150px;
+    padding: 145px;
 }
 .dog{
-    padding: 67px;
+    padding: 63px;
+    padding-right: 59px;
 }
 .bg{
     padding: 150px;
+    padding-right: 50px;
 }
 .gender{
-    padding: 200px;
+    padding: 198px;
 }
 .email {
     padding: 215px;
@@ -53,8 +58,12 @@ body {
 
 
 .welcome {
-  padding-left: 900px;
-  font-size: 25px;
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px 10px 800px;;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .submit a {
@@ -111,5 +120,7 @@ body {
     padding-left: 380px;
     width:100%;
 }
-
+  #toast-container {
+    margin-top:50px;
+}
 </style>

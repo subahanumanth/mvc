@@ -13,7 +13,8 @@ class newUser
     public function insertDetail($detail)
     {
         $conn = db::connection();
-        if(isset($detail)) {
+        if (isset($detail))
+        {
             $fname = $detail['firstName'];
             $lname = $detail['lastName'];
             $dob = $detail['date'];
@@ -24,11 +25,14 @@ class newUser
             $password = password_hash($detail['password'], PASSWORD_DEFAULT);
             $query = "insert into detail     (first_name,last_name,date_of_birth,details_of_graduation,blood_group,gender,profile_picture,password,rights)
         values('$fname','$lname','$dob',$dog,$bg,'$gender','$profile','$password',0);";
-        mysqli_query($conn, $query);
-        if(mysqli_affected_rows($conn) == 1) {
-            return true;
+            mysqli_query($conn, $query);
+            if (mysqli_affected_rows($conn) == 1)
+            {
+                return true;
+            }
         }
-        } else {
+        else
+        {
             return false;
         }
         db::close($conn);
@@ -118,7 +122,7 @@ class newUser
     public function fetchMobile($id)
     {
         $conn = db::connection();
-        $key = -1;
+        $key = - 1;
         $row = mysqli_query($conn, "select *from mobile where user_id=$id");
         if (mysqli_num_rows($row) > 0)
         {
@@ -159,7 +163,7 @@ class newUser
     public function fetchAreaOfInterest($id)
     {
         $conn = db::connection();
-        $key = -1;
+        $key = - 1;
         $row = mysqli_query($conn, "select *from area_of_interest where user_id=$id");
         if (mysqli_num_rows($row) > 0)
         {
@@ -180,22 +184,26 @@ class newUser
         $dog = $error['detailsOfGraduation'];
         $bg = $error['bloodGroup'];
         $gender = $error['gender'];
-        if($error['password'] != "") {
+        if ($error['password'] != "")
+        {
             $_SESSION['password'] = $error['password'];
             $password = password_hash($error['password'], PASSWORD_DEFAULT);
         }
-        else {
+        else
+        {
             $password = password_hash($_SESSION['password'], PASSWORD_DEFAULT);
         }
-        if($_SESSION['set'] == 0) {
-            $profile = "./controller/uploads/".$_SESSION['profile']['name'];
-        } 
-        else {
-            $profile = $prof;
+        if (isset($_SESSION['profile']['name']))
+        {
+            $profile = "./controller/uploads/" . $_SESSION['profile']['name'];
+        }
+        else
+        {
+            $profile = $_SESSION['pp'];
         }
         $query = "update detail set first_name='$fname',last_name='$lname',date_of_birth='$date',details_of_graduation=$dog,blood_group=$bg,gender='$gender',profile_picture='$profile',password='$password' where id=$id";
-                    $_SESSION['set'] = null; 
-            $_SESSION['profile']['name'] = null;
+        $_SESSION['set'] = null;
+        $_SESSION['profile']['name'] = null;
         mysqli_query($conn, $query);
         db::close($conn);
     }
@@ -229,42 +237,42 @@ class newUser
         }
         db::close($conn);
     }
-    public function checkFirstName ($name) 
+    public function checkFirstName($name)
     {
         $conn = db::connection();
-        $row = mysqli_query($conn, "select * from detail where first_name = '{$name}'");        
-        if(mysqli_num_rows($row) > 0) 
+        $row = mysqli_query($conn, "select * from detail where first_name = '{$name}'");
+        if (mysqli_num_rows($row) > 0)
         {
-             return "true";
-        } 
+            return "true";
+        }
         else
         {
             return "false";
         }
         db::close($conn);
     }
-    public function checkEmail ($email) 
+    public function checkEmail($email)
     {
         $conn = db::connection();
-        $row = mysqli_query($conn, "select * from email where email_id = '{$email}'"); 
-        if(mysqli_num_rows($row) > 0) 
+        $row = mysqli_query($conn, "select * from email where email_id = '{$email}'");
+        if (mysqli_num_rows($row) > 0)
         {
-             return "true";
-        } 
+            return "true";
+        }
         else
         {
             return "false";
         }
         db::close($conn);
     }
-    public function checkMobile ($mobile) 
+    public function checkMobile($mobile)
     {
         $conn = db::connection();
-        $row = mysqli_query($conn, "select * from mobile where mobile = '{$mobile}'"); 
-        if(mysqli_num_rows($row) > 0) 
+        $row = mysqli_query($conn, "select * from mobile where mobile = '{$mobile}'");
+        if (mysqli_num_rows($row) > 0)
         {
-             return "true";
-        } 
+            return "true";
+        }
         else
         {
             return "false";
@@ -273,6 +281,5 @@ class newUser
     }
 }
 
-
-
 ?>
+

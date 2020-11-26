@@ -25,12 +25,19 @@ if (isset($_POST['submit']))
     else if (empty($rights))
     {
         session_destroy();
-        header("Location:../login/error");
+        header("Location:login/error");
     }
 }
 else
 {
-    $lists = $check->selectNamePassword($_SESSION['name'], $_SESSION['password']);
+    if (isset($_SESSION['userName']) and $_SESSION['name'] != "subahanumanth")
+    {
+        $lists = $check->selectNamePassword($_SESSION['userName'], $_SESSION['password']);
+    }
+    else
+    {
+        $lists = $check->selectNamePassword($_SESSION['name'], $_SESSION['password']);
+    }
     $_SESSION['id'] = $lists['id'];
     $rights = $lists['rights'];
     if ($rights == 1)
@@ -50,7 +57,8 @@ else
     else if (empty($rights))
     {
         session_destroy();
-        header("Location:../login/error");
+        header("Location:login/error");
     }
 }
 ?>
+

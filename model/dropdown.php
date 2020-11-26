@@ -3,7 +3,7 @@ class dropdown
 {
     public function bloodGroup()
     {
-        $key = -1;
+        $key = - 1;
         $conn = db::connection();
         $query = "select *from blood_group where is_deleted=1";
         $row = mysqli_query($conn, $query);
@@ -21,7 +21,7 @@ class dropdown
     }
     public function detailsOfGraduation()
     {
-        $key = -1;
+        $key = - 1;
         $conn = db::connection();
         $query = "select *from details_of_graduation where is_deleted = 1";
         $row = mysqli_query($conn, $query);
@@ -39,7 +39,7 @@ class dropdown
     }
     public function areaOfInterest()
     {
-        $key = -1;
+        $key = - 1;
         $conn = db::connection();
         $query = "select *from admin_area_of_interest where is_deleted=1";
         $row = mysqli_query($conn, $query);
@@ -56,3 +56,5 @@ class dropdown
         return $list;
     }
 }
+
+

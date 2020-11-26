@@ -1,5 +1,4 @@
 <?php
-
 class db
 {
     public function connection()
@@ -14,3 +13,4 @@ class db
 }
 
 ?>
+
