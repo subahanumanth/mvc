@@ -2,8 +2,8 @@
 session_start();
 $a = 1;
 include ("autoload.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/model/dropdown.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/model/commandPattern.php");
+include (sprintf("%s/model/dropdown.php", $_SERVER['DOCUMENT_ROOT']));
+include (sprintf("%s/model/commandPattern.php", $_SERVER['DOCUMENT_ROOT']));
 
 $bloodGroup = new bloodGroup();
 $areaOfInterest = new areaOfInterest();
@@ -57,6 +57,6 @@ if (isset($_POST['cancel']))
 }
 include ("validation.php");
 session_start();
-include ("./view/new.php");
+include ("view/new.php");
 ?>
 

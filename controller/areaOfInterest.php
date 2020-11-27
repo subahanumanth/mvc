@@ -1,12 +1,12 @@
 <?php
 include ("autoload.php");
-include ("./model/tableAdapter.php");
+include ("model/tableAdapter.php");
 
 $list = $table->get("admin_area_of_interest", "area_of_interest", "areaOfInterest");
 session_start();
 if (isset($_SESSION['name']))
 {
-    include ($_SERVER['DOCUMENT_ROOT'] . "/view/areaOfInterest.php");
+    include (sprintf("%s/view/areaOfInterest.php", $_SERVER['DOCUMENT_ROOT']));
 }
 else
 {

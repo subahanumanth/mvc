@@ -1,6 +1,6 @@
 <?php
 session_start();
 session_destroy();
-include ($_SERVER['DOCUMENT_ROOT'] . "/view/login.php");
+include (sprintf("%s/view/login.php", $_SERVER['DOCUMENT_ROOT']));
 ?>
 

@@ -46,21 +46,21 @@ if (isset($_SESSION['password']))
 
 	</html>
 	<?php
-if(isset($_SESSION['register'])) { ?>
-		<script>
-		toastr.success("Registered Successfully");
-		</script>
-		<?php
-$_SESSION['register'] = null;
-}
-?>
-			<?php 
-$url = explode("/", $_GET['url']);
+        if(isset($_SESSION['register'])) { ?>
+	    <script>
+      	        toastr.success("Registered Successfully");
+      	    </script>
+	<?php
+            $_SESSION['register'] = null;
+        }
+        ?>
+	<?php 
+       $url = explode("/", $_GET['url']);
 
-if(isset($url[1])){ ?>
-				<script>
-				error();
-				</script>
-				<?php
-}
-?>
+       if(isset($url[1])){ ?>
+           <script>
+	   error();
+	   </script>
+           <?php
+       }
+       ?>

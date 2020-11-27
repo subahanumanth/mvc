@@ -23,7 +23,8 @@ class check
                 $list['last_name'] = $rows['last_name'];
                 $list['date_of_birth'] = $rows['date_of_birth'];
                 $list['gender'] = $rows['gender'];
-                $list['profile_picture'] = $rows['profile_picture'];
+                $list['picture'] = $rows['profile_picture'];
+                $list['profile_picture'] = sprintf("uploads/%s", $list['picture']);                
                 $list['rights'] = $rows['rights'];
             }
         }

@@ -1769,3 +1769,17 @@
 [November 26,2020,11:06]Details Of Graduation fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
 [November 26,2020,11:06]Blood Group fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
 [November 26,2020,11:06]Area Of Interest fetch Error at /var/www/html/usermanagementsystem/controller/adminList.php
+[November 27,2020,10:39]Error in Deleting Area Of Interest at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 27,2020,12:15]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllEmail() function
+[November 27,2020,12:16]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllEmail() function
+[November 27,2020,12:17]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllEmail() function
+[November 27,2020,12:18]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllEmail() function
+[November 27,2020,12:18]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllEmail() function
+[November 27,2020,12:19]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllEmail() function
+[November 27,2020,12:19]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllDetail() function
+[November 27,2020,12:20]Database Connectivity Error at /var/www/html/usermanagementsystem/model/adminList.php in showAllAreaOfInterest() function
+[November 27,2020,12:21]Error in Deleting Email at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 27,2020,12:22]Error in Deleting Mobile Number at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 27,2020,12:25]Error in Deleting Details at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 27,2020,2:00]Error in Deleting Email at /var/www/html/usermanagementsystem/model/adminList.php in delete() function
+[November 27,2020,2:00]Error in Deleting Email at /var/www/html/usermanagementsystem/model/adminList.php in delete() function

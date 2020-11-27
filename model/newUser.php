@@ -195,7 +195,7 @@ class newUser
         }
         if (isset($_SESSION['profile']['name']))
         {
-            $profile = "./controller/uploads/" . $_SESSION['profile']['name'];
+            $profile = $_SESSION['profile']['name'];
         }
         else
         {

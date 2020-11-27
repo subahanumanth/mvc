@@ -41,16 +41,16 @@
 		<br>
 		<br>
 		<br>
-		<?php
-session_start();
-if(isset($_SESSION['update'])) { ?>
+	       <?php
+               session_start();
+               if(isset($_SESSION['update'])) { ?>
 			<script>
 			toastr.success("Updated Successfully");
 			</script>
 			<?php
-$_SESSION['update'] = null;
-}
-?>
+                       $_SESSION['update'] = null;
+               }
+               ?>
 	</div>
 	</div>
 </body>
@@ -59,7 +59,7 @@ fetch_data();
 
 function fetch_data() {
 	$.ajax({
-		url: "./view/select.php",
+		url: "select",
 		type: "post",
 		data: {
 			page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
@@ -74,21 +74,20 @@ function fetch_data() {
 function display(id) {
 	if(id != "") {
 		$.ajax({
-			url: "./view/delete.php",
+			url: "delete",
 			type: "post",
 			data: {
 				query: id,
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 			},
-			success: function(data, e) {
+			success: function(data) {
 				fetch_data();
-								console.log(data);
-				console.log(e);
-				if(data == "true") {
-					toastr.success("deleted Successfully");
+				var status = data.trim();
+				if(status == "true") {
+     					toastr.success("Deleted Succesfully");                          
 				} else {
-					toastr.error(data);
-				}
+					toastr.error(status);
+				}				   
 			}
 		});
 	}

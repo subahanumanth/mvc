@@ -43,7 +43,7 @@
 
 	function fetch_data() {
 		$.ajax({
-			url: "./view/select.php",
+			url: "select",
 			type: "post",
 			data: {
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
@@ -57,19 +57,20 @@
 	function display(id) {
 		if(id != "") {
 			$.ajax({
-				url: "./view/delete.php",
+				url: "delete",
 				type: "post",
 				data: {
 					query: id,
 					page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 				},
 				success: function(data) {
-					if(data == "success") {
-						toastr.warning("deleted Successfully");
-					} else {
-						toastr.error("deletion Failed");
-					}
-					fetch_data();
+				        fetch_data();
+              				status = data.trim();
+       				if(status == "success") {
+          					toastr.warning("deleted Successfully");
+	        			} else {
+		           			toastr.error("deletion Failed");
+			        	}
 				}
 			});
 		}
@@ -85,7 +86,7 @@
 			var id = $(".submit").val();
 			var value = $("#blood").val();
 			$.ajax({
-				url: "./view/update.php",
+				url: "update",
 				type: "post",
 				data: {
 					id: id,
@@ -109,7 +110,7 @@
 		if($(".submit").val() == "") {
 			value = $("#blood").val();
 			$.ajax({
-				url: "./view/update.php",
+				url: "update",
 				type: "post",
 				data: {
 					query: value,

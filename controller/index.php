@@ -3,11 +3,7 @@ class index
 {
     public function login()
     {
-        require ("./view/login.php");
-    }
-    public function sample()
-    {
-        require ("./sample.php");
+        require ("view/login.php");
     }
     public function list()
     {
@@ -37,10 +33,18 @@ class index
     {
         require ("new.php");
     }
-    public function ajax()
+    public function select ()
     {
-        require ("ajax.php");
+        require ("view/select.php");
     }
+    public function delete ()
+    {
+        require ("view/delete.php");
+    } 
+    public function update ()
+    {
+        require ("view/update.php");
+    }             
 }
 
 ?>

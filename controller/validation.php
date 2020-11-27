@@ -165,14 +165,14 @@ class validate
             }
             if (isset($_SESSION['profile']['name']))
             {
-                $targetFile = "./controller/uploads/" . $_SESSION['profile']['name'];
+                $targetFile = "uploads/" . $_SESSION['profile']['name'];
                 $extensions = ["png", "jpg", "jpeg"];
                 $ext = end(explode(".", $_SESSION['profile']['name']));
 
                 if (in_array($ext, $extensions) == 1)
                 {
                     move_uploaded_file($_SESSION['profile']['tmp_name'], $targetFile);
-                    $this->correctDetails['profilePicture'] = $targetFile;
+                    $this->correctDetails['profilePicture'] = $_SESSION['profile']['name'];
                     $_SESSION['set'] = 0;
                     $this->error['profileError'] = "";
                 }
