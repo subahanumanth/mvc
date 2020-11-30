@@ -45,6 +45,10 @@ class index
     {
         require ("view/update.php");
     }             
+    public function upload ()
+    {
+        require ("view/upload.php");
+    }     
 }
 
 ?>

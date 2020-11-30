@@ -82,11 +82,10 @@ function display(id) {
 			},
 			success: function(data) {
 				fetch_data();
-				var status = data.trim();
-				if(status == "true") {
+				if(data == true) {
      					toastr.success("Deleted Succesfully");                          
 				} else {
-					toastr.error(status);
+					toastr.error(data);
 				}				   
 			}
 		});

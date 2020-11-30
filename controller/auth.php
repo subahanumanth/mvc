@@ -13,6 +13,7 @@ if (isset($_POST['submit']))
     }
     else if ($rights == 0)
     {
+        $post = $check->fetchPost ($_SESSION['id']);
         $list = $check->select($_SESSION['id']);
         $listBloodGroup = $check->selectBloodGroup($_SESSION['id']);
         $listDetailsOfGraduation = $check->selectDetailsOfGraduation($_SESSION['id']);
@@ -46,6 +47,7 @@ else
     }
     elseif ($rights == 0)
     {
+        $post = $check->fetchPost ($_SESSION['id']);
         $list = $check->select($_SESSION['id']);
         $listBloodGroup = $check->selectBloodGroup($_SESSION['id']);
         $listDetailsOfGraduation = $check->selectDetailsOfGraduation($_SESSION['id']);

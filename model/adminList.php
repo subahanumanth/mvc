@@ -18,12 +18,12 @@ class adminList
         {
             if (!isset($conn))
             {
-                throw new Exception("Database Connectivity Error at " . __FILE__ . " in showAllDetail() function");
+                throw new Exception("Database Connectivity Error at model/". basename(__FILE__) . " in showAllDetail() function");
             }
         }
         catch(Exception $e)
         {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
         }
 
         $row = mysqli_query($conn, "select *from detail where id != $id");
@@ -59,12 +59,12 @@ class adminList
                 if (!isset($conn))
                 {
 
-                    throw new Exception("Database Connectivity Error at " . __FILE__ . " in showAllEmail() function");
+                    throw new Exception("Database Connectivity Error at model/". basename(__FILE__) ." in showAllEmail() function");
                 }
             }
             catch(Exception $e)
             {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
             }
         }
         $row = mysqli_query($conn, "select email_id from email where user_id=$id");
@@ -88,12 +88,12 @@ class adminList
             {
                 if (!isset($conn))
                 {
-                    throw new Exception("Database Connectivity Error at " . __FILE__ . " in showAllMobile() function");
+                    throw new Exception("Database Connectivity Error at model/". basename(__FILE__) ." in showAllMobile() function");
                 }
             }
             catch(Exception $e)
             {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
             }
         }
         $row = mysqli_query($conn, "select mobile from mobile where user_id=$id");
@@ -117,12 +117,12 @@ class adminList
             {
                 if (!isset($conn))
                 {
-                    throw new Exception("Database Connectivity Error at " . __FILE__ . " in showAllBloodGroup() function");
+                    throw new Exception("Database Connectivity Error at model/". basename(__FILE__) . " in showAllBloodGroup() function");
                 }
             }
             catch(Exception $e)
             {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
             }
         }
         $query = "select b.blood_group from detail d join blood_group b on d.blood_group = b.id and d.id=$id";
@@ -146,12 +146,12 @@ class adminList
             {
                 if (!isset($conn))
                 {
-                    throw new Exception("Database Connectivity Error at " . __FILE__ . " in showAllDetailsOfGraduation() function");
+                    throw new Exception("Database Connectivity Error at model/". basename(__FILE__) . " in showAllDetailsOfGraduation() function");
                 }
             }
             catch(Exception $e)
             {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
             }
         }
         $query = "select de.details_of_graduation from detail d join details_of_graduation de on d.details_of_graduation=de.id and d.id=$id";
@@ -175,12 +175,12 @@ class adminList
             {
                 if (!isset($conn))
                 {
-                    throw new Exception("Database Connectivity Error at " . __FILE__ . " in showAllAreaOfInterest() function");
+                    throw new Exception("Database Connectivity Error at model/". basename(__FILE__) . " in showAllAreaOfInterest() function");
                 }
             }
             catch(Exception $e)
             {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
             }
         }
         $query = "select ad.area_of_interest from detail d join area_of_interest a on a.user_id=d.id and a.user_id=$id join admin_area_of_interest ad on a.area_of_interest=ad.id";
@@ -222,79 +222,58 @@ class adminList
         $query = "delete from email where user_id=$id";
         mysqli_query($conn, $query);
         $statusEmail = mysqli_affected_rows($conn);
-        try
-        {
-            if ($statusEmail < 1)
-            {
-                throw new Exception("Error in Deleting Email at " . __FILE__ . " in delete() function");
-            }
-        }
-        catch(Exception $e)
-        {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
-            mysqli_rollback($conn);
-            return "Error in Deleting Email";
-        }
 
         $query = "delete from mobile where user_id=$id";
         mysqli_query($conn, $query);
         $statusMobile = mysqli_affected_rows($conn);
-        try
-        {
-            if ($statusMobile < 1)
-            {
-                throw new Exception("Error in Deleting Mobile Number at " . __FILE__ . " in delete() function");
-            }
-        }
-        catch(Exception $e)
-        {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
-            mysqli_rollback($conn);
-            return "Error in Deleting Mobile Number";
-        }
 
         $query = "delete from area_of_interest where user_id=$id";
         mysqli_query($conn, $query);
         $statusArea = mysqli_affected_rows($conn);
-        try
-        {
-            if ($statusArea < 1)
-            {
-                throw new Exception("Error in Deleting Area Of Interest at " . __FILE__ . " in delete() function");
-            }
-        }
-        catch(Exception $e)
-        {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
-            mysqli_rollback($conn);
-            return "Error in Deleting Area Of Interest";
-        }
 
         $query = "delete from detail where id=$id";
         mysqli_query($conn, $query);
         $statusDetail = mysqli_affected_rows($conn);
         try
         {
-            if ($statusDetail < 1)
+            if ($statusEmail < 1)
             {
-                throw new Exception("Error in Deleting Details at " . __FILE__ . " in delete() function");
+                $error = "Error in Deleting Email";                
+                throw new Exception("Error in Deleting Email at model/". basename(__FILE__) . " in delete() function");
             }
+            
+            else if ($statusMobile < 1)
+            {
+                $error = "Error in Deleting Mobile Number";                            
+                throw new Exception("Error in Deleting Mobile Number at model/". basename(__FILE__) . " in delete() function");
+            }
+            
+            else if ($statusArea < 1)
+            {
+                $error = "Error in Deleting Area Of Interest";                            
+                throw new Exception("Error in Deleting Area Of Interest at model/". basename(__FILE__) . " in delete() function");
+            }
+            
+            else if ($statusDetail < 1)
+            {
+                $error = "Error in Deleting Details";                            
+                throw new Exception("Error in Deleting Details at model/". basename(__FILE__) . " in delete() function");
+            }                                    
         }
         catch(Exception $e)
         {
-                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/model/error.php", $_SERVER['DOCUMENT_ROOT']));
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
             mysqli_rollback($conn);
-            return "Error in Deleting Details";
+            return $error;
         }
 
         if ($statusEmail >= 1 && $statusMobile >= 1 && $statusArea >= 1 && $statusDetail >= 1)
         {
             mysqli_commit($conn);
-            return "true";
+            return true;
         }
         else
         {
-            mysqli_rollback($conn);
             return false;
         }
         db::close($conn);

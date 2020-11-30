@@ -10,7 +10,7 @@ if (isset($_POST['query']))
     {
         $id = $_POST['query'];
         $status = $adminList->delete($id);
-        if ($status == "true")
+        if ($status)
         {
             echo $status;
         }
