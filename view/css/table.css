@@ -283,6 +283,7 @@ tbody tr {
   font-size:20px;
 }
 #confirm {
+   background:#7a30c2;
    display: none;
    border: 1px solid #301934;
    position: fixed;
@@ -324,6 +325,7 @@ tbody tr {
 #toast-container {
   margin-top:40px;   
 }
+
 #table tr:hover {
 background-color: #7a30c2; 
 color:white;

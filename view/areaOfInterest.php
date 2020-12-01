@@ -68,7 +68,7 @@ function display(id) {
 				if(status == "success") {
 					toastr.warning("deleted Successfully");
 				} else {
-					toastr.error("deletion Failed");
+					toastr.error("Error !!...One of the user has this value");
 				}
 			}
 		});

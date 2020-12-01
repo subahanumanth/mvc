@@ -24,7 +24,7 @@ class check
                 $list['date_of_birth'] = $rows['date_of_birth'];
                 $list['gender'] = $rows['gender'];
                 $list['picture'] = $rows['profile_picture'];
-                $list['profile_picture'] = sprintf("uploads/%s", $list['picture']);                
+                $list['profile_picture'] = sprintf("uploads/%s", $list['picture']);
                 $list['rights'] = $rows['rights'];
             }
         }
@@ -146,35 +146,41 @@ class check
     public function postContent($id, $content)
     {
         $conn = db::connection();
-        mysqli_query($conn, "insert into post (user_id, date, post) values($id,'".date("Y-m-d")."', '{$content}' )");
+        mysqli_query($conn, "insert into post (user_id, date, post) values($id,'" . date("Y-m-d") . "', '{$content}' )");
         echo "success";
         db::close($conn);
-    }     
+    }
     public function fetchPost($id)
     {
         $list = [];
-        $key = -1;
+        $key = - 1;
         $conn = db::connection();
         $row = mysqli_query($conn, "select * from post where user_id = $id");
         if (mysqli_num_rows($row) > 0)
         {
             while ($rows = mysqli_fetch_assoc($row))
             {
-                $key++;            
+                $key++;
                 $list[$key]['date'] = $rows['date'];
-                $list[$key]['post'] = $rows['post'];  
-                $list[$key]['id'] = $rows['id'];                  
+                $list[$key]['post'] = $rows['post'];
+                $list[$key]['id'] = $rows['id'];
             }
-        }        
+        }
         db::close($conn);
         return $list;
-    }       
+    }
     public function deleteContent($id)
     {
         $conn = db::connection();
         mysqli_query($conn, "delete from post where id= $id");
         db::close($conn);
-    }          
+    }
+    public function postPhoto($postId, $id, $photo)
+    {
+        $conn = db::connection();
+        mysqli_query($conn, "update post set photo = '{$photo}' where id= $postId");
+        db::close($conn);
+    }
 }
 
 ?>

@@ -1,4 +1,4 @@
-function functionConfirm(msg, myYes) {
+function functionConfirm(msg="Are you sure?", myYes) {
     var confirmBox = $("#confirm");
     confirmBox.find(".message").text(msg);
     confirmBox.find(".result,.no").unbind().click(function() {

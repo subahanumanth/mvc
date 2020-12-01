@@ -15,62 +15,62 @@ class sampleTest extends TestCase
     }
     public function testCheckEmailIsCorrect () 
     {
-         $email = $this->user->showAllEmail (618, 0);
-         $this->assertEquals($email, "ibu@gmail.com");
+         $email = $this->user->showAllEmail (654, 0);
+         $this->assertEquals($email, "suba@gmail.com");
     }
     public function testCheckEmailIsNotCorrect () 
     {
-         $email = $this->user->showAllEmail (618, 0);
+         $email = $this->user->showAllEmail (654, 0);
          $this->assertNotEquals($email, "hanu@gmail.com");
     }
     public function testCheckMobileIsCorrect () 
     {
-         $mobile = $this->user->showAllMobile (618, 0);
-         $this->assertEquals($mobile, "8287498278");
+         $mobile = $this->user->showAllMobile (654, 0);
+         $this->assertEquals($mobile, "9442131842");
     }
     public function testCheckMobileIsNotCorrect () 
     {
-         $mobile = $this->user->showAllMobile (618, 0);
+         $mobile = $this->user->showAllMobile (654, 0);
          $this->assertNotEquals($mobile, "999999999");
     }
     public function testCheckBloodGroupIsCorrect () 
     {
-         $bloodGroup = $this->user->showAllBloodGroup (618, 0);
-         $this->assertEquals($bloodGroup, "B+ve");
+         $bloodGroup = $this->user->showAllBloodGroup (654, 0);
+         $this->assertEquals($bloodGroup, "O+ve");
     }
     public function testCheckBloodGroupIsNotCorrect () 
     {
-         $bloodGroup = $this->user->showAllBloodGroup (618, 0);
+         $bloodGroup = $this->user->showAllBloodGroup (654, 0);
          $this->assertNotEquals($bloodGroup, "A+v");
     }
     public function testCheckDetailsOfGraduationIsCorrect () 
     {
-         $detailsOfGraduation = $this->user->showAllDetailsOfGraduation (618, 0);
-         $this->assertEquals($detailsOfGraduation, "B.design");
+         $detailsOfGraduation = $this->user->showAllDetailsOfGraduation (654, 0);
+         $this->assertEquals($detailsOfGraduation, "B.des");
     }
     public function testCheckDetailsOfGraduationIsNotCorrect () 
     {
-         $detailsOfGraduation = $this->user->showAllDetailsOfGraduation (618, 0);
+         $detailsOfGraduation = $this->user->showAllDetailsOfGraduation (654, 0);
          $this->assertNotEquals($detailsOfGraduation, "bhbg");
     }
     public function testCheckAreaOfInterestIsCorrect () 
     {
-         $areaOfInterest = $this->user->showAllAreaOfInterest (618, 0);
+         $areaOfInterest = $this->user->showAllAreaOfInterest (654, 0);
          $this->assertEquals($areaOfInterest, "Reading");
     }
     public function testCheckAreaOfInterestIsNotCorrect () 
     {
-         $areaOfInterest = $this->user->showAllAreaOfInterest (618, 0);
+         $areaOfInterest = $this->user->showAllAreaOfInterest (654, 0);
          $this->assertNotEquals($areaOfInterest, "Gamin");
     }
     public function testCheckFullNameIsCorrect () 
     {
-         $fullName = $this->user->selectName (618);
-         $this->assertEquals($fullName, "cgfvb bybyu");
+         $fullName = $this->user->selectName (654);
+         $this->assertEquals($fullName, "subahanu manth");
     }
     public function testCheckFullNameIsNotCorrect () 
     {
-         $fullName = $this->user->selectName (618);
+         $fullName = $this->user->selectName (654);
          $this->assertNotEquals($fullName, "buyjby");
     }
     public function testDetailIsInserted () 
@@ -87,12 +87,12 @@ class sampleTest extends TestCase
     }
     public function testDetailIsDeleted () 
     {
-         $result = $this->user->deleteDetail (637);
+         $result = $this->user->deleteDetail (668);
          $this->assertTrue($result);
     }
     public function testDetailIsNotDeleted () 
     {
-         $result = $this->user->deleteDetail (637);
+         $result = $this->user->deleteDetail (668);
          $this->assertFalse($result);
     }
 }

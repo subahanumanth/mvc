@@ -7,6 +7,8 @@ if (isset($_POST['submit']))
     $lists = $check->selectNamePassword($_SESSION['name'], $_SESSION['password']);
     $_SESSION['id'] = $lists['id'];
     $rights = $lists['rights'];
+    setcookie("name", $_SESSION['name'], time() + 86400);
+    setcookie("password", $_SESSION['password'], time() + 86400);
     if ($rights == 1)
     {
         include ("adminList.php");

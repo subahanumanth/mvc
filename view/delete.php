@@ -1,6 +1,5 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT'] . "/controller/autoload.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/model/table.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/model/tableAdapter.php");
 
 $adminList = adminList::getInstance();

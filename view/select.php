@@ -18,7 +18,7 @@ if ($_POST['page'] == "/manageBloodGroup")
     {
         $output .= "<tr class='" . $list[$i]['id'] . "'>";
         $output .= "<td class='column1' id='rem'>" . $list[$i]['bloodGroup'] . "</td><td>";
-        $output .= "<button id='del' class='trs' onclick='functionConfirm(8, function yes(){display(" . $list[$i]['id'] . ")});'><i class='fa fa-trash'></i></button>";
+        $output .= "<button id='del' class='trs' onclick='functionConfirm(undefined, function yes(){display(" . $list[$i]['id'] . ")});'><i class='fa fa-trash'></i></button>";
         $output .= "<button id='del' class='update' onclick=update(" . $list[$i]['id'] . ",'" . $list[$i]['bloodGroup'] . "')><i class='fa fa-edit edit'></i></button></td></tr>";
     }
     $output .= "</tbody></table><br>";
@@ -41,7 +41,7 @@ else if ($_POST['page'] == "/manageDetailsOfGraduation")
     {
         $output .= "<tr class='" . $list[$i]['id'] . "'>";
         $output .= "<td class='column1' id='rem'>" . $list[$i]['detailsOfGraduation'] . "</td><td>";
-        $output .= "<button id='del' class='trs' onclick='functionConfirm(8, function yes(){display(" . $list[$i]['id'] . ")});'><i class='fa fa-trash'></i></button>";
+        $output .= "<button id='del' class='trs' onclick='functionConfirm(undefined, function yes(){display(" . $list[$i]['id'] . ")});'><i class='fa fa-trash'></i></button>";
         $output .= "<button id='del' class='update' onclick=update(" . $list[$i]['id'] . ",'" . $list[$i]['detailsOfGraduation'] . "')><i class='fa fa-edit edit'></i></button></td></tr>";
     }
     $output .= "</tbody></table><br>";
@@ -64,7 +64,7 @@ else if ($_POST['page'] == "/manageAreaOfInterest")
     {
         $output .= "<tr class='" . $list[$i]['id'] . "'>";
         $output .= "<td class='column1' id='rem'>" . $list[$i]['areaOfInterest'] . "</td><td>";
-        $output .= "<button id='del' class='trs' onclick=functionConfirm('Are', function yes(){display(" . $list[$i]['id'] . ")});><i class='fa fa-trash'></i></button>";
+        $output .= "<button id='del' class='trs' onclick='functionConfirm(undefined, function yes(){display(" . $list[$i]['id'] . ")});'><i class='fa fa-trash'></i></button>";
         $output .= "<button id='del' class='update' onclick=update(" . $list[$i]['id'] . ",'" . $list[$i]['areaOfInterest'] . "')><i class='fa fa-edit edit'></i></button></td></tr>";
     }
     $output .= "</tbody></table><br>";
@@ -109,7 +109,7 @@ else if ($_POST['page'] == "/list")
         {
             $output .= '<tr class="' . $list[$i]['id'] . '">
                            <td class="column1">' . $list[$i]['id'] . '</td>
-                           <td class="column1">' . $list[$i]['firstName'] . '</td>
+                           <td class="column1">' . ucfirst($list[$i]['firstName']) . '</td>
                            <td class="column2">' . $list[$i]['lastName'] . '</td>
                            <td class="column3">' . date("d-M-Y", strtotime($list[$i]['dateOfBirth'])) . '</td>
                            <td class="column4">' . $list[$i]['detailsOfGraduation'] . '</td>
@@ -118,8 +118,8 @@ else if ($_POST['page'] == "/list")
                            <td class="column7">' . $list[$i]['email'] . '</td>
                            <td class="column8">' . $list[$i]['mobile'] . '</td>
                            <td class="column9">' . $list[$i]['areaOfInterest'] . '</td>
-                           <td class="column10"><img style="height:40px" src="' . $list[$i]['profilePicture'] . '"></td>
-                           <td><button class="list" id="del" value="' . $list[$i]['id'] . '" onclick="functionConfirm(8,function yes(){display(' . $list[$i]['id'] . ')});"><i class="fa fa-trash"></i></button>
+                           <td class="column10"><img style="width:70px; height:45px" src="' . $list[$i]['profilePicture'] . '"></td>
+                           <td><button class="list" id="del" value="' . $list[$i]['id'] . '" onclick="functionConfirm(undefined,function yes(){display(' . $list[$i]['id'] . ')});"><i class="fa fa-trash"></i></button>
                           <a href="list/update/' . $list[$i]['id'] . '" class="column11"><i class="fa fa-edit edit"></i></a>
                           </td>
                           </tr>';

@@ -13,7 +13,7 @@ class adminList
     }
     public function showAllDetail($id)
     {
-        $conn = db::connection();
+
         try
         {
             if (!isset($conn))

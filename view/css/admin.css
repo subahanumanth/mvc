@@ -197,7 +197,7 @@ body {
         margin-top:40px;
     }
     .bg {
-height:2000px;
+min-height:700px;
 
     }
     #purple {
