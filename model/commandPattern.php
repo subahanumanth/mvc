@@ -44,4 +44,6 @@ class detailsOfGraduation
     }
 }
 
-
+$bloodGroup = new bloodGroup();
+$areaOfInterest = new areaOfInterest();
+$detailsOfGraduation = new detailsOfGraduation();

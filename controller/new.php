@@ -5,10 +5,6 @@ include ("autoload.php");
 include (sprintf("%s/model/dropdown.php", $_SERVER['DOCUMENT_ROOT']));
 include (sprintf("%s/model/commandPattern.php", $_SERVER['DOCUMENT_ROOT']));
 
-$bloodGroup = new bloodGroup();
-$areaOfInterest = new areaOfInterest();
-$detailsOfGraduation = new detailsOfGraduation();
-
 $newUser = newUser::getInstance();
 $url = $_GET['url'];
 $url = explode("/", $url);

@@ -75,14 +75,29 @@ else if ($_POST['page'] == "/list")
 {
     session_start();
     $adminList = adminList::getInstance();
-    $list = $adminList->showAllDetail($_SESSION['id']);
-    for ($i = 0;$i < count($list);$i++)
+    if($_POST['id'] != "0") 
     {
-        $list[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id'], $i);
-        $list[$i]['detailsOfGraduation'] = $adminList->showAllDetailsOfGraduation($list[$i]['id'], $i);
-        $list[$i]['areaOfInterest'] = $adminList->showAllAreaOfInterest($list[$i]['id'], $i);
-        $list[$i]['email'] = $adminList->showAllEmail($list[$i]['id'], $i);
-        $list[$i]['mobile'] = $adminList->showAllMobile($list[$i]['id'], $i);
+        $list = $adminList->sortByBloodGroup($_SESSION['id'], $_POST['id']);
+        for ($i = 0;$i < count($list);$i++)
+        {
+            $list[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id'], $i);
+            $list[$i]['detailsOfGraduation'] = $adminList->showAllDetailsOfGraduation($list[$i]['id'], $i);
+            $list[$i]['areaOfInterest'] = $adminList->showAllAreaOfInterest($list[$i]['id'], $i);
+            $list[$i]['email'] = $adminList->showAllEmail($list[$i]['id'], $i);
+            $list[$i]['mobile'] = $adminList->showAllMobile($list[$i]['id'], $i);
+        }        
+    }
+    else
+    {
+        $list = $adminList->showAllDetail($_SESSION['id']);
+        for ($i = 0;$i < count($list);$i++)
+        {
+            $list[$i]['bloodGroup'] = $adminList->showAllBloodGroup($list[$i]['id'], $i);
+            $list[$i]['detailsOfGraduation'] = $adminList->showAllDetailsOfGraduation($list[$i]['id'], $i);
+            $list[$i]['areaOfInterest'] = $adminList->showAllAreaOfInterest($list[$i]['id'], $i);
+            $list[$i]['email'] = $adminList->showAllEmail($list[$i]['id'], $i);
+            $list[$i]['mobile'] = $adminList->showAllMobile($list[$i]['id'], $i);
+        }
     }
     $output = '';
     $output .= '<table id="customers">

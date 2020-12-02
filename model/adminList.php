@@ -13,7 +13,7 @@ class adminList
     }
     public function showAllDetail($id)
     {
-
+        $conn = db::connection();
         try
         {
             if (!isset($conn))
@@ -48,6 +48,43 @@ class adminList
         db::close($conn);
         return $list;
     }
+    public function sortByBloodGroup($id, $bloodGroup)
+    {
+        $conn = db::connection();
+        try
+        {
+            if (!isset($conn))
+            {
+                throw new Exception("Database Connectivity Error at model/". basename(__FILE__) . " in showAllDetail() function");
+            }
+        }
+        catch(Exception $e)
+        {
+                error_log("[" . date("F j,Y,g:i") . "]" . $e->getMessage() . "\n", 3, sprintf("%s/log/error.php", $_SERVER['DOCUMENT_ROOT']));
+        }
+
+        $row = mysqli_query($conn, "select *from detail where id != $id and blood_group = $bloodGroup");
+        $key = - 1;
+        if (mysqli_num_rows($row) > 0)
+        {
+            while ($rows = mysqli_fetch_assoc($row))
+            {
+                $key++;
+                $list[$key]['id'] = $rows['id'];
+                $list[$key]['firstName'] = $rows['first_name'];
+                $list[$key]['lastName'] = $rows['last_name'];
+                $list[$key]['dateOfBirth'] = $rows['date_of_birth'];
+                $list[$key]['detailsOfGraduation'] = $rows['details_of_graduation'];
+                $list[$key]['bloodGroup'] = $rows['blood_group'];
+                $list[$key]['gender'] = $rows['gender'];
+                $list[$key]['picture'] = $rows['profile_picture'];
+                $list[$key]['profilePicture'] = sprintf("uploads/%s", $list[$key]['picture']);
+                $list[$key]['rights'] = $rows['rights'];
+            }
+        }
+        db::close($conn);
+        return $list;
+    }    
     public function showAllEmail($id, $i)
     {
         $list = [];

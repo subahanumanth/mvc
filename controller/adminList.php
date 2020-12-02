@@ -1,5 +1,8 @@
 <?php
 include ("autoload.php");
+include_once (sprintf("%s/model/dropdown.php", $_SERVER['DOCUMENT_ROOT']));
+include_once (sprintf("%s/model/commandPattern.php", $_SERVER['DOCUMENT_ROOT']));
+
 $url = $_GET['url'];
 $url = explode('/', $url);
 

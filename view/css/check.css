@@ -130,7 +130,6 @@ border-radius:50px;
 }
 .content {
 background-color:#D3D3D3;
-display: inline-block;
 position: relative;
 bottom:15px;
 height: 35px;
@@ -163,11 +162,14 @@ top:65px;
 }
 .value {
     position:relative;
-    bottom:10px;
+    left:80px;
+    bottom:50px;
 }
 .date {
+    position:relative;
+    bottom:100px;
     float:right;
-    margin:20px 20px;
+    margin:20px 20px 20px;
     border-radius:30px;
     outline: none;
     border:1px solid #a18cd1;  

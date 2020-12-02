@@ -18,7 +18,7 @@
 if(count($post) > 0) {
 for($key = 0;$key < count($post);$key++) { 
 ?>
-	<div class="posts"> <img src="<?php echo $list['profile_picture']; ?>" class="photo"> <span class="value"><?php echo $post[$key]['post']; ?></span>
+	<div class="posts"> <img src="<?php echo $list['profile_picture']; ?>" class="photo"> <p class="value"><?php echo $post[$key]['post']; ?></p>
 		<button class="date" onclick="deletePost(<?php echo $post[$key]['id']; ?>);"><i class="fa fa-trash"></i></button>
 	</div>
 	<hr class="line">

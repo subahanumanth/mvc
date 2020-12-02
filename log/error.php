@@ -116,3 +116,5 @@
 [December 1,2020,5:18]Database Connectivity Error at model/adminList.php in showAllDetail() function
 [December 1,2020,5:18]Database Connectivity Error at model/adminList.php in showAllDetail() function
 [December 1,2020,5:18]Database Connectivity Error at model/adminList.php in showAllDetail() function
+[December 2,2020,10:05]Database Connectivity Error at model/adminList.php in showAllDetail() function
+[December 2,2020,12:52]Error in Deleting Email at model/adminList.php in delete() function

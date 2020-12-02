@@ -35,7 +35,11 @@
 			</div> <span class="welcome">Welcome <?php echo $_SESSION['fullName']; ?></span> <a href="logOut"><i class="fa fa-sign-out"></i></a> </div>
 		<div class="container-table100">
 			<h2 align="center">Profile Information</h2>
-			<br>
+			<br><span class="filter"><b>Sort By Blood Group</b>
+                       <?php
+                       $page = 'bloodGroup';                     
+                       include ("./controller/dropdown.php");
+                       ?></span>
 			<div id="table"></div>
 		</div>
 		<br>
@@ -56,12 +60,17 @@
 </body>
 <script>
 fetch_data();
+$(".bot").change(function () {
+    id = $(".bot").val();
+    fetch_data (id);
+});
 
-function fetch_data() {
-	$.ajax({
+function fetch_data(id = 0) {
+ 	$.ajax({
 		url: "select",
 		type: "post",
 		data: {
+		        id:id,
 			page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 		},
 		success: function(data) {
@@ -70,6 +79,7 @@ function fetch_data() {
 		}
 	});
 }
+
 
 function display(id) {
 	if(id != "") {

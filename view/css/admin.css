@@ -191,6 +191,7 @@ body {
       background-color:red;
   }
   .dataTables_length {
+   display:inline;
   padding-left:62px;
   }
     #toast-container {
@@ -203,5 +204,10 @@ min-height:700px;
     #purple {
      background-color:#7a30c2;
      border:1px solid black;
+    }
+    .filter {
+        position:relative;
+        bottom:20px;
+        left:63px;
     }
 
