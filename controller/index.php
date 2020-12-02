@@ -48,7 +48,11 @@ class index
     public function upload ()
     {
         require ("view/upload.php");
-    }     
+    }  
+    public function error ()
+    {
+        require ("view/error.php");        
+    }         
 }
 
 ?>

@@ -10,12 +10,11 @@ $adminList = adminList::getInstance();
 
 $_SESSION['fullName'] = $adminList->selectName($_SESSION['id']);
 
-if ($url[1] == "update" and isset($url[2]))
+if(isset($url[1])) 
 {
-    header("Location:../../new/$url[2]");
+    header("Location:".str_replace(".","",dirname($_GET['url'],5))."/error");
 }
-
 require ("./view/adminList.php");
-
+echo str_replace(".","",dirname($_GET['url'],5));
 ?>
 

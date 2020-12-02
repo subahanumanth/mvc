@@ -101,6 +101,11 @@ function display(id) {
 		});
 	}
 }
+
+function update (id) {
+    console.log(id);
+    location.href="new/"+id;
+}
 </script>
 
 </html>

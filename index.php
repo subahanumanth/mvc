@@ -4,6 +4,13 @@ $url = explode('/',$url);
 if(isset($url[0])) {
   require("./controller/index.php");
   $controller = new index ();
-  $controller->{$url[0]} ();
+  if(method_exists('index', $url[0]))
+  {
+      $controller->{$url[0]} ();
+  } 
+  else
+  {
+      $controller->error ();      
+  }
 }
 

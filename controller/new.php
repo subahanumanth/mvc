@@ -8,6 +8,10 @@ include (sprintf("%s/model/commandPattern.php", $_SERVER['DOCUMENT_ROOT']));
 $newUser = newUser::getInstance();
 $url = $_GET['url'];
 $url = explode("/", $url);
+if((!isset($_SESSION['name']) and isset($url[1])) or (isset($_SESSION['name']) and isset($url[2])))
+{
+    header("Location:".str_replace(".","",dirname($_GET['url'],5))."/error");
+}
 if (!isset($url[1]))
 {
     if (count($_POST) > 0)

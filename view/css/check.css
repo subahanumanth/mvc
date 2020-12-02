@@ -1,10 +1,10 @@
 <style>
-:root{
-  --back-color:-webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#a18cd1));
+html {
+    font-family: sans-serif;
 }
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:sans-serif;
   height:1000px;
 }
 
@@ -73,10 +73,12 @@ body {
 #sample {
   background-color: #301934;
     color: white;
-    padding: 0.5em 2em;
+    padding: 0.3em 1.5em;
     margin-left:580px;
     text-decoration: none;
     border-radius: 20px;
+
+    font-size:20px;    
 }
 
 #sample:hover {
@@ -139,6 +141,7 @@ border:1px solid white;
 outline: none;
 }
 .click {
+    font-family: sans-serif;
 position:relative;
     background:#301934;
     font-size:20px;

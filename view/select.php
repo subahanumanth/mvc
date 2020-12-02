@@ -135,7 +135,7 @@ else if ($_POST['page'] == "/list")
                            <td class="column9">' . $list[$i]['areaOfInterest'] . '</td>
                            <td class="column10"><img style="width:70px; height:45px" src="' . $list[$i]['profilePicture'] . '"></td>
                            <td><button class="list" id="del" value="' . $list[$i]['id'] . '" onclick="functionConfirm(undefined,function yes(){display(' . $list[$i]['id'] . ')});"><i class="fa fa-trash"></i></button>
-                          <a href="list/update/' . $list[$i]['id'] . '" class="column11"><i class="fa fa-edit edit"></i></a>
+                           <button class="column11 list" value="' . $list[$i]['id'] . '" onclick="update ('.$list[$i]['id'].');"><i class="fa fa-edit"></i></button>
                           </td>
                           </tr>';
         }

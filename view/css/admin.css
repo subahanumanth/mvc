@@ -94,6 +94,7 @@ body {
 .list {
   border:none;
   background:none;
+  outline:none;
 }
 
 #confirm {
@@ -210,4 +211,7 @@ min-height:700px;
         bottom:20px;
         left:63px;
     }
+select,input {
+    outline:none;
+}
 
