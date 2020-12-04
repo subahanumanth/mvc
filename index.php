@@ -10,7 +10,7 @@ if(isset($url[0])) {
   } 
   else
   {
-      $controller->error ();      
+      http_response_code(404);
   }
 }
 

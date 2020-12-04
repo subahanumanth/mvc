@@ -45,6 +45,7 @@ function fetch_data() {
 		url: "select",
 		type: "post",
 		data: {
+		        action:"select",		
 			page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 		},
 		success: function(data) {
@@ -56,9 +57,10 @@ function fetch_data() {
 function display(id) {
 	if(id != "") {
 		$.ajax({
-			url: "delete",
+			url: "select",
 			type: "post",
 			data: {
+		               action:"delete",					
 				query: id,
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 			},
@@ -85,9 +87,10 @@ $(".submit").click(function() {
 		var id = $(".submit").val();
 		var value = $("#blood").val();
 		$.ajax({
-			url: "update",
+			url: "select",
 			type: "post",
 			data: {
+		               action:"update",								
 				id: id,
 				bg: value,
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
@@ -109,9 +112,10 @@ $(".submit").click(function() {
 	if($(".submit").val() == "") {
 		value = $("#blood").val();
 		$.ajax({
-			url: "update",
+			url: "select",
 			type: "post",
 			data: {
+		               action:"update",								
 				query: value,
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 			},

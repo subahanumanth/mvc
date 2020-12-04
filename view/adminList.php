@@ -69,7 +69,8 @@ function fetch_data(id = 0) {
  	$.ajax({
 		url: "select",
 		type: "post",
-		data: {
+		data: { 
+      			action:"select",
 		        id:id,
 			page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 		},
@@ -84,9 +85,10 @@ function fetch_data(id = 0) {
 function display(id) {
 	if(id != "") {
 		$.ajax({
-			url: "delete",
+			url: "select",
 			type: "post",
 			data: {
+       			action:"delete",			       
 				query: id,
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 			},

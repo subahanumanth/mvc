@@ -46,6 +46,7 @@
 			url: "select",
 			type: "post",
 			data: {
+          		        action:"select",		
 				page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 			},
 			success: function(data) {
@@ -57,9 +58,10 @@
 	function display(id) {
 		if(id != "") {
 			$.ajax({
-				url: "delete",
+				url: "select",
 				type: "post",
 				data: {
+		                       action:"delete",						
 					query: id,
 					page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 				},
@@ -86,9 +88,10 @@
 			var id = $(".submit").val();
 			var value = $("#blood").val();
 			$.ajax({
-				url: "update",
+				url: "select",
 				type: "post",
 				data: {
+		                       action:"update",										 
 					id: id,
 					bg: value,
 					page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
@@ -110,9 +113,10 @@
 		if($(".submit").val() == "") {
 			value = $("#blood").val();
 			$.ajax({
-				url: "update",
+				url: "select",
 				type: "post",
 				data: {
+		                       action:"update",										
 					query: value,
 					page: "<?php echo $_SERVER['REQUEST_URI'] ?>"
 				},

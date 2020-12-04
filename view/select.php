@@ -3,7 +3,7 @@ include ($_SERVER['DOCUMENT_ROOT'] . "/controller/autoload.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/model/table.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/model/tableAdapter.php");
 
-if ($_POST['page'] == "/manageBloodGroup")
+if ($_POST['page'] == "/manageBloodGroup" and $_POST['action'] == "select")
 {
     $list = $table->get("blood_group", "blood_group", "bloodGroup");
     $output = "";
@@ -25,7 +25,7 @@ if ($_POST['page'] == "/manageBloodGroup")
     echo $output;
 }
 
-else if ($_POST['page'] == "/manageDetailsOfGraduation")
+else if ($_POST['page'] == "/manageDetailsOfGraduation" and $_POST['action'] == "select")
 {
     $list = $table->get("details_of_graduation", "details_of_graduation", "detailsOfGraduation");
     $output = "";
@@ -48,7 +48,7 @@ else if ($_POST['page'] == "/manageDetailsOfGraduation")
     echo $output;
 }
 
-else if ($_POST['page'] == "/manageAreaOfInterest")
+else if ($_POST['page'] == "/manageAreaOfInterest" and $_POST['action'] == "select")
 {
     $list = $table->get("admin_area_of_interest", "area_of_interest", "areaOfInterest");
     $output = "";
@@ -71,11 +71,11 @@ else if ($_POST['page'] == "/manageAreaOfInterest")
     echo $output;
 }
 
-else if ($_POST['page'] == "/list")
+else if ($_POST['page'] == "/list" and $_POST['action'] == "select")
 {
     session_start();
     $adminList = adminList::getInstance();
-    if($_POST['id'] != "0") 
+    if($_POST['id'] != 0) 
     {
         $list = $adminList->sortByBloodGroup($_SESSION['id'], $_POST['id']);
         for ($i = 0;$i < count($list);$i++)
@@ -103,7 +103,6 @@ else if ($_POST['page'] == "/list")
     $output .= '<table id="customers">
                   <thead>
                     <tr class="table100-head">
-                      <th class="column1">Id</th>
                       <th class="column1">First Name&nbsp;<i class="fa fa-sort"></i></th>
                       <th class="column2">Last Name&nbsp;<i class="fa fa-sort"></i></th>
                       <th class="column3">DOB&nbsp;<i class="fa fa-sort"></i></th>
@@ -112,9 +111,9 @@ else if ($_POST['page'] == "/list")
                       <th class="column6">Gender&nbsp;<i class="fa fa-sort"></i></th>
                       <th class="column7">Email&nbsp;<i class="fa fa-sort"></i></th>
                       <th class="column8">Mobile Number&nbsp;<i class="fa fa-sort"></i></th>
-                      <th class="column9">Area Of Interest</th>
+                      <th class="area">Area Of Interest</th>
                       <th class="column10">Profile Picture</th>
-                      <th class="column11">Action</th>
+                      <th class="icon">Action</th>
                     </tr>
                   </thead>
                   <tbody>';
@@ -123,13 +122,12 @@ else if ($_POST['page'] == "/list")
         if (isset($list[$i]['id']))
         {
             $output .= '<tr class="' . $list[$i]['id'] . '">
-                           <td class="column1">' . $list[$i]['id'] . '</td>
                            <td class="column1">' . ucfirst($list[$i]['firstName']) . '</td>
                            <td class="column2">' . $list[$i]['lastName'] . '</td>
                            <td class="column3">' . date("d-M-Y", strtotime($list[$i]['dateOfBirth'])) . '</td>
                            <td class="column4">' . $list[$i]['detailsOfGraduation'] . '</td>
                            <td class="column5">' . $list[$i]['bloodGroup'] . '</td>
-                           <td class="column6">' . $list[$i]['gender'] . '</td>
+                           <td class="">' . $list[$i]['gender'] . '</td>
                            <td class="column7">' . $list[$i]['email'] . '</td>
                            <td class="column8">' . $list[$i]['mobile'] . '</td>
                            <td class="column9">' . $list[$i]['areaOfInterest'] . '</td>
@@ -141,8 +139,118 @@ else if ($_POST['page'] == "/list")
         }
     }
     $output .= '</tbody>
-                      </table>';
+                      </table>'; 
     echo $output;
 }
 
+else if (isset($_POST['query']))
+{
+    if ($_POST['page'] == "/list" and $_POST['action'] == "delete")
+    {
+        $id = $_POST['query'];
+        $adminList = adminList::getInstance();        
+        $status = $adminList->delete($id);
+        if ($status)
+        {
+            echo $status;
+        }
+        else
+        {
+            echo $status;
+        }
+    }
+    if ($_POST['page'] == "/manageBloodGroup" and $_POST['action'] == "delete")
+    {
+        $id = $_POST['query'];
+        if ($table->check($id, "blood_group"))
+        {
+            echo "Fail";
+        }
+        else
+        {
+            $table->delete($id, "blood_group");
+            echo "success";
+        }
+    }    
+    if ($_POST['page'] == "/manageAreaOfInterest" and $_POST['action'] == "delete")
+    {
+        $id = $_POST['query'];
+        if ($table->checkArea($id))
+        {
+            echo "Fail";
+        }
+        else
+        {
+            $table->delete($id, "admin_area_of_interest");
+            echo "success";
+        }
+    }  
+    if ($_POST['page'] == "/manageDetailsOfGraduation" and $_POST['action'] == "delete")
+    {
+        $id = $_POST['query'];
+        if ($table->check($id, "details_of_graduation"))
+        {
+            echo "Fail";
+        }
+        else
+        {
+            $table->delete($id, "details_of_graduation");
+            echo "success";
+        }
+    }      
+}
+
+if ($_POST['page'] == "/manageBloodGroup" and $_POST['action'] == "update")
+{
+    if (isset($_POST['query']))
+    {
+        $bg = $_POST['query'];
+        if ($table->save($bg, "blood_group", "blood_group"))
+        {
+            echo "success";
+        }
+    }
+    if (isset($_POST['id']))
+    {
+        $id = $_POST['id'];
+        $bg = $_POST['bg'];
+        $table->update($id, $bg, "blood_group", "blood_group");
+    }
+}
+
+if ($_POST['page'] == "/manageDetailsOfGraduation" and $_POST['action'] == "update")
+{
+    if (isset($_POST['query']))
+    {
+        $bg = $_POST['query'];
+        if ($table->save($bg, "details_of_graduation", "details_of_graduation"))
+        {
+            echo "success";
+        }
+    }
+    if (isset($_POST['id']))
+    {
+        $id = $_POST['id'];
+        $bg = $_POST['bg'];
+        $table->update($id, $bg, "details_of_graduation", "details_of_graduation");
+    }
+}
+
+if ($_POST['page'] == "/manageAreaOfInterest" and $_POST['action'] == "update")
+{
+    if (isset($_POST['query']))
+    {
+        $bg = $_POST['query'];
+        if ($table->save($bg, "admin_area_of_interest", "area_of_interest"))
+        {
+            echo "success";
+        }
+    }
+    if (isset($_POST['id']))
+    {
+        $id = $_POST['id'];
+        $bg = $_POST['bg'];
+        $table->update($id, $bg, "admin_area_of_interest", "area_of_interest");
+    }
+}
 

@@ -144,14 +144,21 @@ body {
 
 }
 
-#customers td, #customers th {
+#customers td {
   height:50px;
-  text-align: center;
+  text-align: left;
+  padding-left:15px;
 
 }
-
-
-
+.area {
+padding-right:10px;
+}
+.icon {
+padding-right:13px;
+}
+.column6 {
+padding-right:8px;
+}
 #customers tr:hover {background-color: #7a30c2; color:white;}
 
 #customers th {
