@@ -1,0 +1,6 @@
+
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !.(css|gif|ico|jpg|jpeg|js|png|swf|txt)
+
+RewriteRule ^(.*) index.php?url=$1 [QSA]

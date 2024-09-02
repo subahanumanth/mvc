@@ -1,0 +1,337 @@
+<style>
+
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
+}
+
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: sans-serif;
+	background: linear-gradient(to bottom left,#fbc2eb, #a18cd1);
+	height:100%;
+}
+
+input {
+  display: block;
+	outline: none;
+	border: none !important;
+}
+
+textarea {
+  display: block;
+  outline: none;
+}
+
+textarea:focus, input:focus {
+  border-color: transparent !important;
+}
+
+/* ------------------------------------ */
+button {
+	outline: none !important;
+	border: none;
+	background: transparent;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+iframe {
+	border: none !important;
+}
+
+.container-table100 {
+  width: 100%;
+  min-height: 100vh;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 33px 30px;
+}
+
+.wrap-table100 {
+  width: 317px;
+  margin-bottom:210px;
+}
+
+table {
+  border-spacing: 1;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+
+}
+table * {
+  position: relative;
+}
+table td, table th {
+  padding-left: 8px;
+}
+table thead tr {
+  height: 60px;
+  background: #301934;
+}
+table tbody tr {
+  height: 50px;
+}
+table tbody tr:last-child {
+  border: 0;
+}
+table td, table th {
+  text-align: left;
+}
+table td.l, table th.l {
+  text-align: right;
+}
+table td.c, table th.c {
+  text-align: center;
+}
+table td.r, table th.r {
+  text-align: center;
+}
+
+
+.table100-head th{
+  font-family: sans-serif;
+  font-size: 18px;
+  color: #fff;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+tbody tr {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  color: #808080;
+  line-height: 1.2;
+  font-weight: unset;
+}
+
+
+.column1 {
+  width: 260px;
+  padding-left: 40px;
+}
+
+.column2 {
+  width: 160px;
+  padding-left: 30px;
+}
+
+.column3 {
+  width: 245px;
+}
+
+.column4 {
+  width: 110px;
+  text-align: right;
+}
+
+.column5 {
+  width: 170px;
+  text-align: right;
+}
+
+.column6 {
+  width: 222px;
+  text-align: right;
+  padding-right: 62px;
+}
+
+
+@media screen and (max-width: 992px) {
+  table {
+    display: block;
+  }
+  table > *, table tr, table td, table th {
+    display: block;
+  }
+  table thead {
+    display: none;
+  }
+  table tbody tr {
+    height: auto;
+    padding: 37px 0;
+  }
+  table tbody tr td {
+    padding-left: 40% !important;
+    margin-bottom: 24px;
+  }
+  table tbody tr td:last-child {
+    margin-bottom: 0;
+  }
+  table tbody tr td:before {
+    font-family: OpenSans-Regular;
+    font-size: 14px;
+    color: #999999;
+    line-height: 1.2;
+    font-weight: unset;
+    position: absolute;
+    width: 40%;
+    left: 30px;
+    top: 0;
+  }
+  table tbody tr td:nth-child(1):before {
+    content: "Date";
+  }
+  table tbody tr td:nth-child(2):before {
+    content: "Order ID";
+  }
+  table tbody tr td:nth-child(3):before {
+    content: "Name";
+  }
+  table tbody tr td:nth-child(4):before {
+    content: "Price";
+  }
+  table tbody tr td:nth-child(5):before {
+    content: "Quantity";
+  }
+  table tbody tr td:nth-child(6):before {
+    content: "Total";
+  }
+
+  .column4,
+  .column5,
+  .column6 {
+    text-align: left;
+  }
+
+  .column4,
+  .column5,
+  .column6,
+  .column1,
+  .column2,
+  .column3 {
+    width: 100%;
+  }
+
+  tbody tr {
+    font-size: 14px;
+  }
+}
+
+.table100 #del{
+  padding-left:20px;
+  color:black;
+}
+.table100 #rem{
+  padding-left:70px;
+}
+.table100-head {
+   text-align: center;
+}
+#a{
+  text-decoration: none;
+  color:black;
+  padding-left:150px;
+}
+#blood {
+  margin-left:70px;
+  height:30px;
+  border-radius: 5px;
+}
+
+#sample {
+  text-decoration: none;
+}
+#samp{
+  background: -webkit-linear-gradient(top,#c77ff2, #e8519e,#e8519e);
+  width:100px;
+  height:28px;
+  border-radius: 10px;
+  font-size : 15px;
+  margin-left:110px;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #301934;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.welcome {
+  padding-left: 160px;
+  font-size:20px;
+}
+#confirm {
+   background:#7a30c2;
+   display: none;
+   border: 1px solid #301934;
+   position: fixed;
+   width: 340px;
+   height:140px;
+   border-radius:6px;
+   left: 50%;
+   margin-left: -170px;
+   padding: 6px 8px 8px;
+   box-sizing: border-box;
+   text-align: center;
+}
+#confirm button {
+   background-color: #301934;
+   display: inline-block;
+   border-radius: 5px;
+   border: 1px solid #301934;
+   padding: 5px;
+   text-align: center;
+   width: 80px;
+   cursor: pointer;
+   margin-bottom: 20px;
+   margin-top:10px;
+   color:white;
+}
+#confirm .message {
+    padding-top:10px;
+    font-size: 25px;
+   text-align: center;
+   color:black;
+}
+.result {
+  margin-right: 30px;
+}
+.hr {
+  margin-top:20px;
+  border-color:black;
+}
+#toast-container {
+  margin-top:40px;   
+}
+
+#table tr:hover {
+background-color: #7a30c2; 
+color:white;
+}
+#table th {
+color:white;
+}
+
+</style>
